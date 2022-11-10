@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -7,221 +7,587 @@ import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
 import logo from "../Logo/logo.jpeg";
+import stylesc from "styled-components"
+import { HiOutlineShoppingBag, HiPlus, HiMinus } from "react-icons/hi";
+import { CiSearch } from "react-icons/ci";
+import Drawer from '@mui/material/Drawer';
+import List from '@mui/material/List';
+import Divider from '@mui/material/Divider';
+import ListItem from '@mui/material/ListItem';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemText from '@mui/material/ListItemText';
+import { BiChevronRight, BiChevronLeft } from "react-icons/bi";
+import { VscChromeClose } from "react-icons/vsc";
+import { Link } from 'react-router-dom';
+import Grid from '@mui/material/Grid';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import Fade from '@mui/material/Fade';
+import LocalOfferIcon from '@mui/icons-material/LocalOffer';
 
-const pages = ['Products', 'Pricing', 'Blog'];
+const pages = ['Gifts', 'New', 'Women', 'Men', 'Kids', 'Cashmere', 'Home', 'Stories', 'Sale'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 const Navbar = () => {
 
+    // Drawer
+    const [state, setState] = React.useState({ left: false });
+    const [isAuth, setIsAuth] = useState(false);
+    const [plus, setPlus] = useState(false);
+
+
+    const toggleDrawer = (anchor, open) => (event) => {
+        if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+            return;
+        }
+        setState({ ...state, [anchor]: open });
+    };
+    const [menu, setMenu] = useState("list");
+    const [hoverMenu, setHoverMenu] = useState("");
+
+    const list = (anchor) => (
+        <Box
+            sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250, mt: '15px' }}
+            role="presentation"
+            // onClick={toggleDrawer(anchor, false)}
+            onKeyDown={toggleDrawer(anchor, false)}
+        >
+            <Button size="large" href="https://www.google.com" sx={{ ml: 10 }}>SignIN</Button>
+            <List>
+                {['Gifts', 'New', 'Women', 'Men', 'Kids', 'Cashmere', 'Home', 'Stories', 'Sale'].map((text, index) => (
+                    <ListItem key={text} disablePadding onClick={() => setMenu(text)}>
+                        <ListItemButton>
+                            <ListItemText primary={text} />
+                            <BiChevronRight />
+                        </ListItemButton>
+                    </ListItem>
+                ))}
+            </List>
+            <Divider />
+        </Box>
+    );
+    //   Drawer Ends Here
+
+    const gift = (
+        <MenuContainer>
+            <List sx={{ mt: 5, width: '250px' }} >
+                <Divider />
+                <Typography textAlign="center" padding="10px">{menu}</Typography>
+                <Divider />
+                {[{ title: 'For Men', path: '/men' },
+                { title: 'For Women', path: '/women' },
+                { title: 'For Girls', path: '/girls' },
+                { title: 'For Boys', path: '/boys' },
+                { title: 'For The Home', path: '/home' },
+                ].map((ele, index) => (
+                    <Link to={ele.path} >
+                        <ListItem key={index} disablePadding>
+                            <ListItemButton>
+                                <ListItemText primary={ele.title} />
+                            </ListItemButton>
+                        </ListItem>
+                    </Link>
+                ))}
+            </List>
+        </MenuContainer>
+    )
+
+    const news = (
+        <MenuContainer>
+            <List sx={{ mt: 5, width: '250px' }} >
+                <Divider />
+                <Typography textAlign="center" sx={{ size: "large" }} padding="10px">{menu}</Typography>
+                <Divider />
+                <Typography textAlign="Center" sx={{ mt: 2, fontWeight: 700 }}>Shop New Arrivals</Typography>
+                {[{ title: 'For Women', path: '/forwomen' },
+                { title: 'For Men', path: '/formen' },
+                { title: 'For Girls', path: '/forgirls' },
+                { title: 'For Boys', path: '/forboys' },
+                ].map((ele, index) => (
+                    <Link to={ele.path} >
+                        <ListItem key={index} disablePadding sx={{ mb: -2 }}>
+                            <ListItemButton>
+                                <ListItemText primary={ele.title} />
+                            </ListItemButton>
+                        </ListItem>
+                    </Link>
+                ))}
+                <Divider sx={{ mt: 3 }} />
+                <Typography textAlign="Center" sx={{ mt: 2, fontWeight: 700 }}>What to Shop Now</Typography>
+                <Typography sx={{ mt: 2, ml: 2, mb: 0, color: 'gray', fontWeight: 700 }}>Women</Typography>
+                {[{ title: 'The Holiday Party Shop', path: '/forwomen' },
+                { title: 'Tartan Time', path: '/formen' },
+                { title: "Olympia's Picks", path: '/forgirls' },
+                { title: 'The Work Remix', path: '/forboys' },
+                { title: 'The Sun Shop', path: '/forboys' },
+                { title: 'The Ski Shop', path: '/forboys' },
+                ].map((ele, index) => (
+                    <Link to={ele.path} >
+                        <ListItem key={index} disablePadding sx={{ mb: -2 }}>
+                            <ListItemButton>
+                                <ListItemText primary={ele.title} />
+                            </ListItemButton>
+                        </ListItem>
+                    </Link>
+                ))}
+                <Divider sx={{ mt: 3 }} />
+                <Typography sx={{ mt: 2, ml: 2, mb: 0, color: 'gray', fontWeight: 700 }}>Men</Typography>
+                {[{ title: 'Fair Isle Sweaters', path: '/formen' },
+                { title: 'The Holiday Party Shop', path: '/formen' },
+                { title: 'Midweight Flannel Workshirts', path: '/formen' },
+                { title: 'New Parkas & Topcoats', path: '/formen' },
+                { title: 'Source Materials', path: '/formen' },
+                { title: 'Heritage 14 Oz. Fleece', path: '/formen' },
+                ].map((ele, index) => (
+                    <Link to={ele.path} >
+                        <ListItem key={index} disablePadding sx={{ mb: -2 }}>
+                            <ListItemButton>
+                                <ListItemText primary={ele.title} />
+                            </ListItemButton>
+                        </ListItem>
+                    </Link>
+                ))}
+            </List>
+        </MenuContainer>
+    )
+
+    const women = (
+        <MenuContainer>
+            <List sx={{ mt: 5, width: '250px' }} >
+                <Divider />
+                <Typography textAlign="center" sx={{ size: "large" }} padding="10px">{menu}</Typography>
+                <Divider />
+                <Box sx={{ display: 'flex', position: 'relative', justifyContent: 'space-between' }}>
+                    <Typography sx={{ mt: 2, ml: 2, fontWeight: 700 }}>Shop By Size</Typography>
+                    {!plus && <HiPlus style={{ position: "absolute", top: 17, left: 180 }} onClick={() => setPlus(!plus)} />}
+                    {plus && <HiMinus style={{ position: "absolute", top: 17, left: 180 }} onClick={() => setPlus(!plus)} />}
+                </Box>
+                <Box sx={{ flexGrow: 1, ml: 2, mr: 2, mt: 2 }}>
+                    <Grid container spacing={{ xs: 1, }} columns={{ xs: 20, sm: 12, md: 12 }}>
+                        {plus && ["XXS", "XS", "S", "M", "L", "XXL", "XL", "2X", "3X", "L"].map((ele, index) => (
+                            <Grid item xs={3} key={index}>
+                                <div className="sizeContain">{ele}</div>
+                            </Grid>
+                        ))}
+                    </Grid>
+                </Box>
+                <Divider sx={{ mt: 2 }} />
+                <Typography sx={{ mt: 2, ml: 2, fontWeight: 700 }}>What to Shop Now</Typography>
+                <Typography sx={{ mt: 2, ml: 2, mb: 0, color: 'gray', fontWeight: 700 }}>Women</Typography>
+                {[{ title: 'The Holiday Party Shop', path: '/forwomen' },
+                { title: 'Tartan Time', path: '/formen' },
+                { title: "Olympia's Picks", path: '/forgirls' },
+                { title: 'The Work Remix', path: '/forboys' },
+                { title: 'The Sun Shop', path: '/forboys' },
+                { title: 'The Ski Shop', path: '/forboys' },
+                ].map((ele, index) => (
+                    <Link to={ele.path} >
+                        <ListItem key={index} disablePadding sx={{ mb: -2 }}>
+                            <ListItemButton>
+                                <ListItemText primary={ele.title} />
+                            </ListItemButton>
+                        </ListItem>
+                    </Link>))}
+                <Divider sx={{ mt: 3 }} />
+                <Typography sx={{ mt: 2, ml: 2, mb: 0, color: 'gray', fontWeight: 700 }}>Men</Typography>
+                {[{ title: 'Fair Isle Sweaters', path: '/women' },
+                { title: 'The Holiday Party Shop', path: '/women' },
+                { title: 'Midweight Flannel Workshirts', path: '/women' },
+                { title: 'New Parkas & Topcoats', path: '/women' },
+                { title: 'Source Materials', path: '/women' },
+                { title: 'Heritage 14 Oz. Fleece', path: '/women' },
+                ].map((ele, index) => (
+                    <Link to={ele.path} >
+                        <ListItem key={index} disablePadding sx={{ mb: -2 }}>
+                            <ListItemButton>
+                                <ListItemText primary={ele.title} />
+                            </ListItemButton>
+                        </ListItem>
+                    </Link>
+                ))}
+            </List>
+        </MenuContainer>
+    )
+
+    const [anchorEl, setAnchorEl] = React.useState(null);
+    const open = Boolean(anchorEl);
+    const handleClick = (event) => {
+        console.log(event.target.innerText)
+        setHoverMenu(event.target.innerText);
+        setAnchorEl(event.currentTarget);
+    };
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
+
+
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
 
-    const handleOpenNavMenu = (event) => {
-        setAnchorElNav(event.currentTarget);
-    };
     const handleOpenUserMenu = (event) => {
         setAnchorElUser(event.currentTarget);
-    };
-
-    const handleCloseNavMenu = () => {
-        setAnchorElNav(null);
     };
 
     const handleCloseUserMenu = () => {
         setAnchorElUser(null);
     };
-    // const menus = [
-    //     {
-    //         menu: "Gifts",
-    //     }, {
-    //         menu: "New",
-    //     }, {
-    //         menu: "Women",
-    //     }, {
-    //         menu: "Men",
-    //     }, {
-    //         menu: "Kids",
-    //     }, {
-    //         menu: "Cashmere",
-    //     }, {
-    //         menu: "Home",
-    //     }, {
-    //         menu: "Stories",
-    //     }, {
-    //         menu: "Sale",
-    //     },
-    // ]
+
+    console.log(hoverMenu)
     return (
-        <AppBar position="static">
-            <Container maxWidth="xl">
-                <Toolbar disableGutters>
-                    <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
-                    <Typography
-                        variant="h6"
-                        noWrap
-                        component="a"
-                        href="/"
-                        sx={{
-                            mr: 2,
-                            display: { xs: 'none', md: 'flex' },
-                            fontFamily: 'monospace',
-                            fontWeight: 700,
-                            letterSpacing: '.3rem',
-                            color: 'inherit',
-                            textDecoration: 'none',
-                        }}
-                    >
-                        LOGO
-                    </Typography>
-
-                    <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-                        <IconButton
-                            size="large"
-                            aria-label="account of current user"
-                            aria-controls="menu-appbar"
-                            aria-haspopup="true"
-                            onClick={handleOpenNavMenu}
-                            color="inherit"
-                        >
-                            <MenuIcon />
-                        </IconButton>
-                        <Menu
-                            id="menu-appbar"
-                            anchorEl={anchorElNav}
-                            anchorOrigin={{
-                                vertical: 'bottom',
-                                horizontal: 'left',
-                            }}
-                            keepMounted
-                            transformOrigin={{
-                                vertical: 'top',
-                                horizontal: 'left',
-                            }}
-                            open={Boolean(anchorElNav)}
-                            onClose={handleCloseNavMenu}
+        <NavbarContainer>
+            <AppBar elevation={0} position="static" sx={{ borderBottom: "1px solid #ddd", backgroundColor: "white", color: "black" }}>
+                <Container maxWidth="xl">
+                    <Toolbar disableGutters>
+                        <Box
+                            component="img"
                             sx={{
-                                display: { xs: 'block', md: 'none' },
+                                display: { xs: 'none', md: 'flex' }, mr: 1,
+                                height: 80,
+                                width: 300,
+                                maxHeight: { xs: 233, md: 167 },
+                                maxWidth: { xs: 350, md: 250 },
                             }}
-                        >
-                            {pages.map((page) => (
-                                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                                    <Typography textAlign="center">{page}</Typography>
-                                </MenuItem>
-                            ))}
-                        </Menu>
-                    </Box>
-                    <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
-                    <Typography
-                        variant="h5"
-                        noWrap
-                        component="a"
-                        href=""
-                        sx={{
-                            mr: 2,
-                            display: { xs: 'flex', md: 'none' },
-                            flexGrow: 1,
-                            fontFamily: 'monospace',
-                            fontWeight: 700,
-                            letterSpacing: '.3rem',
-                            color: 'inherit',
-                            textDecoration: 'none',
-                        }}
-                    >
-                        LOGO
-                    </Typography>
-                    <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-                        {pages.map((page) => (
-                            <Button
-                                key={page}
-                                onClick={handleCloseNavMenu}
-                                sx={{ my: 2, color: 'white', display: 'block' }}
+                            alt="The house from the offer."
+                            src={logo}
+                        />
+
+                        <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+                            <IconButton
+                                size="small"
+                                aria-label="account of current user"
+                                aria-controls="menu-appbar"
+                                aria-haspopup="true"
+                                onClick={toggleDrawer("left", true)}
+                                color="inherit"
                             >
-                                {page}
-                            </Button>
-                        ))}
-                    </Box>
-
-                    <Box sx={{ flexGrow: 0 }}>
-                        <Tooltip title="Open settings">
-                            <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                                <MenuIcon />
                             </IconButton>
-                        </Tooltip>
-                        <Menu
-                            sx={{ mt: '45px' }}
-                            id="menu-appbar"
-                            anchorEl={anchorElUser}
-                            anchorOrigin={{
-                                vertical: 'top',
-                                horizontal: 'right',
-                            }}
-                            keepMounted
-                            transformOrigin={{
-                                vertical: 'top',
-                                horizontal: 'right',
-                            }}
-                            open={Boolean(anchorElUser)}
-                            onClose={handleCloseUserMenu}
-                        >
-                            {settings.map((setting) => (
-                                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                                    <Typography textAlign="center">{setting}</Typography>
-                                </MenuItem>
-                            ))}
-                        </Menu>
-                    </Box>
-                </Toolbar>
-            </Container>
-        </AppBar>
-    );
-    // return (
+                            <Drawer
+                                sx={{ position: 'relative' }}
+                                anchor={"left"}
+                                open={state["left"]}
+                            >
+                                <VscChromeClose style={{ position: "absolute", top: menu === 'list' ? '25' : '18', left: "25", fontSize: "large" }} onClick={toggleDrawer("left", false)} />
 
-    //     // <Container>
-    //     //     <div className="navContainer">
-    //     //         <div className="logoContainer">
-    //     //             <img src={logo} />
-    //     //         </div>
-    //     //         <div className="menuContainer">
-    //     //             {
-    //     //                 menus.map((ele, index) => (
-    //     //                     <div key={index}>{ele.menu}
-    //     //                     </div>
-    //     //                 ))
-    //     //             }
-    //     //         </div>
-    //     //     </div>
-    //     // </Container>
-    // )
+                                {menu !== "list" && <BiChevronLeft style={{ zIndex: 13000, position: "absolute", top: "58px", left: "25", fontSize: "25px" }} onClick={() => setMenu("list")} />}
+
+
+                                <div className="menuList">
+                                    {menu === "list" && list("left")}
+                                    {menu === "Gifts" && gift}
+                                    {menu === "New" && news}
+                                    {menu === "Women" && women}
+                                </div>
+                            </Drawer>
+
+
+                            <Menu
+                                id="menu-appbar"
+                                anchorEl={anchorElNav}
+                                anchorOrigin={{
+                                    vertical: 'bottom',
+                                    horizontal: 'left',
+                                }}
+                                keepMounted
+                                transformOrigin={{
+                                    vertical: 'top',
+                                    horizontal: 'left',
+                                }}
+                                open={Boolean(anchorElNav)}
+                                onClose={toggleDrawer("left", false)}
+                                sx={{
+                                    display: { xs: 'block', md: 'none' },
+                                }}
+                            >
+                                {/* hover menus  */}
+                                {pages.map((page) => (
+                                    <MenuItem key={page}
+                                        onClick={toggleDrawer("left", false)}
+                                    >
+                                        <Typography textAlign="center" >{page}Hello</Typography>
+                                    </MenuItem>
+                                ))}
+                            </Menu>
+                        </Box>
+
+
+
+                        <Box
+                            component="img"
+                            sx={{
+                                display: { xs: 'flex', md: 'none' }, mr: 1,
+                                height: 80,
+                                width: 300,
+                            }}
+                            alt="The house from the offer."
+                            src={logo}
+                        />
+
+                        <Typography
+                            variant="h5"
+                            noWrap
+                            component="a"
+                            href=""
+                            sx={{
+                                mr: 2,
+                                display: { xs: 'flex', md: 'none' },
+                                flexGrow: 1,
+                                fontWeight: 700,
+                                letterSpacing: '.3rem',
+                                color: 'black',
+                                textDecoration: 'none',
+                            }}
+                        >
+                        </Typography>
+
+                        <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+                            {pages.map((page) => (
+                                <>
+                                    <Button
+                                        key={page}
+                                        id="fade-button"
+                                        aria-controls={open ? 'fade-menu' : undefined}
+                                        aria-haspopup="true"
+                                        aria-expanded={open ? 'true' : undefined}
+
+                                        sx={{ my: 2, color: 'black', display: 'block' }}
+                                    >
+                                        <Typography onMouseOver={(event) => handleClick(event)}>{page}</Typography>
+                                    </Button>
+                                    <Menu
+                                        id="fade-menu"
+                                        MenuListProps={{
+                                            'aria-labelledby': 'fade-button',
+                                        }}
+                                        anchorEl={anchorEl}
+                                        open={open}
+                                        elevation={1}
+                                        onClose={handleClose}
+                                        TransitionComponent={Fade}
+                                        sx={{ ml: 0, mt: 2 }}
+                                    >
+                                        {hoverMenu === "GIFTS" &&
+                                            <Box sx={{ padding: 1}}>
+                                                <MenuItem onClick={handleClose}>For Women</MenuItem>
+                                                <MenuItem onClick={handleClose}>For Men</MenuItem>
+                                                <MenuItem onClick={handleClose}>For Girls</MenuItem>
+                                                <MenuItem onClick={handleClose}>For Boys</MenuItem>
+                                                <MenuItem onClick={handleClose}>For Home</MenuItem>
+                                            </Box>}
+                                    </Menu>
+                                </>
+                            ))}
+                        </Box>
+
+                        <Box sx={{ display: { xs: 'none', lg: 'flex', md: 'flex' }, mr: 2, }}
+                            component="div"
+                            border="2px solid #ddd"
+                            width="200px"
+                            display="flex"
+                            alignItems="center"
+                            height="30px"
+                            padding="5px">
+                            <CiSearch fontSize="25px" />
+                            <input className="searchText" type="text" placeholder="Search" />
+                        </Box>
+
+                        <Box sx={{ flexGrow: 0, mr: '5px', display: { lg: 'flex' } }}>
+                            <Tooltip title="Open settings">
+                                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                                    {isAuth ? <p className="signIn">SignOut</p> : <p className="signIn">SignIn</p>}
+                                </IconButton>
+                            </Tooltip>
+                            {isAuth && <Menu
+                                sx={{ mt: '50px', mr: '0px' }}
+                                id="menu-appbar"
+                                anchorEl={anchorElUser}
+                                anchorOrigin={{
+                                    vertical: 'top',
+                                    horizontal: 'right',
+                                }}
+                                keepMounted
+                                transformOrigin={{
+                                    vertical: 'top',
+                                    horizontal: 'right',
+                                }}
+                                open={Boolean(anchorElUser)}
+                                onClose={handleCloseUserMenu}
+                            >
+                                {settings.map((setting) => (
+                                    <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                                        <Typography textAlign="center">{setting}</Typography>
+                                    </MenuItem>
+                                ))}
+                            </Menu>}
+                        </Box>
+
+                        <Box sx={{ display: { xs: 'none', lg: 'flex', md: 'flex' }, mr: 1, }}
+                            marginLeft="20px"
+                            display="flex"
+                            alignItems="center"
+                            height="30px"
+                            fontSize="25px">
+                            <HiOutlineShoppingBag />
+                        </Box>
+
+                    </Toolbar>
+                </Container>
+            </AppBar>
+
+            {/* <Box sx={{ boxShadow: 'rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px', width: '100%', display: { xs: 'none', md: 'flex' }, alignItems: 'center', padding: '0px 50px' }}>
+                <Box>
+                    <Button
+                        id="fade-button"
+                        aria-controls={open ? 'fade-menu' : undefined}
+                        aria-haspopup="true"
+                        aria-expanded={open ? 'true' : undefined}
+                        onMouseOver={handleClick}
+                    >
+                        <span style={{ display: 'flex', alignItems: 'center', gap: "10px", padding: '10px 15px', backgroundColor: '#cf6c4d', color: 'white' }}>Shop By Category<KeyboardArrowDownIcon /></span>
+                    </Button>
+                    <Menu
+                        id="fade-menu"
+                        MenuListProps={{
+                            'aria-labelledby': 'fade-button',
+                        }}
+                        anchorEl={anchorEl}
+                        open={open}
+                        onClose={handleClose}
+                        TransitionComponent={Fade}
+                        sx={{ ml: 1 }}
+                    >
+                        <Box sx={{ml:1,display:'flex'}}>
+
+                        </Box>
+                        <Box sx={{ ml: 1, display: 'flex' }}>
+                            <Box>
+                                <MenuItem onClick={handleClose}>Profile</MenuItem>
+                                <MenuItem onClick={handleClose}>My account</MenuItem>
+                                <MenuItem onClick={handleClose}>Logout</MenuItem>
+                                <MenuItem onClick={handleClose}>Profile</MenuItem>
+                                <MenuItem onClick={handleClose}>My account</MenuItem>
+                                <MenuItem onClick={handleClose}>Logout</MenuItem>
+                                <MenuItem onClick={handleClose}>Profile</MenuItem>
+                                <MenuItem onClick={handleClose}>My account</MenuItem>
+                                <MenuItem onClick={handleClose}>Logout</MenuItem>
+                                <MenuItem onClick={handleClose}>Profile</MenuItem>
+                            </Box>
+                            <Box>
+                                <MenuItem onClick={handleClose}>Profile dsfdsfdsfdsfdsfdsfsdf</MenuItem>
+                                <MenuItem onClick={handleClose}>My account</MenuItem>
+                                <MenuItem onClick={handleClose}>Logout</MenuItem>
+                                <MenuItem onClick={handleClose}>Profile</MenuItem>
+                                <MenuItem onClick={handleClose}>My account</MenuItem>
+                                <MenuItem onClick={handleClose}>Logout</MenuItem>
+                                <MenuItem onClick={handleClose}>Profile</MenuItem>
+                                <MenuItem onClick={handleClose}>My account</MenuItem>
+                                <MenuItem onClick={handleClose}>Logout</MenuItem>
+                                <MenuItem onClick={handleClose}>Profile</MenuItem>
+                                <MenuItem onClick={handleClose}>My account</MenuItem>
+                                <MenuItem onClick={handleClose}>Logout</MenuItem>
+                                <MenuItem onClick={handleClose}>Profile</MenuItem>
+                            </Box>
+                            <Box>
+                                <MenuItem onClick={handleClose}>Profile dsfdsfdsfdsfdsfdsfsdf</MenuItem>
+                                <MenuItem onClick={handleClose}>My account</MenuItem>
+                                <MenuItem onClick={handleClose}>Logout</MenuItem>
+                                <MenuItem onClick={handleClose}>Profile</MenuItem>
+                                <MenuItem onClick={handleClose}>My account</MenuItem>
+                                <MenuItem onClick={handleClose}>Logout</MenuItem>
+                                <MenuItem onClick={handleClose}>Profile</MenuItem>
+                                <MenuItem onClick={handleClose}>My account</MenuItem>
+                                <MenuItem onClick={handleClose}>Logout</MenuItem>
+                                <MenuItem onClick={handleClose}>Profile</MenuItem>
+                                <MenuItem onClick={handleClose}>My account</MenuItem>
+                                <MenuItem onClick={handleClose}>Logout</MenuItem>
+                                <MenuItem onClick={handleClose}>Profile</MenuItem>
+                            </Box>
+                            <Box>
+                                <MenuItem onClick={handleClose}>Profile dsfdsfdsfdsfdsfdsfsdf</MenuItem>
+                                <MenuItem onClick={handleClose}>My account</MenuItem>
+                                <MenuItem
+                                    onClick={handleClose}>Logout</MenuItem>
+                                <MenuItem onClick={handleClose}>Profile</MenuItem>
+                                <MenuItem onClick={handleClose}>My account</MenuItem>
+                                <MenuItem onClick={handleClose}>Logout</MenuItem>
+                                <MenuItem onClick={handleClose}>Profile</MenuItem>
+                                <MenuItem onClick={handleClose}>My account</MenuItem>
+                                <MenuItem onClick={handleClose}>Logout</MenuItem>
+                                <MenuItem onClick={handleClose}>Profile</MenuItem>
+                                <MenuItem onClick={handleClose}>My account</MenuItem>
+                                <MenuItem onClick={handleClose}>Logout</MenuItem>
+                                <MenuItem onClick={handleClose}>Profile</MenuItem>
+                            </Box>
+                            <Box>
+                                <MenuItem onClick={handleClose}>Profile dsfdsfdsfdsfdsfdsfsdf</MenuItem>
+                                <MenuItem onClick={handleClose}>My account</MenuItem>
+                                <MenuItem onClick={handleClose}>Logout</MenuItem>
+                                <MenuItem onClick={handleClose}>Profile</MenuItem>
+                                <MenuItem onClick={handleClose}>My account</MenuItem>
+                                <MenuItem onClick={handleClose}>Logout</MenuItem>
+                                <MenuItem onClick={handleClose}>Profile</MenuItem>
+                                <MenuItem onClick={handleClose}>My account</MenuItem>
+                                <MenuItem onClick={handleClose}>Logout</MenuItem>
+                                <MenuItem onClick={handleClose}>Profile</MenuItem>
+                                <MenuItem onClick={handleClose}>My account</MenuItem>
+                                <MenuItem onClick={handleClose}>Logout</MenuItem>
+                                <MenuItem onClick={handleClose}>Profile</MenuItem>
+                            </Box>
+                        </Box>
+
+                    </Menu>
+                </Box>
+                <Box>
+                    <span style={{ display: 'flex', alignItems: 'center', gap: "10px", padding: '10px 15px', backgroundColor: '#cf6c4d', color: 'white' }}><LocalOfferIcon /> OFFERS</span>
+                </Box>
+            </Box> */}
+
+
+        </NavbarContainer >
+    );
 }
 
 export default Navbar
-// const Container = stylesc.div`
 
-//     .navContainer{
-//         height:50px;
-//         display:flex;
-//         justify-content:space-evenly;
-//         align-items:center;
-//     }
+const NavbarContainer = stylesc.div`
+                width:100%;
+                color:black;
+                .searchText{
+                    height:90%;
+                border:none;
+                pointerEvents:none;
+                outline:none;
+    }
 
-//     .logoContainer{
-//         width:150px;
-//         height:90%;
-//     }
-//     .logoContainer img{
-//         width:100%;
-//         width:100%;
-//     }
+                .menuList{
+                    width:80%;
+                display:flex;
+                justify-content:space-between;
+    }
+                .signIn{
+                    font - size:18px;
+                font-weight:500;
 
-//     .menuContainer{
-//         display:flex;
-//         align-items:center;
-//         gap:20px;
-//     }
-// `;
+    }
+                `;
+
+const MenuContainer = stylesc.div`
+                a{
+                    text - decoration:none;
+                color:black;
+    }
+                font-size:16px;
+
+                .sizeContain{
+                    font - size:14px;
+                border:1px solid grey;
+                width:30px;
+                text-align:center;
+                padding:3px 2px;
+    }
+
+
+                `;

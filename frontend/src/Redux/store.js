@@ -6,4 +6,4 @@ const { legacy_createStore, combineReducers, applyMiddleware } = require("redux"
 const rootReducer = combineReducers({ AuthReducer, AppReducer });
 const store = legacy_createStore(rootReducer, applyMiddleware(thunk));
 
-export { store };
+export { store }
