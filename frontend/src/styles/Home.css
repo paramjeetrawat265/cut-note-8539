@@ -205,8 +205,8 @@
 }
 /* .................................. */
 .Look{
-    border:1px solid black;
-    height: 420px;
+    /* border:1px solid black; */
+    height: 440px;
     position: relative;
     /* width: 100%; */
     margin: auto;
@@ -215,4 +215,297 @@
 }
 .mid{
      width: 100%;
+}
+.fall2{
+    margin-left: -665px;
+    margin-top: 100px;
+    color: white;
+    font-family:"freight-big-pro", "FreightBig Pro",Times,serif;
+    font-size: 54px;
+}
+.Lbook{
+    color: white;
+    font-family:"freight-big-pro", "FreightBig Pro",Times,serif;
+    font-size: 58px;
+    margin-top: 150px;
+    margin-left: -222px;
+}
+.creative{
+    color: white;
+    font-family:sans-serif;
+    font-size: 20px;
+    margin-top:240px ;
+    margin-left: -260px;
+
+}
+.creative1{
+    color: white;
+    font-family:sans-serif;
+    font-size: 20px;
+    margin-top:265px ;
+    margin-left: -265px;
+}
+.creative2{
+    color: white;
+    font-family:sans-serif;
+    font-size: 20px;
+    margin-top:290px ;
+    margin-left: -200px;
+}
+.season{
+    color: white;
+    font-family:sans-serif;
+    font-size: 14px;
+    margin-top:340px ;
+    margin-left: -150px;
+    font-weight: 700;
+}
+/* ..................................................................pointer....... */
+.pointer{
+    /* border: 1px solid black; */
+    height: 150px;
+    display: flex;
+    /* justify-content: space-around; */
+
+}
+.arr{
+    color: black;
+    font-family:"freight-big-pro", "FreightBig Pro",Times,serif;
+    text-align: center;
+    font-size: 40px;
+    margin-top: 55px;
+}
+.shopant{
+    background-color: white;
+    color: black;
+    height: 50px;
+    width: 23%;
+    margin-top: 53px;
+   border:1px solid grey;
+   font-size: 16px;
+   font-weight: 600;
+
+}
+/* .......................................... */
+.story{
+    margin-left: -1000px;
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 30px;
+}
+.meets{
+    font-family:"freight-big-pro", "FreightBig Pro",Times,serif;
+    margin-left: -450px;
+    font-size: 60px;
+    margin-top: -10px;
+}
+/* .................................................. */
+.dressCode{
+    font-family:"freight-big-pro", "FreightBig Pro",Times,serif;
+    margin-left: -450px;
+    font-size: 40px;
+    margin-top: 10px;
+}
+.downTown{
+    font-family:"freight-big-pro", "FreightBig Pro",Times,serif;
+    margin-left: -250px;
+    font-size: 40px;
+    margin-top: -40px;
+    
+}
+.designer{
+    margin-left: -520px;
+    margin-top: -25px;
+    font-weight: 600;
+}
+.tartan{
+    font-family:"freight-big-pro", "FreightBig Pro",Times,serif;
+    font-size: 25px;
+    margin-top: 5px;
+    margin-left: -52px;
+}
+.roundup{
+    margin-left: -120px; 
+    font-weight: 600;
+}
+.tartan1{
+    font-family:"freight-big-pro", "FreightBig Pro",Times,serif;
+    font-size: 25px;
+    margin-top: 5px;
+    margin-left: -86px;
+}
+.roundup1{
+    margin-left: -15px; 
+    font-weight: 600;
+}
+
+.suiting{
+    font-family:"freight-big-pro", "FreightBig Pro",Times,serif;
+    font-size: 35px;
+    margin-top: 10px;
+    margin-left: -70px;
+}
+.Abude{
+    font-family:"freight-big-pro", "FreightBig Pro",Times,serif;
+    font-size: 40px;
+    margin-top: -30px;
+    margin-left: -235px;
+  
+}
+.stt{
+    margin-left: -242px;
+    margin-top: -10px;
+    font-size: 18px;
+    font-weight: 600;
+}
+/* ........................................................................................... */
+.sporting{
+    font-family:"freight-big-pro", "FreightBig Pro",Times,serif;
+    font-size: 25px;
+    margin-left: -150px;
+    margin-top: 7px;
+}
+.tracks{
+    font-family:"freight-big-pro", "FreightBig Pro",Times,serif;
+    font-size: 25px;
+    margin-left: -60px;
+    margin-top: -15px;
+}
+.meett{
+    font-size: 16px;
+    font-weight: 700;
+    margin-left: -150px;
+}
+
+.sporting1{
+    font-family:"freight-big-pro", "FreightBig Pro",Times,serif;
+    font-size: 25px;
+    margin-left: -60px;
+    margin-top: 7px;
+}
+.tracks1{
+    font-family:"freight-big-pro", "FreightBig Pro",Times,serif;
+    font-size: 25px;
+    margin-left: -160px;
+    margin-top: -15px;
+}
+.meett1{
+    font-size: 14px;
+    font-weight: 700;
+    margin-left: -60px;
+}
+
+
+.sporting13{
+    font-family:"freight-big-pro", "FreightBig Pro",Times,serif;
+    font-size: 25px;
+    margin-left: -44px;
+    margin-top: 7px;
+}
+.sporting14{
+    font-family:"freight-big-pro", "FreightBig Pro",Times,serif;
+    font-size: 25px;
+    margin-left: -30px;
+    margin-top: -14px;
+}
+.sporting15{
+    font-family:"freight-big-pro", "FreightBig Pro",Times,serif;
+    font-size: 25px;
+    margin-left: -110px;
+    margin-top: -20px;
+}
+.meett16{
+    font-size: 14px;
+    font-weight: 700;
+    margin-left: -164px;
+}
+
+.sporting18{
+    font-family:"freight-big-pro", "FreightBig Pro",Times,serif;
+    font-size: 25px;
+    margin-left: -104px;
+    margin-top: 7px;
+}
+.sporting19{
+    font-family:"freight-big-pro", "FreightBig Pro",Times,serif;
+    font-size: 22px;
+    margin-left: -18px;
+    margin-top: -14px;
+}
+.sporting20{
+    font-family:"freight-big-pro", "FreightBig Pro",Times,serif;
+    font-size: 25px;
+    margin-left: -100px;
+    margin-top: -20px;
+}
+.meett21{
+    font-size: 14px;
+    font-weight: 700;
+    margin-left: -166px;
+}
+/* ....................................................................... */
+.chotaBox{
+    font-family:"freight-big-pro", "FreightBig Pro",Times,serif;
+    font-size: 35px;
+    margin-top:  8px;
+}
+
+  .overlay {
+    position: absolute; 
+    height:60px;
+    bottom: 0; 
+    background: rgb(0, 0, 0);
+    background: rgba(224, 217, 217, 0.5); /* Black see-through */
+    color: #f1f1f1; 
+    width: 100%;
+    transition: .5s ease;
+    opacity:0;
+    color:black;
+    font-size: 8px;
+    /* padding: 20px; */
+    text-align: center;
+  }
+  
+  .container:hover .overlay {
+    opacity: 1;
+  }
+  .wrap{
+    margin-left: -50px;
+    font-weight: 500;
+  }
+  .INR{
+    margin-left: -85px;
+    font-weight: 500;
+    font-size: 15px;
+    margin-top: 2px;
+  }
+  .wrap2{
+    margin-left: -80px;
+    font-weight: 500;
+  }
+  .wrap3{
+    margin-left: -88px;
+    font-weight: 500;
+  }
+  .wrap4{
+    margin-left: -70px;
+    font-weight: 500;
+  }
+  .wrap5{
+    margin-left: -60px;
+    font-weight: 500;
+  }
+  .wrap6{
+    margin-left: -95px;
+    font-weight: 500;
+  }
+/* .................................................................................................. */
+.insta{
+    font-size: 28px;
+    font-family:"freight-big-pro", "FreightBig Pro",Times,serif;
+    margin-top: 2px;
+}
+.funn{
+    margin-top: -16px;
+    font-size: 22px;
 }
