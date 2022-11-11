@@ -1,0 +1,143 @@
+.productpage_div1{
+    display: grid;
+    grid-template-columns: repeat(3,1fr) ;
+   
+    gap: 10px;
+    width: 75%;
+    margin: auto;
+}
+.productpage{
+    display: flex;
+}
+.productpage>:nth-child(1){
+    width: 20%;
+    /* margin: auto; */
+}
+
+
+
+
+
+
+
+
+
+
+
+/* Single product page css 
+*/
+.productinfo_page{
+    width: 80%;
+    /* border: 1px solid red; */
+    height: auto;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+}
+.leftbox{
+/* border: 1px solid green; */
+width: 55%;
+}
+.main_img_div{
+    width: 90%;
+    margin: auto;
+}
+.main_img_div>*{
+    width: 100%;
+}
+
+
+
+
+
+.rightbox{
+    /* border: 1px solid rgb(11, 3, 255); */
+    width: 45%;
+    text-align: start;
+    padding-left: 15px;
+}
+
+.qtydiv{
+display: flex;
+align-items: center;
+margin-top: 30px;
+}
+
+.SizesBox{
+    width: 100%;
+    /* border: 1px solid yellow; */
+    margin-top: 20px;
+}
+.Sizes_button{
+    width: 20%;
+background-color: white;
+border: 1px solid rgb(167, 167, 167);
+ padding: 12px 1px 12px 1px;
+}
+.Sizes_button:hover{
+    border: 1px solid black;
+}
+.sizebtn_div{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.buttondiv{
+    margin-top: 30px;
+}
+.buttondiv>div{
+    display: flex;
+    width: 90%;
+    justify-content: space-between;
+}
+
+.buttondiv>div>:nth-child(1){
+    width:80% ;
+    height: 40px;
+    background-color: black;
+    color: white;
+    border: none;
+    margin-top: 0px;
+}
+.buttondiv>div>:nth-child(2){
+    width:18% ;
+}
+
+
+
+
+.reimagened{
+    display: flex;
+    /* justify-content: space-around; */
+    width: 60%;
+}
+.reimagened>img{
+    width: 20%;
+}
+
+.t_title{
+    font-size: 18px;
+    font-weight: bold;
+}
+.mini_title{
+    color: gray;
+    /* line-height: 10px; */
+   
+}
+.qty_form{
+    width: 100%;
+    padding: 5px 8px 5px 8px;
+}
+
+.rightbox>h2>span{
+    font-size:20px ;
+}
+#close {
+    color: gray;
+    margin-top: -20px;
+    padding-top:0px ;
+}
+hr{
+    margin-top: 40px;
+    color: gray;
+}
