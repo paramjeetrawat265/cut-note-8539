@@ -240,18 +240,21 @@ const Navbar = () => {
             <AppBar elevation={0} position="static" sx={{ borderBottom: "1px solid #ddd", backgroundColor: "white", color: "black" }}>
                 <Container maxWidth="xl">
                     <Toolbar disableGutters>
-                        <Box
-                            component="img"
-                            sx={{
-                                display: { xs: 'none', md: 'flex' }, mr: 1,
-                                height: 80,
-                                width: 300,
-                                maxHeight: { xs: 233, md: 167 },
-                                maxWidth: { xs: 350, md: 250 },
-                            }}
-                            alt="The house from the offer."
-                            src={logo}
-                        />
+                        <Link to="/">
+                            <Box
+                                component="img"
+                                sx={{
+                                    display: { xs: 'none', md: 'flex' }, mr: 1,
+                                    height: 80,
+                                    width: 300,
+                                    maxHeight: { xs: 233, md: 167 },
+                                    maxWidth: { xs: 350, md: 250 },
+                                }}
+                                alt="The house from the offer."
+                                src={logo}
+                            >
+                            </Box>
+                        </Link>
 
                         <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
                             <IconButton
