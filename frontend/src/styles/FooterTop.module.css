@@ -1,10 +1,10 @@
 .parent {
-    margin-top: 60px;
     width: 98.7vw;
     height: 45px;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 100px;
 }
 
 .main {
