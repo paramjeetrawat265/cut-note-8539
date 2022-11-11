@@ -73,24 +73,16 @@ const AddProducts = ({ colorScheme }) => {
                                 <h3>Category:</h3>
                                 <select name="" id="" onChange={(e) => setData({ ...data, category: e.target.value })}>
                                     <option value="">Select a Category</option>
-                                    <option value="Fruit & Vegetables">Fruit & Vegetables</option>
-                                    <option value="Bakery Cake & Dairy">Bakery Cake & Dairy</option>
-                                    <option value="Beverages">Beverages</option>
-                                    <option value="Snacks & Branded Foods">Snacks & Branded Foods</option>
-                                    <option value="Beauty & hygiene">Beauty & hygiene</option>
-                                    <option value="Cleaning & Household">Cleaning & Household</option>
-                                    <option value="Kitchen Garden & Pets">Kitchen Garden & Pets</option>
-                                    <option value="Eggs Meat & Fish">Eggs Meat & Fish</option>
-                                    <option value="Garment & World Food">Garment & World Food</option>
-                                    <option value="Baby Care">Baby Care</option>
+                                    <option value="Men">Men</option>
+                                    <option value="Women">Women</option>
+                                    <option value="Girls">Girls</option>
+                                    <option value="Boys">Boys</option>
                                 </select>
                             </div>
-
                             <div>
                                 <h3>Name*</h3>
                                 <input type="text" placeholder='Enter Name' onChange={(e) => setData({ ...data, name: e.target.value })} />
                             </div>
-
                             <div>
                                 <h3>Description:</h3>
                                 <input type="text" placeholder='Enter Description' onChange={(e) => setData({ ...data, description: e.target.value })} />
