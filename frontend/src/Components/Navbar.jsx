@@ -25,7 +25,9 @@ import { VscChromeClose } from "react-icons/vsc";
 import { Link } from 'react-router-dom';
 import Grid from '@mui/material/Grid';
 import Fade from '@mui/material/Fade';
-import { SlHandbag } from "react-icons/sl"
+import { SlHandbag } from "react-icons/sl";
+import Modal from '@mui/material/Modal';
+
 
 const pages = ['Gifts', 'New', 'Women', 'Men', 'Kids', 'Cashmere', 'Home', 'Stories', 'Sale'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -36,6 +38,21 @@ const Navbar = () => {
     const [state, setState] = React.useState({ left: false });
     const [isAuth, setIsAuth] = useState(false);
     const [plus, setPlus] = useState(false);
+    const style = {
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        width: 400,
+        bgcolor: 'background.paper',
+        border: '2px solid #000',
+        boxShadow: 24,
+        p: 4,
+    };
+
+    const [modalOpen, setModalOpen] = useState(false);
+    const handleModalOpen = () => setModalOpen(true);
+    const handleModalClose = () => setModalOpen(false);
 
 
     const toggleDrawer = (anchor, open) => (event) => {
@@ -582,7 +599,25 @@ const Navbar = () => {
                         <Box sx={{ flexGrow: 0, mr: '5px', display: { sm: 'none', md: 'flex', lg: 'flex' } }}>
                             <Tooltip title="Open settings">
                                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                                    {isAuth ? <p className="signIn">SignOut</p> : <p className="signIn">SignIn</p>}
+                                    {isAuth ? <p className="signIn">SignOut</p> : <>
+                                        <p onClick={handleModalOpen} className="signIn">SignIn</p>
+                                        <Modal
+                                            open={modalOpen}
+                                            onClose={handleModalClose}
+                                            aria-labelledby="modal-modal-title"
+                                            aria-describedby="modal-modal-description"
+                                        >
+                                            <Box sx={style}>
+                                                <Typography id="modal-modal-title" variant="h6" component="h2">
+                                                    Text in a modal
+                                                </Typography>
+                                                <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                                                    Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+                                                </Typography>
+                                            </Box>
+                                        </Modal>
+                                    </>
+                                    }
                                 </IconButton>
                             </Tooltip>
                             {isAuth && <Menu
