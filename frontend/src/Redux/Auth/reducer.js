@@ -1,16 +1,14 @@
-
 import { accesData, saveData } from "../../Utils/appLocalStorage";
 import * as types from "./actionTypes";
-
 const initialState = {
     isAuth: accesData('isAuth') || false,
-    isAdmin: false,
+    isAdmin: accesData('isUserAdmin') || false,
     token: accesData('token') || '',
     isLoading: false,
     isError: false,
     message: '',
-    userDetails: [],
-    data: []
+    user: [],
+    users: [],
 }
 
 const reducer = (oldstate = initialState, action) => {
@@ -22,37 +20,37 @@ const reducer = (oldstate = initialState, action) => {
             let isUserAuth = true;
             saveData('isAuth', isUserAuth);
 
+            let isUserAdmin = payload.isAdmin;
+            saveData('isUserAdmin', isUserAdmin)
+
             let userToken = payload.token;
             saveData('token', userToken)
 
-            return { ...oldstate, isLoading: false, isAuth: isUserAuth, message: payload.msg, token: userToken };
+            return { ...oldstate, isLoading: false, isAuth: isUserAuth, message: payload.msg, token: userToken, isAdmin: isUserAdmin };
 
         case types.USER_LOGIN_FAILURE:
             isUserAuth = false;
             saveData('isAuth', isUserAuth);
 
+            isUserAdmin = false;
+            saveData('isUserAdmin', isUserAdmin);
+
             userToken = "";
             saveData('token', userToken)
 
-            return { ...oldstate, isLoading: false, isError: true, isAuth: isUserAuth, token: userToken };
-
-        case types.USER_SIGNUP_REQUEST: return { ...oldstate, isLoading: true };
-
-        case types.USER_SIGNUP_SUCCESS: return { ...oldstate, isLoading: false, message: payload };
-
-        case types.USER_SIGNUP_FAILURE: return { ...oldstate, isLoading: false, isError: true, message: payload };
+            return { ...oldstate, isLoading: false, isError: true, isAuth: isUserAuth, token: userToken, isAdmin: isUserAdmin };
 
         case types.USER_DELETE_REQUEST: return { ...oldstate, isLoading: true };
 
-        case types.USER_DELETE_SUCCESS: return { ...oldstate, isLoading: false};
+        case types.USER_DELETE_SUCCESS: return { ...oldstate, isLoading: false };
 
         case types.USER_DELETE_FAILURE: return { ...oldstate, isLoading: false, isError: true, data: [], isAdmin: false };
 
         case types.USER_DATA_REQUEST: return { ...oldstate, isLoading: true };
 
-        case types.USER_DATA_SUCCESS: return { ...oldstate, isLoading: false, data: payload.data, isAdmin: payload.status, userDetails: payload.userDetails };
+        case types.USER_DATA_SUCCESS: return { ...oldstate, isLoading: false, isAdmin: payload.status, users: payload.users, user: payload.user };
 
-        case types.USER_DATA_FAILURE: return { ...oldstate, isLoading: false, isError: true, data: [], isAdmin: false, isAuth: false };
+        case types.USER_DATA_FAILURE: return { ...oldstate, isLoading: false, isError: true, users: [], user: [] , isAdmin: false, isAuth: false };
 
         case types.USER_SIGNOUT_SUCCESS: return { isAuth: false, isLoading: false, isError: false };
 

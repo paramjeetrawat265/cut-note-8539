@@ -1,17 +1,17 @@
 import logo from './logo.svg';
 import './App.css';
 import Navbar from './Components/Navbar';
-import Home from './Components/Home';
-import Footer from './Components/Footer';
 import Allroutes from './Routes/Allroutes';
+import { useLocation } from 'react-router-dom';
 function App() {
+  const location=useLocation();
   return (
     <div className="App">
-  <Navbar/>
-  <Allroutes/>
+      {/* <Navbar /> */}
+      {location.pathname === "/dashboard" ? null : <Navbar />}
+      <Allroutes />
     </div>
   );
 }
-
 export default App;
 
