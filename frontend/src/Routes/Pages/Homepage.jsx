@@ -5,7 +5,6 @@ import Home from '../../Components/Home'
 const Homepage = () => {
   return (
     <div>
-    
         <Home/>
         <Footer/>
     </div>
