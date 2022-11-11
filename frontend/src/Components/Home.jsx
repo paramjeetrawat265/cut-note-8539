@@ -2,6 +2,7 @@ import { border, Box, Button, Flex, Image,Link } from "@chakra-ui/react"
 import styles from "../styles/More.module.css";
 import React from 'react'
 import "../styles/Home.css"
+import BoxCrouser from "./BoxCrouser";
 const Home = () => {
   return (
     <div>
@@ -267,12 +268,12 @@ const Home = () => {
           </Box>
         </Box>
         {/* ............................................YoU MAY ALSO LVE................................................... */}
-        <Box border={"1px solid black"} height={"300px"}>
-          <Box border={"1px solid black"} height={"58px"}>
+        <Box  height={"300px"}>
+          <Box  height={"58px"}>
             <p className="chotaBox">You'll Also Love</p>
           </Box>
-          <Box border={"1px solid black"} height={"240px"} display={"flex"} width={"90%"} margin={"auto"} justifyContent={"space-between"} >
-            <Box className="container" border={"1px solid black"} height={"240px"} width={"15%"} position={"relative"}>
+          <Box  height={"240px"} display={"flex"} width={"90%"} margin={"auto"} justifyContent={"space-between"} >
+            <Box className="container" height={"240px"} width={"15%"} position={"relative"}>
               <img src="https://www.jcrew.com/s7-img-facade/BK721_GR7805?wid=376" height={"240px"} width={"100%"} display={"block"} />
               <div class="overlay">
                 <div class="text">
@@ -281,7 +282,7 @@ const Home = () => {
                   </div>
               </div>
             </Box>
-             <Box className="container" border={"1px solid black"} height={"240px"} width={"15%"} position={"relative"}>
+             <Box className="container"  height={"240px"} width={"15%"} position={"relative"}>
              <img src="https://www.jcrew.com/s7-img-facade/AR182_EB7994?wid=376" height={"240px"} width={"100%"} display={"block"} />
               <div class="overlay">
                 <div class="text">
@@ -290,7 +291,7 @@ const Home = () => {
                   </div>
               </div>
              </Box>
-            <Box className="container" border={"1px solid black"} height={"240px"} width={"15%"} position={"relative"}>
+            <Box className="container"  height={"240px"} width={"15%"} position={"relative"}>
             <img src="https://www.jcrew.com/s7-img-facade/BF793_WO8694?wid=376" height={"240px"} width={"100%"} display={"block"} />
               <div class="overlay">
                 <div class="text">
@@ -299,7 +300,7 @@ const Home = () => {
                   </div>
               </div>
             </Box>
-            <Box className="container" border={"1px solid black"} height={"240px"} width={"15%"} position={"relative"}>
+            <Box className="container"  height={"240px"} width={"15%"} position={"relative"}>
             <img src="https://www.jcrew.com/s7-img-facade/BE239_BK0001_m?wid=376" height={"240px"} width={"100%"} display={"block"} />
               <div class="overlay">
                 <div class="text">
@@ -308,7 +309,7 @@ const Home = () => {
                   </div>
               </div>
             </Box>
-            <Box className="container" border={"1px solid black"} height={"240px"} width={"15%"} position={"relative"}>
+            <Box className="container"  height={"240px"} width={"15%"} position={"relative"}>
             <img src="https://www.jcrew.com/s7-img-facade/BA342_SU0919?wid=376" height={"240px"} width={"100%"} display={"block"} />
               <div class="overlay">
                 <div class="text">
@@ -317,7 +318,7 @@ const Home = () => {
                   </div>
               </div>
             </Box>
-            <Box className="container" border={"1px solid black"} height={"240px"} width={"15%"} position={"relative"}>
+            <Box className="container"  height={"240px"} width={"15%"} position={"relative"}>
             <img src="https://www.jcrew.com/s7-img-facade/AZ779_EE0512?wid=376" height={"240px"} width={"100%"} display={"block"} />
               <div class="overlay">
                 <div class="text">
@@ -337,7 +338,9 @@ const Home = () => {
         {/* ......carouselpart ...................*/}
 
 
-
+        
+          <BoxCrouser/> 
+         
 
 
         {/* ..............................more To SEE..................... */}

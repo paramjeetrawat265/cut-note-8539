@@ -1,6 +1,16 @@
+.madewell{
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin-left: -720px;
+}
+
+.fa-instagram{
+    margin-left: -560px;
+}
+
 .footer_bottom_parent {
+    margin-top: 5px;
     height: 553.06px;
-    width: 98.7vw;
+   
     background: rgb(240, 241, 242);
     padding: 52px 48px 0;
 }
@@ -59,6 +69,7 @@
     text-decoration: underline;
 }
 
+
 .footer_socialIcons i {
     margin-right: 20px;
     font-size: 26px;
@@ -85,6 +96,7 @@
     margin-top: 10px;
     font-size: 13px;
     font-weight: 600;
+    margin-left: -760px;
 }
 
 .footer_main_right {
