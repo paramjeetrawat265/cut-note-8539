@@ -3,7 +3,10 @@ import "../styles/FooterBottom.css";
 // import { FooterBottom_1, FooterBottom_2 } from "./SvgIcons";
 //import xyz from "../assets/india.png";
 import { Link } from "react-router-dom";
-
+import {BsInstagram, BsPinterest, BsYoutube} from "react-icons/bs"
+import {BsFacebook} from "react-icons/bs"
+import {BsTwitter} from "react-icons/bs"
+import {BsLinkedin} from "react-icons/bs"
 export default function FooterBottom() {
   return (
     <div className="footer_bottom_parent">
@@ -41,33 +44,45 @@ export default function FooterBottom() {
                 <li>Our Story</li>
                 <li>Careers</li>
                 <li>Social Responsibility</li>
-                <li>California Tranparency Act/Modern Slavery Act</li>
+                <li className="california">California Tranparency</li>
                 <li>Investor Relations</li>
                 <li>Terms of Use</li>
                 <li>Privacy Policy</li>
-                <li>California Do Not Sell My Personal Information</li>
-                <li>Diversity, Equity & Inlusion at J.Crew Group</li>
+                <li>California Do Not Sell My </li>
+                <li>Diversity, Equity & Inlusion</li>
               </ul>
             </div>
           </div>
           <div className="footer_socialIcons">
-            <a href="http://instagram.com/jcrew" target="_blank">
-              <i className="fa-brands fa-instagram"></i>
+            <a href="http://instagram.com/jcrew" >
+              <i className=" fa-instagram">
+              <BsInstagram/>
+              </i> 
             </a>
             <a href="https://www.facebook.com/jcrew" target="_blank">
-              <i className="fa-brands fa-facebook-f"></i>
+              <i className="fa-brands fa-facebook-f">
+                <BsFacebook/>
+              </i>
             </a>
             <a href="https://twitter.com/jcrew" target="_blank">
-              <i className="fa-brands fa-twitter"></i>
+              <i className="fa-brands fa-twitter">
+                <BsTwitter/>
+              </i>
             </a>
             <a href="https://www.linkedin.com/company/j-crew" target="_blank">
-              <i className="fa-brands fa-linkedin"></i>
+              <i className="fa-brands fa-linkedin">
+                <BsLinkedin/>
+              </i>
             </a>
             <a href="http://pinterest.com/jcrew/" target="_blank">
-              <i className="fa-brands fa-pinterest"></i>
+              <i className="fa-brands fa-pinterest">
+                <BsPinterest/>
+              </i>
             </a>
             <a href="http://www.youtube.com/user/jcrewinsider" target="_blank">
-              <i className="fa-brands fa-youtube"></i>
+              <i className="fa-brands fa-youtube">
+                <BsYoutube/>
+              </i>
             </a>
           </div>
           <div
@@ -89,16 +104,19 @@ export default function FooterBottom() {
             </p>
             {/* <img className="footer_flag" src={xyz} alt="" /> */}
           </div>
-          <div className="footerSvgIcons" style={{ display: "flex", gap: 20 }}>
+          <div className="footerSvgIcon" >
             {/* <FooterBottom_1/>
+            
             <FooterBottom_2 /> */}
+            <p className="madewell">Madewell C.Aura</p>
+            
           </div>
           <div className="footer_copyRight">© 2022 J.Crew</div>
         </div>
 
         <div className="footer_main_right">
-          <h3 className="footer_main_right_head">Like Being First?</h3>
-          <div className="footer_main_right_des">
+          <h3 className="footer_main_right_head" style={{marginLeft:"-270px"}}>Like Being First?</h3>
+          <div className="footer_main_right_des" style={{marginLeft:"-70px"}}>
             Get can't miss style news, before everybody else.
           </div>
           <div>
