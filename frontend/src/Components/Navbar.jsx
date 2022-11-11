@@ -123,7 +123,7 @@ const Navbar = () => {
                 { title: 'For Girls', path: '/forgirls' },
                 { title: 'For Boys', path: '/forboys' },
                 ].map((ele, index) => (
-                    <Link to={ele.path} >
+                    <Link to={"/alldata"} >
                         <ListItem key={index} disablePadding sx={{ mb: -2 }}>
                             <ListItemButton>
                                 <ListItemText primary={ele.title} />
