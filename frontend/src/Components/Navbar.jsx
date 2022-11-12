@@ -30,31 +30,15 @@ import Modal from '@mui/material/Modal';
 
 import "../styles/Navbar.css"
 
-import { userAuthentication } from '../Redux/Auth/action';
-import { useDispatch, useSelector } from 'react-redux'
-import Login from './Login';
-import Signup from './Signup';
-
-
 const pages = ['Gifts', 'New', 'Women', 'Men', 'Kids', 'Cashmere', 'Home', 'Stories', 'Sale'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 const Navbar = () => {
-    const dispatch=useDispatch();
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    console.log(email,password);
-    const handleLogin = () => {
-        const payload = {
-            email, password
-        }
-        dispatch(userAuthentication(payload));
-    }
+
     // Drawer
     const [state, setState] = React.useState({ left: false });
     const [isAuth, setIsAuth] = useState(false);
     const [plus, setPlus] = useState(false);
-
     const style = {
         position: 'absolute',
         top: '50%',
@@ -71,7 +55,6 @@ const Navbar = () => {
         boxShadow: 24,
         p: 4,
     };
-
 
     const [modalOpen, setModalOpen] = useState(false);
     const handleModalOpen = () => setModalOpen(true);
@@ -174,7 +157,7 @@ const Navbar = () => {
                 ))}
                 <Divider sx={{ mt: 3 }} />
                 <Typography sx={{ mt: 2, ml: 2, mb: 0, color: 'gray', fontWeight: 700 }}>Men</Typography>
-                {[{ title: 'Fair Isle Sweaters', path: '/formen' },
+                {[{ title: 'Fair Isle Sweaters', path: '/formen'  },
                 { title: 'The Holiday Party Shop', path: '/formen' },
                 { title: 'Midweight Flannel Workshirts', path: '/formen' },
                 { title: 'New Parkas & Topcoats', path: '/formen' },
@@ -184,7 +167,7 @@ const Navbar = () => {
                     <Link to={ele.path} key={index}>
                         <ListItem disablePadding sx={{ mb: -2 }}>
                             <ListItemButton>
-                                <ListItemText primary={ele.title} />
+                              <ListItemText primary={ele.title} />
                             </ListItemButton>
                         </ListItem>
                     </Link>
@@ -274,8 +257,6 @@ const Navbar = () => {
     const handleCloseUserMenu = () => {
         setAnchorElUser(null);
     };
-
-    const [authComponent , setauthComponent] = useState('Login');
 
     return (
         <NavbarContainer>
@@ -626,20 +607,14 @@ const Navbar = () => {
                                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                                     {isAuth ? <p className="signIn">SignOut</p> :
                                         <>
-
-                                            <p onClick={handleModalOpen} className="signIn" style={{color:"black",fontSize:"14px",fontWeight:"600"}}>SignIn</p>
-
                                             <p onClick={handleModalOpen} className="signIn">SignIn</p>
-
                                             <Modal
                                                 open={modalOpen}
                                                 onClose={handleModalClose}
                                                 aria-labelledby="modal-modal-title"
                                                 aria-describedby="modal-modal-description"
                                             >
-
-                                                {authComponent === 'Login'? <Login setauthComponent={setauthComponent}/>:<Signup setauthComponent={setauthComponent}/>}
-                                    <Box sx={style}>
+                                                <Box sx={style}>
                                                     <ModalContainer>
                                                         <Typography id="modal-modal-title1" >
                                                             Sign In
@@ -665,7 +640,6 @@ const Navbar = () => {
                                                         </Typography>
                                                     </ModalContainer>
                                                 </Box>
-
                                             </Modal>
                                         </>
                                     }
@@ -739,6 +713,7 @@ const NavbarContainer = stylesc.div`
     a{
         text-decoration:none;
     }
+    
                 `;
 
 const MenuContainer = stylesc.div`

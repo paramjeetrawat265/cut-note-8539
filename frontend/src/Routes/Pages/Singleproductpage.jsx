@@ -1,12 +1,15 @@
-import {Box, Divider} from "@chakra-ui/react";
+import {Box, Divider, Spinner} from "@chakra-ui/react";
 import axios from "axios";
 import React, {useEffect, useState} from "react";
+import { useDispatch, useSelector } from "react-redux";
 import {useParams} from "react-router-dom";
+import HaveAquestion from "../../Components/PoductComponents/HaveAquestion";
+import { getsingleproduct } from "../../Redux/Products/action.product";
 
 const Singleproductpage = () => {
   const param = useParams();
 
-  const data = [
+  const infodata = [
     "100% cotton.",
     "Long sleeves.",
     "Rib trim at cuffs.",
@@ -16,37 +19,42 @@ const Singleproductpage = () => {
   ];
 
   const sizes = ["X-Small", "Small", "Medium", "Large", "X-Large", "XX-Large"];
-  const [Productdata, setProductdata] = useState([]);
-
-  const {price, type, category, name, item, productdescription, image} =
-    Productdata;
+  // const [Productdata, setProductdata] = useState([]);
+const {loading,data}=useSelector((store)=>store.product)
+const dispatch=useDispatch()
+  const {price, type, category,name, item, productdescription, image} =data
+    
   useEffect(() => {
-    getProduct(param.id);
+    dispatch(getsingleproduct(param.id))
+    // getProduct(param.id);
   }, [param.id]);
-  console.log(param);
-  const getProduct = (id) => {
-    axios
-      .get("http://localhost:8000/allproducts/" + id)
-      .then((res) => {
-        setProductdata(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+
+  // const getProduct = (id) => {
+  //   axios
+  //     .get("http://localhost:8000/data/" + id)
+  //     .then((res) => {
+  //       setProductdata(res.data);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // };
 
   return (
+    <>
+    <HaveAquestion/>
     <div className="productinfo_page">
+      {/* {loading?<Spinner size='xl' />:""} */}
       {/* ..............left............. */}
-      <Box className="leftbox">
+      <div className="leftbox">
         <div className="main_img_div">
           <img src={image} alt="yes" />
         </div>
-      </Box>
+      </div>
 
       {/* ................Right............. */}
 
-      <Box className="rightbox">
+      <div className="rightbox">
         <h2>{name}</h2>
         <p className="mini_title " id="close">
           Item {item}
@@ -104,7 +112,7 @@ const Singleproductpage = () => {
 
           <p className="desc">{productdescription}</p>
 
-          {data.map((el) => (
+          {infodata.map((el) => (
             <ul>
               <li>{el}</li>
             </ul>
@@ -142,8 +150,9 @@ const Singleproductpage = () => {
             <a href="">Shop All Re-imagined</a>{" "}
           </span>
         </div>
-      </Box>
+      </div>
     </div>
+    </>
   );
 };
 

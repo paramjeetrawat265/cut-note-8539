@@ -146,6 +146,6 @@ export default function FooterBottom() {
         </div>
       </div>
     </div>
-    </div>
+
   );
 }
