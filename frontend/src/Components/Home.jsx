@@ -1,4 +1,4 @@
-import { border, Box, Button, Flex, Image,Link } from "@chakra-ui/react"
+import { border, Box, Button, Flex, Image, Link } from "@chakra-ui/react"
 import styles from "../styles/More.module.css";
 import React from 'react'
 import "../styles/Home.css"
@@ -268,179 +268,179 @@ const Home = () => {
           </Box>
         </Box>
         {/* ............................................YoU MAY ALSO LVE................................................... */}
-        <Box  height={"300px"}>
-          <Box  height={"58px"}>
+        <Box height={"300px"}>
+          <Box height={"58px"}>
             <p className="chotaBox">You'll Also Love</p>
           </Box>
-          <Box  height={"240px"} display={"flex"} width={"90%"} margin={"auto"} justifyContent={"space-between"} >
+          <Box height={"240px"} display={"flex"} width={"90%"} margin={"auto"} justifyContent={"space-between"} >
 
             <Box className="container" height={"240px"} width={"15%"} position={"relative"} cursor="pointer">
 
-            <Box className="container" height={"240px"} width={"15%"} position={"relative"}>
+              <Box className="container" height={"240px"} width={"15%"} position={"relative"}>
 
-              <img src="https://www.jcrew.com/s7-img-facade/BK721_GR7805?wid=376" height={"240px"} width={"100%"} display={"block"} />
-              <div class="overlay">
-                <div class="text">
-                  <h1 className="wrap">Wrap Sweater-skirt</h1>
-                  <p className="INR">INR 23,223.00</p>
+                <img src="https://www.jcrew.com/s7-img-facade/BK721_GR7805?wid=376" height={"240px"} width={"100%"} display={"block"} />
+                <div className="overlay">
+                  <div className="text">
+                    <h1 className="wrap">Wrap Sweater-skirt</h1>
+                    <p className="INR">INR 23,223.00</p>
                   </div>
-              </div>
-            </Box>
-             <Box className="container"  height={"240px"} width={"15%"} position={"relative"}>
-             <img src="https://www.jcrew.com/s7-img-facade/AR182_EB7994?wid=376" height={"240px"} width={"100%"} display={"block"} />
-              <div class="overlay">
-                <div class="text">
-                  <h1 className="wrap2">Boston Clogs</h1>
-                  <p className="INR">INR 14,886.00</p>
+                </div>
+              </Box>
+              <Box className="container" height={"240px"} width={"15%"} position={"relative"}>
+                <img src="https://www.jcrew.com/s7-img-facade/AR182_EB7994?wid=376" height={"240px"} width={"100%"} display={"block"} />
+                <div className="overlay">
+                  <div className="text">
+                    <h1 className="wrap2">Boston Clogs</h1>
+                    <p className="INR">INR 14,886.00</p>
                   </div>
-              </div>
-             </Box>
-            <Box className="container"  height={"240px"} width={"15%"} position={"relative"}>
-            <img src="https://www.jcrew.com/s7-img-facade/BF793_WO8694?wid=376" height={"240px"} width={"100%"} display={"block"} />
-              <div class="overlay">
-                <div class="text">
-                  <h1 className="wrap3">Boston Shirt</h1>
-                  <p className="INR">INR 877,88.00</p>
+                </div>
+              </Box>
+              <Box className="container" height={"240px"} width={"15%"} position={"relative"}>
+                <img src="https://www.jcrew.com/s7-img-facade/BF793_WO8694?wid=376" height={"240px"} width={"100%"} display={"block"} />
+                <div className="overlay">
+                  <div className="text">
+                    <h1 className="wrap3">Boston Shirt</h1>
+                    <p className="INR">INR 877,88.00</p>
                   </div>
-              </div>
-            </Box>
-            <Box className="container"  height={"240px"} width={"15%"} position={"relative"}>
-            <img src="https://www.jcrew.com/s7-img-facade/BE239_BK0001_m?wid=376" height={"240px"} width={"100%"} display={"block"} />
-              <div class="overlay">
-                <div class="text">
-                  <h1 className="wrap4">Fashinova Tshrt</h1>
-                  <p className="INR">INR 23,223.00</p>
+                </div>
+              </Box>
+              <Box className="container" height={"240px"} width={"15%"} position={"relative"}>
+                <img src="https://www.jcrew.com/s7-img-facade/BE239_BK0001_m?wid=376" height={"240px"} width={"100%"} display={"block"} />
+                <div className="overlay">
+                  <div className="text">
+                    <h1 className="wrap4">Fashinova Tshrt</h1>
+                    <p className="INR">INR 23,223.00</p>
                   </div>
-              </div>
-            </Box>
-            <Box className="container"  height={"240px"} width={"15%"} position={"relative"}>
-            <img src="https://www.jcrew.com/s7-img-facade/BA342_SU0919?wid=376" height={"240px"} width={"100%"} display={"block"} />
-              <div class="overlay">
-                <div class="text">
-                  <h1 className="wrap5">Wrap tshirt-shirt</h1>
-                  <p className="INR">INR 23,223.00</p>
+                </div>
+              </Box>
+              <Box className="container" height={"240px"} width={"15%"} position={"relative"}>
+                <img src="https://www.jcrew.com/s7-img-facade/BA342_SU0919?wid=376" height={"240px"} width={"100%"} display={"block"} />
+                <div className="overlay">
+                  <div className="text">
+                    <h1 className="wrap5">Wrap tshirt-shirt</h1>
+                    <p className="INR">INR 23,223.00</p>
                   </div>
-              </div>
-            </Box>
-            <Box className="container"  height={"240px"} width={"15%"} position={"relative"}>
-            <img src="https://www.jcrew.com/s7-img-facade/AZ779_EE0512?wid=376" height={"240px"} width={"100%"} display={"block"} />
-              <div class="overlay">
-                <div class="text">
-                  <h1 className="wrap6">Wrap Shoes</h1>
-                  <p className="INR">INR 23,223.00</p>
+                </div>
+              </Box>
+              <Box className="container" height={"240px"} width={"15%"} position={"relative"}>
+                <img src="https://www.jcrew.com/s7-img-facade/AZ779_EE0512?wid=376" height={"240px"} width={"100%"} display={"block"} />
+                <div className="overlay">
+                  <div className="text">
+                    <h1 className="wrap6">Wrap Shoes</h1>
+                    <p className="INR">INR 23,223.00</p>
                   </div>
-              </div>
+                </div>
+              </Box>
             </Box>
           </Box>
         </Box>
         {/* .................................................Carousel STart................................. */}
         <Box border={"1px solid black"} height={"80px"} marginTop={"150px"}>
-      <p className="insta">Shop our Instagram</p>
-      <p className="funn">(and join the fun with #C.Aura)</p>
+          <p className="insta">Shop our Instagram</p>
+          <p className="funn">(and join the fun with #C.Aura)</p>
         </Box>
 
         {/* ......carouselpart ...................*/}
 
 
-        
-          <BoxCrouser/> 
-         
+
+        <BoxCrouser />
+
 
 
         {/* ..............................more To SEE..................... */}
 
         <div className={styles.mainAboveFooter}>
-        <h2 style={{ fontSize: 36, fontWeight: 400  }} className={styles.YouNeed}>More you need to see</h2>
-        <div className={styles.aboveFooterImgWrap}>
-          <div className={styles.aboveFooterInner}>
-            <Link
-              to="/products/mens"
-              style={{ textDecoration: "none", color: "black" }}
-            >
-              <img
-                src="https://www.jcrew.com/s7-img-facade/BH290_BL8486_m?wid=416"
-                alt=""
-              />
-              <div>
-                <h5>Shop Women's Dresses & Jumpsuits</h5>
-              </div>
-            </Link>
-          </div>
-          <div className={styles.aboveFooterInner}>
-            <Link
-              to="/products/mens"
-              style={{ textDecoration: "none", color: "black" }}
-            >
-              <img
-                src="https://www.jcrew.com/s7-img-facade/AY671_BK0001?wid=416"
-                alt=""
-              />
-              <div>
-                <h5>Shop Women's Shirts & Tops</h5>
-              </div>
-            </Link>
-          </div>
-          <div className={styles.aboveFooterInner}>
-            <Link
-              to="/products/mens"
-              style={{ textDecoration: "none", color: "black" }}
-            >
-              <img
-                src="https://www.jcrew.com/s7-img-facade/BG652_SU8788_m?wid=416"
-                alt=""
-              />
-              <div>
-                <h5>Shop Women's Sweaters</h5>
-              </div>
-            </Link>
-          </div>
-          <div className={styles.aboveFooterInner}>
-            <Link
-              to="/products/mens"
-              style={{ textDecoration: "none", color: "black" }}
-            >
-              <img
-                src="https://www.jcrew.com/s7-img-facade/AW770_OR5787_m?wid=416"
-                alt=""
-              />
-              <div>
-                <h5>Shop Women's The Tees Shop</h5>
-              </div>
-            </Link>
-          </div>
-          <div className={styles.aboveFooterInner}>
-            <Link
-              to="/products/mens"
-              style={{ textDecoration: "none", color: "black" }}
-            >
-              <img
-                src="https://www.jcrew.com/s7-img-facade/BL371_BL8133_m?wid=416"
-                alt=""
-              />
-              <div>
-                <h5>Shop Women's Sweatshirts & Sweatpants</h5>
-              </div>
-            </Link>
-          </div>
-          <div className={styles.aboveFooterInner}>
-            <Link
-              to="/products/mens"
-              style={{ textDecoration: "none", color: "black" }}
-            >
-              <img
-                src="https://www.jcrew.com/s7-img-facade/AB651_RD5371_m?wid=416"
-                alt=""
-              />
-              <div>
-                <h5>Shop Women's Pantwear</h5>
-              </div>
-            </Link>
+          <h2 style={{ fontSize: 36, fontWeight: 400 }} className={styles.YouNeed}>More you need to see</h2>
+          <div className={styles.aboveFooterImgWrap}>
+            <div className={styles.aboveFooterInner}>
+              <Link
+                to="/products/mens"
+                style={{ textDecoration: "none", color: "black" }}
+              >
+                <img
+                  src="https://www.jcrew.com/s7-img-facade/BH290_BL8486_m?wid=416"
+                  alt=""
+                />
+                <div>
+                  <h5>Shop Women's Dresses & Jumpsuits</h5>
+                </div>
+              </Link>
+            </div>
+            <div className={styles.aboveFooterInner}>
+              <Link
+                to="/products/mens"
+                style={{ textDecoration: "none", color: "black" }}
+              >
+                <img
+                  src="https://www.jcrew.com/s7-img-facade/AY671_BK0001?wid=416"
+                  alt=""
+                />
+                <div>
+                  <h5>Shop Women's Shirts & Tops</h5>
+                </div>
+              </Link>
+            </div>
+            <div className={styles.aboveFooterInner}>
+              <Link
+                to="/products/mens"
+                style={{ textDecoration: "none", color: "black" }}
+              >
+                <img
+                  src="https://www.jcrew.com/s7-img-facade/BG652_SU8788_m?wid=416"
+                  alt=""
+                />
+                <div>
+                  <h5>Shop Women's Sweaters</h5>
+                </div>
+              </Link>
+            </div>
+            <div className={styles.aboveFooterInner}>
+              <Link
+                to="/products/mens"
+                style={{ textDecoration: "none", color: "black" }}
+              >
+                <img
+                  src="https://www.jcrew.com/s7-img-facade/AW770_OR5787_m?wid=416"
+                  alt=""
+                />
+                <div>
+                  <h5>Shop Women's The Tees Shop</h5>
+                </div>
+              </Link>
+            </div>
+            <div className={styles.aboveFooterInner}>
+              <Link
+                to="/products/mens"
+                style={{ textDecoration: "none", color: "black" }}
+              >
+                <img
+                  src="https://www.jcrew.com/s7-img-facade/BL371_BL8133_m?wid=416"
+                  alt=""
+                />
+                <div>
+                  <h5>Shop Women's Sweatshirts & Sweatpants</h5>
+                </div>
+              </Link>
+            </div>
+            <div className={styles.aboveFooterInner}>
+              <Link
+                to="/products/mens"
+                style={{ textDecoration: "none", color: "black" }}
+              >
+                <img
+                  src="https://www.jcrew.com/s7-img-facade/AB651_RD5371_m?wid=416"
+                  alt=""
+                />
+                <div>
+                  <h5>Shop Women's Pantwear</h5>
+                </div>
+              </Link>
+            </div>
           </div>
         </div>
-      </div>
 
-{/* ......................................................................................Footer............... */}
-
+        {/* ......................................................................................Footer............... */}
 
 
 
@@ -450,7 +450,8 @@ const Home = () => {
 
 
 
-        
+
+
 
       </div>
     </div>

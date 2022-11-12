@@ -12,25 +12,15 @@ import Womenpage from './Pages/Womenpage'
 const Allroutes = () => {
   return (
     <div>
-
-        <Routes>
-            <Route path='/' element={<Homepage/>}/>
-            <Route path='/menspage' element={<MensProduct/>}/>
-            <Route path='/womenpage' element={<Womenpage/>}/>
-        
-        </Routes>
-
-
       <Routes>
         <Route path='/' element={<Homepage />} />
         <Route path='/menspage' element={<MensProduct />} />
         <Route path='/womenpage' element={<Womenpage />} />
         <Route path='/cart' element={<Cart />} />
         <Route path='/dashboard' element={<Dashboard />} />
-        <Route path='/alldata' element={<AllProducts/>}/>
-            <Route path='/alldata/:id' element={<Singleproductpage/>}/>
+        <Route path='/alldata' element={<AllProducts />} />
+        <Route path='/alldata/:id' element={<Singleproductpage />} />
       </Routes>
-
     </div>
   )
 }
