@@ -28,35 +28,30 @@ import Fade from '@mui/material/Fade';
 import { SlHandbag } from "react-icons/sl";
 import Modal from '@mui/material/Modal';
 
-import "../styles/Navbar.css" 
-=======
-
+import "../styles/Navbar.css"
+import { userAuthentication } from '../Redux/Auth/action';
+import { useDispatch, useSelector } from 'react-redux'
+import Login from './Login';
+import Signup from './Signup';
 
 const pages = ['Gifts', 'New', 'Women', 'Men', 'Kids', 'Cashmere', 'Home', 'Stories', 'Sale'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 const Navbar = () => {
-
+    const dispatch=useDispatch();
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    console.log(email,password);
+    const handleLogin = () => {
+        const payload = {
+            email, password
+        }
+        dispatch(userAuthentication(payload));
+    }
     // Drawer
     const [state, setState] = React.useState({ left: false });
     const [isAuth, setIsAuth] = useState(false);
     const [plus, setPlus] = useState(false);
-    const style = {
-        position: 'absolute',
-        top: '50%',
-        left: '50%',
-        transform: 'translate(-50%, -50%)',
-
-        width: 300,
-        height:430,
-
-        width: 400,
-
-        bgcolor: 'background.paper',
-        border: '2px solid #000',
-        boxShadow: 24,
-        p: 4,
-    };
 
     const [modalOpen, setModalOpen] = useState(false);
     const handleModalOpen = () => setModalOpen(true);
@@ -82,7 +77,7 @@ const Navbar = () => {
             <Button size="large" href="https://www.google.com" sx={{ ml: 10 }}>SignIN</Button>
             <List>
                 {['Gifts', 'New', 'Women', 'Men', 'Kids', 'Cashmere', 'Home', 'Stories', 'Sale'].map((text, index) => (
-                    <ListItem key={text} disablePadding onClick={() => setMenu(text)}>
+                    <ListItem key={index} disablePadding onClick={() => setMenu(text)}>
                         <ListItemButton>
                             <ListItemText primary={text} />
                             <BiChevronRight />
@@ -107,8 +102,8 @@ const Navbar = () => {
                 { title: 'For Boys', path: '/boys' },
                 { title: 'For The Home', path: '/home' },
                 ].map((ele, index) => (
-                    <Link to={ele.path} >
-                        <ListItem key={index} disablePadding>
+                    <Link to={ele.path} key={index}>
+                        <ListItem disablePadding>
                             <ListItemButton>
                                 <ListItemText primary={ele.title} />
                             </ListItemButton>
@@ -131,8 +126,8 @@ const Navbar = () => {
                 { title: 'For Girls', path: '/forgirls' },
                 { title: 'For Boys', path: '/forboys' },
                 ].map((ele, index) => (
-                    <Link to={"/alldata"} >
-                        <ListItem key={index} disablePadding sx={{ mb: -2 }}>
+                    <Link to={"/alldata"} key={index}>
+                        <ListItem disablePadding sx={{ mb: -2 }}>
                             <ListItemButton>
                                 <ListItemText primary={ele.title} />
                             </ListItemButton>
@@ -149,8 +144,8 @@ const Navbar = () => {
                 { title: 'The Sun Shop', path: '/forboys' },
                 { title: 'The Ski Shop', path: '/forboys' },
                 ].map((ele, index) => (
-                    <Link to={ele.path} >
-                        <ListItem key={index} disablePadding sx={{ mb: -2 }}>
+                    <Link to={ele.path} key={index}>
+                        <ListItem disablePadding sx={{ mb: -2 }}>
                             <ListItemButton>
                                 <ListItemText primary={ele.title} />
                             </ListItemButton>
@@ -166,8 +161,8 @@ const Navbar = () => {
                 { title: 'Source Materials', path: '/formen' },
                 { title: 'Heritage 14 Oz. Fleece', path: '/formen' },
                 ].map((ele, index) => (
-                    <Link to={ele.path} >
-                        <ListItem key={index} disablePadding sx={{ mb: -2 }}>
+                    <Link to={ele.path} key={index}>
+                        <ListItem disablePadding sx={{ mb: -2 }}>
                             <ListItemButton>
                                 <ListItemText primary={ele.title} />
                             </ListItemButton>
@@ -208,8 +203,8 @@ const Navbar = () => {
                 { title: 'The Sun Shop', path: '/forboys' },
                 { title: 'The Ski Shop', path: '/forboys' },
                 ].map((ele, index) => (
-                    <Link to={ele.path} >
-                        <ListItem key={index} disablePadding sx={{ mb: -2 }}>
+                    <Link to={ele.path} key={index}>
+                        <ListItem disablePadding sx={{ mb: -2 }}>
                             <ListItemButton>
                                 <ListItemText primary={ele.title} />
                             </ListItemButton>
@@ -224,8 +219,8 @@ const Navbar = () => {
                 { title: 'Source Materials', path: '/women' },
                 { title: 'Heritage 14 Oz. Fleece', path: '/women' },
                 ].map((ele, index) => (
-                    <Link to={ele.path} >
-                        <ListItem key={index} disablePadding sx={{ mb: -2 }}>
+                    <Link to={ele.path} key={index}>
+                        <ListItem disablePadding sx={{ mb: -2 }}>
                             <ListItemButton>
                                 <ListItemText primary={ele.title} />
                             </ListItemButton>
@@ -259,6 +254,8 @@ const Navbar = () => {
     const handleCloseUserMenu = () => {
         setAnchorElUser(null);
     };
+
+    const [authComponent , setauthComponent] = useState('Login');
 
     return (
         <NavbarContainer>
@@ -607,54 +604,18 @@ const Navbar = () => {
                         <Box sx={{ flexGrow: 0, mr: '5px', display: { sm: 'none', md: 'flex', lg: 'flex' } }}>
                             <Tooltip title="Open settings">
                                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                                    {isAuth ? <p className="signIn">SignOut</p> : <>
-                                        <p onClick={handleModalOpen} className="signIn">SignIn</p>
-                                        <Modal
-                                            open={modalOpen}
-                                            onClose={handleModalClose}
-                                            aria-labelledby="modal-modal-title"
-                                            aria-describedby="modal-modal-description"
-                                        >
-
-                                            {/* ........................modal.............................................................. */}
-                                            <Box  sx={style}>
-                                                <ModalContainer>
-                                                <Typography id="modal-modal-title1" >
-                                                    Sign In
-                                                </Typography>
-                                                <Typography id="modal-modal-title" variant="h6" component="h2">
-                                                   <input placeholder='Email Address*' className='address'/>
-                                                </Typography>
-                                                <Typography id="modal-modal-title" variant="h6" component="h2">
-                                                <input placeholder='Password*' className='passd'/>
-                                                </Typography>
-                                            
-                                                <Typography id="modal-modal-description1" sx={{ mt: 2 }}>
-                                                   <input type={"checkbox"}/>
-                                                   <p className='remem'>Remember me</p>
-                                                   <p className='forgot'>Forgot Password?</p>
-                                                </Typography>
-                                                <button className='now'>SIGN IN NOW</button>
-                                                <Typography id="captcha">
-                                               <p className='google'>This site is protected by reCAPTCHA and the google<br/><u>Privacy Policy</u> and <u>Terms of Service</u> apply.</p>
-                                                </Typography>
-                                                <div className='down'></div>
-                                                <Typography >
-                                                   <p className='dontt'>Don't have an account?<span style={{color:"blue"}}> Sign up now</span></p>
-                                                </Typography>
-                                                </ModalContainer>
-
-                                            <Box sx={style}>
-                                                <Typography id="modal-modal-title" variant="h6" component="h2">
-                                                    Text in a modal
-                                                </Typography>
-                                                <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                                                    Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-                                                </Typography>
-
-                                            </Box>
-                                        </Modal>
-                                    </>
+                                    {isAuth ? <p className="signIn">SignOut</p> :
+                                        <>
+                                            <p onClick={handleModalOpen} className="signIn" style={{color:"black",fontSize:"14px",fontWeight:"600"}}>SignIn</p>
+                                            <Modal
+                                                open={modalOpen}
+                                                onClose={handleModalClose}
+                                                aria-labelledby="modal-modal-title"
+                                                aria-describedby="modal-modal-description"
+                                            >
+                                                {authComponent === 'Login'? <Login setauthComponent={setauthComponent}/>:<Signup setauthComponent={setauthComponent}/>}
+                                            </Modal>
+                                        </>
                                     }
                                 </IconButton>
                             </Tooltip>
@@ -745,7 +706,7 @@ const MenuContainer = stylesc.div`
     }
 `;
 
-const ModalContainer=stylesc.div`
+const ModalContainer = stylesc.div`
         //   border:1px solid red;
           color:black;
           
