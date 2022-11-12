@@ -1,7 +1,6 @@
 import React from "react";
 import "../styles/FooterBottom.css";
 import { FooterBottom_1, FooterBottom_2 } from "./SvgIcons";
-//import xyz from "../assets/india.png";
 import { Link } from "react-router-dom";
 import { BsInstagram, BsPinterest, BsYoutube } from "react-icons/bs"
 import { BsFacebook } from "react-icons/bs"

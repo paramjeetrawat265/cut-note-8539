@@ -55,7 +55,6 @@ const Navbar = () => {
     const [state, setState] = React.useState({ left: false });
 
     const [plus, setPlus] = useState(false);
-
     const style = {
         position: 'absolute',
         top: '50%',
@@ -72,7 +71,6 @@ const Navbar = () => {
         boxShadow: 24,
         p: 4,
     };
-
 
     const [modalOpen, setModalOpen] = useState(false);
     const handleModalOpen = () => setModalOpen(true);
@@ -175,7 +173,7 @@ const Navbar = () => {
                 ))}
                 <Divider sx={{ mt: 3 }} />
                 <Typography sx={{ mt: 2, ml: 2, mb: 0, color: 'gray', fontWeight: 700 }}>Men</Typography>
-                {[{ title: 'Fair Isle Sweaters', path: '/formen' },
+                {[{ title: 'Fair Isle Sweaters', path: '/formen'  },
                 { title: 'The Holiday Party Shop', path: '/formen' },
                 { title: 'Midweight Flannel Workshirts', path: '/formen' },
                 { title: 'New Parkas & Topcoats', path: '/formen' },
@@ -185,7 +183,7 @@ const Navbar = () => {
                     <Link to={ele.path} key={index}>
                         <ListItem disablePadding sx={{ mb: -2 }}>
                             <ListItemButton>
-                                <ListItemText primary={ele.title} />
+                              <ListItemText primary={ele.title} />
                             </ListItemButton>
                         </ListItem>
                     </Link>
@@ -276,14 +274,12 @@ const Navbar = () => {
     const handleCloseUserMenu = () => {
         setAnchorElUser(null);
     };
-
     const [authComponent, setauthComponent] = useState('Login');
     useEffect(() => {
         if (isAuth) {
             console.log(isAuth)
         }
     }, [userAuth,isAuth])
-
     return (
         <NavbarContainer>
             <AppBar elevation={0} position="static" sx={{ borderBottom: "1px solid #ddd", backgroundColor: "white", color: "black" }}>
@@ -649,6 +645,40 @@ const Navbar = () => {
                                                     </Modal>
                                                 </>}
                                             </div>
+                                            <p onClick={handleModalOpen} className="signIn">SignIn</p>
+                                            <Modal
+                                                open={modalOpen}
+                                                onClose={handleModalClose}
+                                                aria-labelledby="modal-modal-title"
+                                                aria-describedby="modal-modal-description"
+                                            >
+                                                <Box sx={style}>
+                                                    <ModalContainer>
+                                                        <Typography id="modal-modal-title1" >
+                                                            Sign In
+                                                        </Typography>
+                                                        <Typography id="modal-modal-title" variant="h6" component="h2">
+                                                            <input placeholder='Email Address*' className='address' />
+                                                        </Typography>
+                                                        <Typography id="modal-modal-title" variant="h6" component="h2">
+                                                            <input placeholder='Password*' className='passd' />
+                                                        </Typography>
+                                                        <Typography id="modal-modal-description1" sx={{ mt: 2 }}>
+                                                            <input type={"checkbox"} />
+                                                            <p className='remem'>Remember me</p>
+                                                            <p className='forgot'>Forgot Password?</p>
+                                                        </Typography>
+                                                        <button className='now'>SIGN IN NOW</button>
+                                                        <Typography id="captcha">
+                                                            <p className='google'>This site is protected by reCAPTCHA and the google<br /><u>Privacy Policy</u> and <u>Terms of Service</u> apply.</p>
+                                                        </Typography>
+                                                        <div className='down'></div>
+                                                        <Typography >
+                                                            <p className='dontt'>Don't have an account?<span style={{ color: "blue" }}> Sign up now</span></p>
+                                                        </Typography>
+                                                    </ModalContainer>
+                                                </Box>
+                                            </Modal>
                                         </>
                                     }
                                 </IconButton>
@@ -695,9 +725,7 @@ const Navbar = () => {
         </NavbarContainer >
     );
 }
-
 export default Navbar
-
 const NavbarContainer = stylesc.div`
                 width:100%;
                 color:black;
@@ -721,8 +749,8 @@ const NavbarContainer = stylesc.div`
     a{
         text-decoration:none;
     }
+    
                 `;
-
 const MenuContainer = stylesc.div`
                 a{
                     text-decoration:none;
@@ -738,7 +766,6 @@ const MenuContainer = stylesc.div`
                 padding:3px 2px;
     }
 `;
-
 const ModalContainer = stylesc.div`
         //   border:1px solid red;
           color:black;
