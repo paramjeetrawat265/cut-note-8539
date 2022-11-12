@@ -27,7 +27,10 @@ import Grid from '@mui/material/Grid';
 import Fade from '@mui/material/Fade';
 import { SlHandbag } from "react-icons/sl";
 import Modal from '@mui/material/Modal';
+
 import "../styles/Navbar.css" 
+=======
+
 
 const pages = ['Gifts', 'New', 'Women', 'Men', 'Kids', 'Cashmere', 'Home', 'Stories', 'Sale'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -43,8 +46,12 @@ const Navbar = () => {
         top: '50%',
         left: '50%',
         transform: 'translate(-50%, -50%)',
+
         width: 300,
         height:430,
+
+        width: 400,
+
         bgcolor: 'background.paper',
         border: '2px solid #000',
         boxShadow: 24,
@@ -124,7 +131,7 @@ const Navbar = () => {
                 { title: 'For Girls', path: '/forgirls' },
                 { title: 'For Boys', path: '/forboys' },
                 ].map((ele, index) => (
-                    <Link to={ele.path} >
+                    <Link to={"/alldata"} >
                         <ListItem key={index} disablePadding sx={{ mb: -2 }}>
                             <ListItemButton>
                                 <ListItemText primary={ele.title} />
@@ -608,6 +615,7 @@ const Navbar = () => {
                                             aria-labelledby="modal-modal-title"
                                             aria-describedby="modal-modal-description"
                                         >
+
                                             {/* ........................modal.............................................................. */}
                                             <Box  sx={style}>
                                                 <ModalContainer>
@@ -635,6 +643,15 @@ const Navbar = () => {
                                                    <p className='dontt'>Don't have an account?<span style={{color:"blue"}}> Sign up now</span></p>
                                                 </Typography>
                                                 </ModalContainer>
+
+                                            <Box sx={style}>
+                                                <Typography id="modal-modal-title" variant="h6" component="h2">
+                                                    Text in a modal
+                                                </Typography>
+                                                <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                                                    Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+                                                </Typography>
+
                                             </Box>
                                         </Modal>
                                     </>

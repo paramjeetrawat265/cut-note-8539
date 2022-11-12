@@ -273,7 +273,11 @@ const Home = () => {
             <p className="chotaBox">You'll Also Love</p>
           </Box>
           <Box  height={"240px"} display={"flex"} width={"90%"} margin={"auto"} justifyContent={"space-between"} >
+
             <Box className="container" height={"240px"} width={"15%"} position={"relative"} cursor="pointer">
+
+            <Box className="container" height={"240px"} width={"15%"} position={"relative"}>
+
               <img src="https://www.jcrew.com/s7-img-facade/BK721_GR7805?wid=376" height={"240px"} width={"100%"} display={"block"} />
               <div class="overlay">
                 <div class="text">
