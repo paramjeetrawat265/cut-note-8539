@@ -38,6 +38,29 @@ res.send({msg:"data not found"})
     }
 })
 
+DataRouter.get("/search/:key",async(req,res)=>{
+    const data=await ProductModel.find({
+        "$or":[
+            {"type":{$regex:req.params.key}},
+            {"category":{$regex:req.params.key}}
+          ]
+    })
+    res.send(data)
+})
+
+DataRouter.get("/price/asc",async(req,res)=>{
+
+    if(req.params.asc="dec"){
+        const data=await ProductModel.find().sort({price:-1})
+        res.send(data)
+    }
+    if(req.params.asc="asc"){
+        const data=await ProductModel.find().sort({price:1})
+        res.send(data)
+    }
+
+ 
+})
 
 
 DataRouter.get("/:id", async (req, res) => {
