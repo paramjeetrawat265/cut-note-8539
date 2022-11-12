@@ -5,8 +5,7 @@ const { Member } = require("./Routes/Member.routes");
 const { authentication } = require("./Middleware/Authentication");
 const { authorization } = require("./Middleware/Authorization");
 const { Dashboard } = require("./Routes/Dashboard.Routes");
-const { Data } = require("./Routes/Data.Routes");
-const { AllProductRouter } = require("./Routes/Products/Allproducts.Rout");
+const {  DataRouter } = require("./Routes/Data.Routes");
 const { SignupRoute } = require("./Routes/Signup.Routes");
 const { LoginRoute } = require("./Routes/Login.Routes");
 const app = express();
@@ -18,9 +17,8 @@ app.use(express.json());
 app.use(cors());
 app.use('/member', Member);
 app.use('/dashboard',authentication, authorization('admin'), Dashboard);
-app.use('/data', Data);
+app.use('/data', DataRouter);
 app.use('/resources/images', express.static('images'));
-app.use("/allproducts",AllProductRouter)
 app.use("/signup",SignupRoute)
 app.use("/login",LoginRoute)
 app.listen(process.env.PORT, async ()=>{
