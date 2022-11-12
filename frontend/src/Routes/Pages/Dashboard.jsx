@@ -148,7 +148,7 @@ const Dashboard = () => {
             <Box sx={{ display: 'flex', }} >
                 <CssBaseline />
                 <AppBar position="fixed" open={open} >
-                    <Toolbar style={{ backgroundColor: '#cf6c4d' }}>
+                    <Toolbar style={{ backgroundColor: 'gray' }}>
                         <IconButton
                             color="inherit"
                             aria-label="open drawer"
@@ -272,7 +272,7 @@ const Container = styledComp.div`
     .openFloat{
         width: ${props => props.users?.length > 10 ? '25px' : "20px"};
         height: 20px;
-        background-color: #e5322d;
+        background-color: #gray;
         color: white;
         border-radius: 50%;
         position: absolute;
