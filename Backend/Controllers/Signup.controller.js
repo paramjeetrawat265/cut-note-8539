@@ -9,12 +9,12 @@ const SignupController = () => async (req, res) => {
 
     const isUser = await UserModel.findOne({ email })
     if (isUser) {
-        res.send({ "msg": "User already exists, try logging in" })
+        res.send({ "msg": "User already exists" })
     }
     else {
         bcrypt.hash(password, 4, async function (err, hash) {
             if (err) {
-                res.send({ "msg": "Something went wrong, please try again later" })
+                res.send({ "msg": "Something went wrong" })
             }
             const new_user = new UserModel({
                 name,
@@ -23,10 +23,10 @@ const SignupController = () => async (req, res) => {
             })
             try {
                 await new_user.save()
-                res.send({ "msg": "Sign up successfull" })
+                res.send({ "msg": "Signup Successfull" })
             }
             catch (err) {
-                res.send({ "msg": "Something went wrong, please try again" })
+                res.send({ "msg": "err" })
             }
         });
     }

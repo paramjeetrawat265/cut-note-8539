@@ -9,6 +9,8 @@ import MensProduct from './Pages/MensProduct'
 import Singleproductpage from './Pages/Singleproductpage'
 import Womenpage from './Pages/Womenpage'
 import AdminPage from './Pages/AdminPage'
+import Login from '../Components/Login'
+import Signup from '../Components/Signup'
 const Allroutes = () => {
   return (
     <div>
@@ -25,7 +27,10 @@ const Allroutes = () => {
         <Route path='/admin/dashboard' element={<Dashboard />} />
         <Route path='/alldata' element={<AllProducts />} />
         <Route path='/alldata/:id' element={<Singleproductpage />} />
-        <Route path="/admin" element={<AdminPage/>} />
+        <Route path="/admin" element={<AdminPage />} />
+
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
 
       </Routes>
     </div>
