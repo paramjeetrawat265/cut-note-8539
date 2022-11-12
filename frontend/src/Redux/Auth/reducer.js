@@ -9,7 +9,12 @@ const initialState = {
     message: '',
     user: [],
     users: [],
+
 }
+let isUserAuth = false;
+let isUserAdmin = false;
+let userToken = "";
+let adminToken = "";
 
 const reducer = (oldstate = initialState, action) => {
     const { type, payload } = action;
@@ -17,13 +22,10 @@ const reducer = (oldstate = initialState, action) => {
         case types.USER_LOGIN_REQUEST: return { ...oldstate, isLoading: true };
 
         case types.USER_LOGIN_SUCCESS:
-            let isUserAuth = true;
+            isUserAuth = true;
             saveData('isAuth', isUserAuth);
 
-            let isUserAdmin = payload.isAdmin;
-            saveData('isUserAdmin', isUserAdmin)
-
-            let userToken = payload.token;
+            userToken = payload.token;
             saveData('token', userToken)
 
             return { ...oldstate, isLoading: false, isAuth: isUserAuth, message: payload.msg, token: userToken, isAdmin: isUserAdmin };
@@ -50,9 +52,39 @@ const reducer = (oldstate = initialState, action) => {
 
         case types.USER_DATA_SUCCESS: return { ...oldstate, isLoading: false, isAdmin: payload.status, users: payload.users, user: payload.user };
 
-        case types.USER_DATA_FAILURE: return { ...oldstate, isLoading: false, isError: true, users: [], user: [] , isAdmin: false, isAuth: false };
+        case types.USER_DATA_FAILURE: return { ...oldstate, isLoading: false, isError: true, users: [], user: [], isAdmin: false, isAuth: false };
 
-        case types.USER_SIGNOUT_SUCCESS: return { isAuth: false, isLoading: false, isError: false };
+        case types.USER_SIGNOUT_SUCCESS:
+            isUserAuth = false;
+            saveData('isAuth', isUserAuth);
+
+            isUserAdmin = false;
+            saveData('isUserAdmin', isUserAdmin);
+
+            userToken = "";
+            saveData('token', userToken)
+            return { isAuth: false, isLoading: false, isError: false };
+
+
+        case types.ADMIN_LOGIN_REQUEST: return { ...oldstate, isLoading: true };
+
+        case types.ADMIN_LOGIN_SUCCESS:
+            isUserAdmin = payload.isAdmin;
+            saveData('isUserAdmin', isUserAdmin)
+
+            adminToken = payload.token;
+            saveData('token', adminToken)
+
+            return { ...oldstate, isLoading: false, isAuth: isUserAuth, message: payload.msg, token: userToken, isAdmin: isUserAdmin };
+
+        case types.ADMIN_LOGIN_FAILURE:
+            isUserAdmin = false;
+            saveData('isUserAdmin', isUserAdmin);
+
+            adminToken = "";
+            saveData('token', adminToken)
+
+            return { ...oldstate, isLoading: false, isError: true, isAuth: isUserAuth, token: userToken, isAdmin: isUserAdmin };
 
         default: return oldstate;
     }

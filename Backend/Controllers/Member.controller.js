@@ -15,11 +15,8 @@ const member = () => async (req, res) => {
                 if (result) {
                     const token = jwt.sign({ email: user.email }, process.env.SECRET_KEY);
                     if (user.role === 'admin') {
-                        res.send({ msg: "Login Successfull", status: true, token: token, isAdmin: true });
-                    } else {
-                        res.send({ msg: "Login Successfull", status: true, token: token});
+                        res.send({ msg: "Admin Login Successfull", status: true, token: token, isAdmin: true });
                     }
-
                 } else {
                     res.send({ msg: "Invalid Credentials", status: false });
                 }
@@ -27,20 +24,6 @@ const member = () => async (req, res) => {
         } else {
             res.send({ msg: "Invalid Credentials", status: false });
         }
-    } else {
-        const { email, password } = req.body;
-        bcrypt.hash(password, 5, async function (err, hashPassword) {
-            if (err) {
-                res.send(err)
-            } else {
-                const newUser = new UserModel({
-                    email: email,
-                    password: hashPassword,
-                })
-                await newUser.save();
-                res.send({ msg: "Signup Successfull", status: true })
-            }
-        });
     }
 }
 

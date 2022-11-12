@@ -21,6 +21,19 @@ const userSignup = (payload) => (dispatch) => {
     })
 }
 
+const userSignOut = (payload) => (dispatch) => {
+    dispatch({ type: types.USER_SIGNOUT_SUCCESS });
+}
+
+const adminAuthentication = (payload) => (dispatch) => {
+    dispatch({ type: types.USER_LOGIN_REQUEST });
+    return axios.post(`${REACT_APP_API_URL}/member/`, payload).then((res) => {
+        return dispatch({ type: types.USER_LOGIN_SUCCESS, payload: res.data });
+    }).catch((err) => {
+        return dispatch({ type: types.USER_LOGIN_FAILURE, payload: err });
+    })
+}
+
 const dashUserDelete = (payload, headers) => (dispatch) => {
     dispatch({ type: types.USER_DELETE_REQUEST });
     return axios.delete(`${REACT_APP_API_URL}/dashboard/delete/user/${payload.id}`, headers).then((res) => {
@@ -43,4 +56,4 @@ const dashUserData = (payload) => (dispatch) => {
     })
 }
 
-export { userAuthentication, dashUserDelete, dashUserData }
+export { userAuthentication, dashUserDelete, dashUserData, userSignup, userSignOut, adminAuthentication }
