@@ -27,9 +27,9 @@ const AddProducts = ({ colorScheme }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if(!inputFile.current.files[0]){
+        if (!inputFile.current.files[0]) {
             setStatus({ ...show, status: true, msg: "Please Choose Image First", type: "error" });
-        }else{
+        } else {
             if (data.name !== '' && inputFile.current.files[0]) {
                 const formData = new FormData();
                 formData.append("category", data.category);
@@ -62,7 +62,7 @@ const AddProducts = ({ colorScheme }) => {
         <Container colorScheme={colorScheme}>
             <div className='dashImageContainer'>
                 <div className='dashImageBox'>
-                    <p style={{position:"absolute", top:'20px', fontWeight:'bold' }}>Note: Image is Mandatory</p>
+                    <p style={{ position: "absolute", top: '20px', fontWeight: 'bold' }}>Note: Image is Mandatory</p>
                     <h1>Add Data</h1>
                     <form onSubmit={(e) => handleSubmit(e)}>
                         <div className='imageFileBox'>
@@ -123,6 +123,7 @@ const AddProducts = ({ colorScheme }) => {
                             </div>
 
                             <div style={{ marginTop: '20px' }}>
+                            {/* <div> */}
                                 <input type="submit" value={"Upload Data"} className='imageButtonSubmit' />
                             </div>
                         </div>

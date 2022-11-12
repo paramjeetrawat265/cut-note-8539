@@ -29,10 +29,12 @@ import { SlHandbag } from "react-icons/sl";
 import Modal from '@mui/material/Modal';
 
 import "../styles/Navbar.css"
+
 import { userAuthentication } from '../Redux/Auth/action';
 import { useDispatch, useSelector } from 'react-redux'
 import Login from './Login';
 import Signup from './Signup';
+
 
 const pages = ['Gifts', 'New', 'Women', 'Men', 'Kids', 'Cashmere', 'Home', 'Stories', 'Sale'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -52,6 +54,24 @@ const Navbar = () => {
     const [state, setState] = React.useState({ left: false });
     const [isAuth, setIsAuth] = useState(false);
     const [plus, setPlus] = useState(false);
+
+    const style = {
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+
+        width: 300,
+        height: 430,
+
+        width: 400,
+
+        bgcolor: 'background.paper',
+        border: '2px solid #000',
+        boxShadow: 24,
+        p: 4,
+    };
+
 
     const [modalOpen, setModalOpen] = useState(false);
     const handleModalOpen = () => setModalOpen(true);
@@ -606,14 +626,46 @@ const Navbar = () => {
                                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                                     {isAuth ? <p className="signIn">SignOut</p> :
                                         <>
+
                                             <p onClick={handleModalOpen} className="signIn" style={{color:"black",fontSize:"14px",fontWeight:"600"}}>SignIn</p>
+
+                                            <p onClick={handleModalOpen} className="signIn">SignIn</p>
+
                                             <Modal
                                                 open={modalOpen}
                                                 onClose={handleModalClose}
                                                 aria-labelledby="modal-modal-title"
                                                 aria-describedby="modal-modal-description"
                                             >
+
                                                 {authComponent === 'Login'? <Login setauthComponent={setauthComponent}/>:<Signup setauthComponent={setauthComponent}/>}
+                                    <Box sx={style}>
+                                                    <ModalContainer>
+                                                        <Typography id="modal-modal-title1" >
+                                                            Sign In
+                                                        </Typography>
+                                                        <Typography id="modal-modal-title" variant="h6" component="h2">
+                                                            <input placeholder='Email Address*' className='address' />
+                                                        </Typography>
+                                                        <Typography id="modal-modal-title" variant="h6" component="h2">
+                                                            <input placeholder='Password*' className='passd' />
+                                                        </Typography>
+                                                        <Typography id="modal-modal-description1" sx={{ mt: 2 }}>
+                                                            <input type={"checkbox"} />
+                                                            <p className='remem'>Remember me</p>
+                                                            <p className='forgot'>Forgot Password?</p>
+                                                        </Typography>
+                                                        <button className='now'>SIGN IN NOW</button>
+                                                        <Typography id="captcha">
+                                                            <p className='google'>This site is protected by reCAPTCHA and the google<br /><u>Privacy Policy</u> and <u>Terms of Service</u> apply.</p>
+                                                        </Typography>
+                                                        <div className='down'></div>
+                                                        <Typography >
+                                                            <p className='dontt'>Don't have an account?<span style={{ color: "blue" }}> Sign up now</span></p>
+                                                        </Typography>
+                                                    </ModalContainer>
+                                                </Box>
+
                                             </Modal>
                                         </>
                                     }
@@ -687,7 +739,6 @@ const NavbarContainer = stylesc.div`
     a{
         text-decoration:none;
     }
-    
                 `;
 
 const MenuContainer = stylesc.div`
