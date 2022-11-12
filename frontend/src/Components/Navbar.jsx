@@ -40,10 +40,10 @@ const pages = ['Gifts', 'New', 'Women', 'Men', 'Kids', 'Cashmere', 'Home', 'Stor
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 const Navbar = () => {
-    const dispatch=useDispatch();
+    const dispatch = useDispatch();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    console.log(email,password);
+    console.log(email, password);
     const handleLogin = () => {
         const payload = {
             email, password
@@ -52,7 +52,7 @@ const Navbar = () => {
     }
     // Drawer
     const [state, setState] = React.useState({ left: false });
-    const [isAuth, setIsAuth] = useState(false);
+
     const [plus, setPlus] = useState(false);
 
     const style = {
@@ -258,10 +258,13 @@ const Navbar = () => {
         setHoverMenu(event.target.innerText);
         setAnchorEl(event.currentTarget);
     };
+
     const handleClose = () => {
         setAnchorEl(null);
         setHoverMenu("")
     };
+    const { isAuth } = useSelector((store) => (store.AuthReducer));
+
 
 
     const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -275,7 +278,12 @@ const Navbar = () => {
         setAnchorElUser(null);
     };
 
-    const [authComponent , setauthComponent] = useState('Login');
+    const [authComponent, setauthComponent] = useState('Login');
+    useEffect(() => {
+        if (isAuth) {
+            console.log(isAuth)
+        }
+    }, [isAuth])
 
     return (
         <NavbarContainer>
@@ -327,7 +335,6 @@ const Navbar = () => {
                                 </div>
                             </Drawer>
 
-
                             <Menu
                                 id="menu-appbar"
                                 anchorEl={anchorElNav}
@@ -356,8 +363,6 @@ const Navbar = () => {
                                 ))}
                             </Menu>
                         </Box>
-
-
 
                         <Box
                             component="img"
@@ -627,46 +632,22 @@ const Navbar = () => {
                                     {isAuth ? <p className="signIn">SignOut</p> :
                                         <>
 
-                                            <p onClick={handleModalOpen} className="signIn" style={{color:"black",fontSize:"14px",fontWeight:"600"}}>SignIn</p>
+                                            {/* <p onClick={handleModalOpen} className="signIn" style={{ color: "black", fontSize: "14px", fontWeight: "600" }}>SignIn</p> */}
+                                            <div>
+                                                {!isAuth && <>
+                                                    <p onClick={handleModalOpen} className="signIn">SignIn</p>
+                                                    <Modal
+                                                        open={modalOpen}
+                                                        onClose={handleModalClose}
+                                                        aria-labelledby="modal-modal-title"
+                                                        aria-describedby="modal-modal-description"
+                                                    >
 
-                                            <p onClick={handleModalOpen} className="signIn">SignIn</p>
+                                                        {authComponent === 'Login' && !isAuth ? <Login setauthComponent={setauthComponent} /> : <Signup setauthComponent={setauthComponent} />}
+                                                    </Modal>
+                                                </>}
+                                            </div>
 
-                                            <Modal
-                                                open={modalOpen}
-                                                onClose={handleModalClose}
-                                                aria-labelledby="modal-modal-title"
-                                                aria-describedby="modal-modal-description"
-                                            >
-
-                                                {authComponent === 'Login'? <Login setauthComponent={setauthComponent}/>:<Signup setauthComponent={setauthComponent}/>}
-                                    <Box sx={style}>
-                                                    <ModalContainer>
-                                                        <Typography id="modal-modal-title1" >
-                                                            Sign In
-                                                        </Typography>
-                                                        <Typography id="modal-modal-title" variant="h6" component="h2">
-                                                            <input placeholder='Email Address*' className='address' />
-                                                        </Typography>
-                                                        <Typography id="modal-modal-title" variant="h6" component="h2">
-                                                            <input placeholder='Password*' className='passd' />
-                                                        </Typography>
-                                                        <Typography id="modal-modal-description1" sx={{ mt: 2 }}>
-                                                            <input type={"checkbox"} />
-                                                            <p className='remem'>Remember me</p>
-                                                            <p className='forgot'>Forgot Password?</p>
-                                                        </Typography>
-                                                        <button className='now'>SIGN IN NOW</button>
-                                                        <Typography id="captcha">
-                                                            <p className='google'>This site is protected by reCAPTCHA and the google<br /><u>Privacy Policy</u> and <u>Terms of Service</u> apply.</p>
-                                                        </Typography>
-                                                        <div className='down'></div>
-                                                        <Typography >
-                                                            <p className='dontt'>Don't have an account?<span style={{ color: "blue" }}> Sign up now</span></p>
-                                                        </Typography>
-                                                    </ModalContainer>
-                                                </Box>
-
-                                            </Modal>
                                         </>
                                     }
                                 </IconButton>
