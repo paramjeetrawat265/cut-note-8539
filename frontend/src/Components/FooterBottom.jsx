@@ -1,6 +1,6 @@
 import React from "react";
 import "../styles/FooterBottom.css";
-// import { FooterBottom_1, FooterBottom_2 } from "./SvgIcons";
+import { FooterBottom_1, FooterBottom_2 } from "./SvgIcons";
 //import xyz from "../assets/india.png";
 import { Link } from "react-router-dom";
 import {BsInstagram, BsPinterest, BsYoutube} from "react-icons/bs"
@@ -44,12 +44,21 @@ export default function FooterBottom() {
                 <li>Our Story</li>
                 <li>Careers</li>
                 <li>Social Responsibility</li>
+
+                <li>California Tranparency </li>
+                <li>Investor Relations</li>
+                <li>Terms of Use</li>
+                <li>Privacy Policy</li>
+                <li>California Do Not Sell </li>
+                <li>Diversity, Equity & Inlusion </li>
+
                 <li className="california">California Tranparency</li>
                 <li>Investor Relations</li>
                 <li>Terms of Use</li>
                 <li>Privacy Policy</li>
                 <li>California Do Not Sell My </li>
                 <li>Diversity, Equity & Inlusion</li>
+
               </ul>
             </div>
           </div>
@@ -104,14 +113,20 @@ export default function FooterBottom() {
             </p>
             {/* <img className="footer_flag" src={xyz} alt="" /> */}
           </div>
+
+          <div className="footerSvgIcons" style={{ display: "flex", gap: 20 }}>
+            <FooterBottom_1 />
+            <FooterBottom_2 />
+
           <div className="footerSvgIcon" >
             {/* <FooterBottom_1/>
             
             <FooterBottom_2 /> */}
             <p className="madewell">Madewell C.Aura</p>
             
+
           </div>
-          <div className="footer_copyRight">© 2022 J.Crew</div>
+          <div className="footer_copyRight" style={{marginLeft:"-770px"}}>© 2022 J.Crew</div>
         </div>
 
         <div className="footer_main_right">

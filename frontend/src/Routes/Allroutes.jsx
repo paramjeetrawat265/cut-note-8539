@@ -12,6 +12,15 @@ import Womenpage from './Pages/Womenpage'
 const Allroutes = () => {
   return (
     <div>
+
+        <Routes>
+            <Route path='/' element={<Homepage/>}/>
+            <Route path='/menspage' element={<MensProduct/>}/>
+            <Route path='/womenpage' element={<Womenpage/>}/>
+        
+        </Routes>
+
+
       <Routes>
         <Route path='/' element={<Homepage />} />
         <Route path='/menspage' element={<MensProduct />} />
@@ -21,6 +30,7 @@ const Allroutes = () => {
         <Route path='/alldata' element={<AllProducts/>}/>
             <Route path='/alldata/:id' element={<Singleproductpage/>}/>
       </Routes>
+
     </div>
   )
 }

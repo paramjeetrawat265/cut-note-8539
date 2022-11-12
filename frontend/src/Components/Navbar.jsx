@@ -28,6 +28,9 @@ import Fade from '@mui/material/Fade';
 import { SlHandbag } from "react-icons/sl";
 import Modal from '@mui/material/Modal';
 
+import "../styles/Navbar.css" 
+=======
+
 
 const pages = ['Gifts', 'New', 'Women', 'Men', 'Kids', 'Cashmere', 'Home', 'Stories', 'Sale'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -43,7 +46,12 @@ const Navbar = () => {
         top: '50%',
         left: '50%',
         transform: 'translate(-50%, -50%)',
+
+        width: 300,
+        height:430,
+
         width: 400,
+
         bgcolor: 'background.paper',
         border: '2px solid #000',
         boxShadow: 24,
@@ -607,6 +615,35 @@ const Navbar = () => {
                                             aria-labelledby="modal-modal-title"
                                             aria-describedby="modal-modal-description"
                                         >
+
+                                            {/* ........................modal.............................................................. */}
+                                            <Box  sx={style}>
+                                                <ModalContainer>
+                                                <Typography id="modal-modal-title1" >
+                                                    Sign In
+                                                </Typography>
+                                                <Typography id="modal-modal-title" variant="h6" component="h2">
+                                                   <input placeholder='Email Address*' className='address'/>
+                                                </Typography>
+                                                <Typography id="modal-modal-title" variant="h6" component="h2">
+                                                <input placeholder='Password*' className='passd'/>
+                                                </Typography>
+                                            
+                                                <Typography id="modal-modal-description1" sx={{ mt: 2 }}>
+                                                   <input type={"checkbox"}/>
+                                                   <p className='remem'>Remember me</p>
+                                                   <p className='forgot'>Forgot Password?</p>
+                                                </Typography>
+                                                <button className='now'>SIGN IN NOW</button>
+                                                <Typography id="captcha">
+                                               <p className='google'>This site is protected by reCAPTCHA and the google<br/><u>Privacy Policy</u> and <u>Terms of Service</u> apply.</p>
+                                                </Typography>
+                                                <div className='down'></div>
+                                                <Typography >
+                                                   <p className='dontt'>Don't have an account?<span style={{color:"blue"}}> Sign up now</span></p>
+                                                </Typography>
+                                                </ModalContainer>
+
                                             <Box sx={style}>
                                                 <Typography id="modal-modal-title" variant="h6" component="h2">
                                                     Text in a modal
@@ -614,6 +651,7 @@ const Navbar = () => {
                                                 <Typography id="modal-modal-description" sx={{ mt: 2 }}>
                                                     Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
                                                 </Typography>
+
                                             </Box>
                                         </Modal>
                                     </>
@@ -706,3 +744,9 @@ const MenuContainer = stylesc.div`
                 padding:3px 2px;
     }
 `;
+
+const ModalContainer=stylesc.div`
+        //   border:1px solid red;
+          color:black;
+          
+`
