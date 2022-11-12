@@ -448,9 +448,11 @@
     font-family:"freight-big-pro", "FreightBig Pro",Times,serif;
     font-size: 35px;
     margin-top:  8px;
+    cursor: pointer;
 }
 
   .overlay {
+    cursor: pointer;
     position: absolute; 
     height:60px;
     bottom: 0; 
@@ -468,6 +470,7 @@
   
   .container:hover .overlay {
     opacity: 1;
+    cursor: pointer;
   }
   .wrap{
     margin-left: -50px;
