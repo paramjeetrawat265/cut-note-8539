@@ -8,7 +8,7 @@ function App() {
   return (
     <div className="App">
       {/* <Navbar /> */}
-      {location.pathname === "/dashboard" ? null : <Navbar />}
+      {location.pathname === "/admin/dashboard" ? null : <Navbar />}
       <Allroutes />
     </div>
   );
