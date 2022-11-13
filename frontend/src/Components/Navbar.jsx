@@ -645,7 +645,7 @@ const Navbar = () => {
                                                     </Modal>
                                                 </>}
                                             </div>
-                                            <p onClick={handleModalOpen} className="signIn">SignIn</p>
+                                            {/* <p onClick={handleModalOpen} className="signIn">SignIn</p>
                                             <Modal
                                                 open={modalOpen}
                                                 onClose={handleModalClose}
@@ -678,7 +678,7 @@ const Navbar = () => {
                                                         </Typography>
                                                     </ModalContainer>
                                                 </Box>
-                                            </Modal>
+                                            </Modal> */}
                                         </>
                                     }
                                 </IconButton>

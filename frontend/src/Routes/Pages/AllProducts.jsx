@@ -5,9 +5,9 @@ import {Box, Image, Spinner, Text} from "@chakra-ui/react";
 import ProductBox from "../../Components/PoductComponents/ProductBox";
 import {useDispatch, useSelector} from "react-redux";
 import {getproduct} from "../../Redux/Products/action.product";
-import HaveAquestion from "../../Components/PoductComponents/HaveAquestion";
 import SortTop from "../../Components/PoductComponents/SortTop";
 import { SearchBox } from "../../Components/PoductComponents/SearchBox";
+import HaveAquestion from "../../Components/PoductComponents/HaveAquestion";
 const AllProducts = () => {
   const {loading, data} = useSelector((store) => store.product);
   const dispatch = useDispatch();
@@ -16,7 +16,7 @@ const AllProducts = () => {
   }, []);
   return (
     <>
-      <HaveAquestion />
+      <HaveAquestion/>
 <SortTop/>
 
 <SearchBox/>
