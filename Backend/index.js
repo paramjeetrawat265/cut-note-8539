@@ -21,6 +21,7 @@ app.use('/data', DataRouter);
 app.use('/resources/images', express.static('images'));
 app.use("/signup",SignupRoute)
 app.use("/login",LoginRoute)
+app.use('/cart',CartRoute)
 app.listen(process.env.PORT, async ()=>{
     try{
         await connection;
