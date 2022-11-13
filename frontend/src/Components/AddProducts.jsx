@@ -76,6 +76,10 @@ const AddProducts = ({ colorScheme }) => {
                                 <h3>Category:</h3>
                                 <select name="" id="" onChange={(e) => setData({ ...data, category: e.target.value })}>
                                     <option value="">Select a Category</option>
+                                    <option value="Men">Men</option>
+                                    <option value="Women">Women</option>
+                                    <option value="Girls">Girls</option>
+                                    <option value="Boys">Boys</option>
                                     <option value="sweater">Sweater</option>
                                     <option value="shirt">Shirt</option>
                                     <option value="pants">Pants</option>
@@ -100,12 +104,10 @@ const AddProducts = ({ colorScheme }) => {
                                     <option value="House">House</option>
                                 </select>
                             </div>
-
                             <div>
                                 <h3>Name*</h3>
                                 <input type="text" placeholder='Enter Name' onChange={(e) => setData({ ...data, name: e.target.value })} />
                             </div>
-
                             <div>
                                 <h3>Description:</h3>
                                 <input type="text" placeholder='Enter Description' onChange={(e) => setData({ ...data, description: e.target.value })} />
