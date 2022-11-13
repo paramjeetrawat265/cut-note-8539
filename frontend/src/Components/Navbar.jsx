@@ -173,7 +173,7 @@ const Navbar = () => {
                 ))}
                 <Divider sx={{ mt: 3 }} />
                 <Typography sx={{ mt: 2, ml: 2, mb: 0, color: 'gray', fontWeight: 700 }}>Men</Typography>
-                {[{ title: 'Fair Isle Sweaters', path: '/formen'  },
+                {[{ title: 'Fair Isle Sweaters', path: '/formen' },
                 { title: 'The Holiday Party Shop', path: '/formen' },
                 { title: 'Midweight Flannel Workshirts', path: '/formen' },
                 { title: 'New Parkas & Topcoats', path: '/formen' },
@@ -183,7 +183,7 @@ const Navbar = () => {
                     <Link to={ele.path} key={index}>
                         <ListItem disablePadding sx={{ mb: -2 }}>
                             <ListItemButton>
-                              <ListItemText primary={ele.title} />
+                                <ListItemText primary={ele.title} />
                             </ListItemButton>
                         </ListItem>
                     </Link>
@@ -279,12 +279,10 @@ const Navbar = () => {
         if (isAuth) {
             console.log(isAuth)
         }
-<<<<<<< HEAD
+
     }, [userAuth, isAuth])
 
-=======
-    }, [userAuth,isAuth])
->>>>>>> dc7fa8b744cca4a0dfd6e085364e93607a444486
+
     return (
         <NavbarContainer>
             <AppBar elevation={0} position="static" sx={{ borderBottom: "1px solid #ddd", backgroundColor: "white", color: "black" }}>
