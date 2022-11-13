@@ -34,5 +34,4 @@ const Allroutes = () => {
     </div>
   )
 }
-
 export default Allroutes

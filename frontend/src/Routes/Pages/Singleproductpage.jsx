@@ -1,11 +1,12 @@
-import {Box, Divider, Spinner} from "@chakra-ui/react";
+import {Box, Checkbox, Divider, Spinner} from "@chakra-ui/react";
 import axios from "axios";
 import React, {useEffect, useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {useParams} from "react-router-dom";
 import HaveAquestion from "../../Components/PoductComponents/HaveAquestion";
 import { getsingleproduct } from "../../Redux/Products/action.product";
-
+import Favorite from '@mui/icons-material/Favorite';
+import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
 const Singleproductpage = () => {
   const param = useParams();
 
@@ -17,31 +18,20 @@ const Singleproductpage = () => {
     "Import.",
     "Select stores.",
   ];
-
+  const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
   const sizes = ["X-Small", "Small", "Medium", "Large", "X-Large", "XX-Large"];
-  // const [Productdata, setProductdata] = useState([]);
 const {loading,data}=useSelector((store)=>store.product)
 const dispatch=useDispatch()
   const {price, type, category,name, item, productdescription, image} =data
-    
   useEffect(() => {
     dispatch(getsingleproduct(param.id))
-    // getProduct(param.id);
+
   }, [param.id]);
 
-  // const getProduct = (id) => {
-  //   axios
-  //     .get("http://localhost:8000/data/" + id)
-  //     .then((res) => {
-  //       setProductdata(res.data);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // };
 
   return (
     <>
+    
     <HaveAquestion/>
     <div className="productinfo_page">
       {/* {loading?<Spinner size='xl' />:""} */}
@@ -99,7 +89,7 @@ const dispatch=useDispatch()
 
           <div>
             <button>Add To Bag</button>
-            <button>heart</button>
+            <button><Checkbox {...label} icon={<FavoriteBorder />} checkedIcon={<Favorite/>} /></button>
           </div>
         </div>
 

@@ -55,6 +55,7 @@ const Navbar = () => {
     const [state, setState] = React.useState({ left: false });
 
     const [plus, setPlus] = useState(false);
+
     const style = {
         position: 'absolute',
         top: '50%',
@@ -71,6 +72,7 @@ const Navbar = () => {
         boxShadow: 24,
         p: 4,
     };
+
 
     const [modalOpen, setModalOpen] = useState(false);
     const handleModalOpen = () => setModalOpen(true);
@@ -274,6 +276,7 @@ const Navbar = () => {
     const handleCloseUserMenu = () => {
         setAnchorElUser(null);
     };
+
     const [authComponent, setauthComponent] = useState('Login');
     useEffect(() => {
         if (isAuth) {
@@ -281,6 +284,11 @@ const Navbar = () => {
         }
 
     }, [userAuth, isAuth])
+
+
+
+    }, [userAuth, isAuth])
+
 
 
     return (
@@ -801,6 +809,7 @@ const Navbar = () => {
                                                     </ModalContainer>
                                                 </Box>
                                             </Modal> */}
+                                            </Modal> */>
                                         </>
                                     }
                                 </IconButton>
@@ -847,7 +856,9 @@ const Navbar = () => {
         </NavbarContainer >
     );
 }
+
 export default Navbar
+
 const NavbarContainer = stylesc.div`
                 width:100%;
                 color:black;
@@ -856,7 +867,9 @@ const NavbarContainer = stylesc.div`
                 border:none;
                 pointerEvents:none;
                 outline:none;
+
     }
+
 
                 .menuList{
                     width:80%;
@@ -871,8 +884,8 @@ const NavbarContainer = stylesc.div`
     a{
         text-decoration:none;
     }
-    
                 `;
+
 const MenuContainer = stylesc.div`
                 a{
                     text-decoration:none;
@@ -888,6 +901,7 @@ const MenuContainer = stylesc.div`
                 padding:3px 2px;
     }
 `;
+
 const ModalContainer = stylesc.div`
         //   border:1px solid red;
           color:black;
