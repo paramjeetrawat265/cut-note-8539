@@ -42,6 +42,7 @@ Dashboard.post("/product/add", upload.single("image"), async (req, res) => {
     req.body.img_path = img_path;
     req.body.category = catArr
     const data = req.body;
+    console.log(req.body)
     const checkImage = await ProductModel.findOne({ img_path: data.img_path });
     if (checkImage) {
         res.send("Image Already In System");

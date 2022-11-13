@@ -27,28 +27,52 @@ import Grid from '@mui/material/Grid';
 import Fade from '@mui/material/Fade';
 import { SlHandbag } from "react-icons/sl";
 import Modal from '@mui/material/Modal';
+import "../styles/Navbar.css"
+import { userAuthentication, userSignOut } from '../Redux/Auth/action';
+import { useDispatch, useSelector } from 'react-redux'
+import Login from './Login';
+import Signup from './Signup';
 
 
 const pages = ['Gifts', 'New', 'Women', 'Men', 'Kids', 'Cashmere', 'Home', 'Stories', 'Sale'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 const Navbar = () => {
-
+    const dispatch = useDispatch();
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    console.log(email, password);
+    const handleLogin = () => {
+        const payload = {
+            email, password
+        }
+        dispatch(userAuthentication(payload));
+    }
+    const handleSignout = () => {
+        dispatch(userSignOut());
+    }
     // Drawer
     const [state, setState] = React.useState({ left: false });
-    const [isAuth, setIsAuth] = useState(false);
+
     const [plus, setPlus] = useState(false);
+
     const style = {
         position: 'absolute',
         top: '50%',
         left: '50%',
         transform: 'translate(-50%, -50%)',
+
+        width: 300,
+        height: 430,
+
         width: 400,
+
         bgcolor: 'background.paper',
         border: '2px solid #000',
         boxShadow: 24,
         p: 4,
     };
+
 
     const [modalOpen, setModalOpen] = useState(false);
     const handleModalOpen = () => setModalOpen(true);
@@ -74,7 +98,7 @@ const Navbar = () => {
             <Button size="large" href="https://www.google.com" sx={{ ml: 10 }}>SignIN</Button>
             <List>
                 {['Gifts', 'New', 'Women', 'Men', 'Kids', 'Cashmere', 'Home', 'Stories', 'Sale'].map((text, index) => (
-                    <ListItem key={text} disablePadding onClick={() => setMenu(text)}>
+                    <ListItem key={index} disablePadding onClick={() => setMenu(text)}>
                         <ListItemButton>
                             <ListItemText primary={text} />
                             <BiChevronRight />
@@ -95,12 +119,12 @@ const Navbar = () => {
                 <Divider />
                 {[{ title: 'For Men', path: '/men' },
                 { title: 'For Women', path: '/women' },
-                { title: 'For Girls', path: '/girls' },
-                { title: 'For Boys', path: '/boys' },
+                { title: 'For Girls', path: '/girl' },
+                { title: 'For Boys', path: '/boy' },
                 { title: 'For The Home', path: '/home' },
                 ].map((ele, index) => (
-                    <Link to={ele.path} >
-                        <ListItem key={index} disablePadding>
+                    <Link to={ele.path} key={index}>
+                        <ListItem disablePadding>
                             <ListItemButton>
                                 <ListItemText primary={ele.title} />
                             </ListItemButton>
@@ -123,8 +147,8 @@ const Navbar = () => {
                 { title: 'For Girls', path: '/forgirls' },
                 { title: 'For Boys', path: '/forboys' },
                 ].map((ele, index) => (
-                    <Link to={ele.path} >
-                        <ListItem key={index} disablePadding sx={{ mb: -2 }}>
+                    <Link to={"/alldata"} key={index}>
+                        <ListItem disablePadding sx={{ mb: -2 }}>
                             <ListItemButton>
                                 <ListItemText primary={ele.title} />
                             </ListItemButton>
@@ -141,8 +165,8 @@ const Navbar = () => {
                 { title: 'The Sun Shop', path: '/forboys' },
                 { title: 'The Ski Shop', path: '/forboys' },
                 ].map((ele, index) => (
-                    <Link to={ele.path} >
-                        <ListItem key={index} disablePadding sx={{ mb: -2 }}>
+                    <Link to={ele.path} key={index}>
+                        <ListItem disablePadding sx={{ mb: -2 }}>
                             <ListItemButton>
                                 <ListItemText primary={ele.title} />
                             </ListItemButton>
@@ -158,8 +182,8 @@ const Navbar = () => {
                 { title: 'Source Materials', path: '/formen' },
                 { title: 'Heritage 14 Oz. Fleece', path: '/formen' },
                 ].map((ele, index) => (
-                    <Link to={ele.path} >
-                        <ListItem key={index} disablePadding sx={{ mb: -2 }}>
+                    <Link to={ele.path} key={index}>
+                        <ListItem disablePadding sx={{ mb: -2 }}>
                             <ListItemButton>
                                 <ListItemText primary={ele.title} />
                             </ListItemButton>
@@ -200,8 +224,8 @@ const Navbar = () => {
                 { title: 'The Sun Shop', path: '/forboys' },
                 { title: 'The Ski Shop', path: '/forboys' },
                 ].map((ele, index) => (
-                    <Link to={ele.path} >
-                        <ListItem key={index} disablePadding sx={{ mb: -2 }}>
+                    <Link to={ele.path} key={index}>
+                        <ListItem disablePadding sx={{ mb: -2 }}>
                             <ListItemButton>
                                 <ListItemText primary={ele.title} />
                             </ListItemButton>
@@ -216,8 +240,8 @@ const Navbar = () => {
                 { title: 'Source Materials', path: '/women' },
                 { title: 'Heritage 14 Oz. Fleece', path: '/women' },
                 ].map((ele, index) => (
-                    <Link to={ele.path} >
-                        <ListItem key={index} disablePadding sx={{ mb: -2 }}>
+                    <Link to={ele.path} key={index}>
+                        <ListItem disablePadding sx={{ mb: -2 }}>
                             <ListItemButton>
                                 <ListItemText primary={ele.title} />
                             </ListItemButton>
@@ -235,12 +259,13 @@ const Navbar = () => {
         setHoverMenu(event.target.innerText);
         setAnchorEl(event.currentTarget);
     };
+
     const handleClose = () => {
         setAnchorEl(null);
         setHoverMenu("")
     };
-
-
+    const { isAuth } = useSelector((store) => (store.AuthReducer));
+    const [userAuth, setUserAuth] = useState(isAuth);
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -251,6 +276,20 @@ const Navbar = () => {
     const handleCloseUserMenu = () => {
         setAnchorElUser(null);
     };
+
+    const [authComponent, setauthComponent] = useState('Login');
+    useEffect(() => {
+        if (isAuth) {
+            console.log(isAuth)
+        }
+
+    }, [userAuth, isAuth])
+
+
+
+    }, [userAuth, isAuth])
+
+
 
     return (
         <NavbarContainer>
@@ -302,7 +341,6 @@ const Navbar = () => {
                                 </div>
                             </Drawer>
 
-
                             <Menu
                                 id="menu-appbar"
                                 anchorEl={anchorElNav}
@@ -331,8 +369,6 @@ const Navbar = () => {
                                 ))}
                             </Menu>
                         </Box>
-
-
 
                         <Box
                             component="img"
@@ -376,210 +412,330 @@ const Navbar = () => {
                                     >
                                         <Typography onMouseOver={(event) => handleClick(event)}>{page}</Typography>
                                     </Button>
-                                    {hoverMenu !== "" && <Menu
-                                        id="fade-menu"
-                                        MenuListProps={{
-                                            'aria-labelledby': 'fade-button',
-                                        }}
-                                        anchorEl={anchorEl}
-                                        open={open}
-                                        elevation={1}
-                                        onClose={handleClose}
-                                        TransitionComponent={Fade}
-                                        sx={{ ml: 0, mt: 2 }}
-                                    >
-                                        {hoverMenu === "GIFTS" &&
-                                            <Box sx={{ padding: 1, width: "200px" }}>
-                                                <MenuItem onClick={handleClose}>
-                                                    <Typography sx={{ fontWeight: 800, color: 'gray', mb: 1 }}>
-                                                        GIFTS
-                                                    </Typography>
-                                                </MenuItem>
-                                                <MenuItem onClick={handleClose}>For Women</MenuItem>
-                                                <MenuItem onClick={handleClose}>For Men</MenuItem>
-                                                <MenuItem onClick={handleClose}>For Girls</MenuItem>
-                                                <MenuItem onClick={handleClose}>For Boys</MenuItem>
-                                                <MenuItem onClick={handleClose}>For Home</MenuItem>
-                                            </Box>}
-                                        {hoverMenu === "NEW" &&
-                                            <Box sx={{ display: 'flex' }}>
-                                                <Box sx={{ padding: 1 }}>
+                                    {hoverMenu !== "" &&
+                                        <Menu
+                                            id="fade-menu"
+                                            MenuListProps={{
+                                                'aria-labelledby': 'fade-button',
+                                            }}
+                                            anchorEl={anchorEl}
+                                            open={open}
+                                            elevation={1}
+                                            onClose={handleClose}
+                                            TransitionComponent={Fade}
+                                            sx={{ ml: 0, mt: 2 }}
+                                        >
+                                            {hoverMenu === "GIFTS" &&
+                                                <Box sx={{ padding: 1, width: "200px" }}>
                                                     <MenuItem onClick={handleClose}>
-                                                        <Typography sx={{ fontWeight: 700, color: '#343434', mb: 1 }}>
-                                                            Shop New Arrivals
+                                                        <Typography sx={{ fontWeight: 800, color: 'gray', mb: 1 }}>
+                                                            GIFTS
                                                         </Typography>
                                                     </MenuItem>
-                                                    {['For Women', 'For Men', 'For Girls', 'For Boys'].map((ele, index) => (
-                                                        <MenuItem onClick={handleClose} key={index}>{ele}</MenuItem>
-                                                    ))}
-                                                </Box>
-                                                <Box sx={{ padding: 1 }}>
-                                                    <MenuItem onClick={handleClose}>
-                                                        <Typography sx={{ fontWeight: 700, color: '#343434', mb: 0 }}>
-                                                            What To Shop Now
-                                                        </Typography>
-                                                    </MenuItem>
-                                                    <Box sx={{ display: 'flex' }}>
-                                                        <Box sx={{ padding: 1 }}>
-                                                            <MenuItem onClick={handleClose}>
-                                                                <Typography sx={{ fontWeight: 600, color: '#343434', mb: 0 }}>
-                                                                    Women
-                                                                </Typography>
-                                                            </MenuItem>
-                                                            {['The Holiday Party Shop', 'Tartan Time', 'Olympia Picks', 'The World Remix', 'The Sun Shop', 'The Ski Shop', 'Family Matching Moments'].map((ele, index) => (
-                                                                <MenuItem onClick={handleClose} key={index}>{ele}</MenuItem>
-                                                            )
-                                                            )}
-                                                        </Box>
-                                                        <Box sx={{ padding: 1 }}>
-                                                            <MenuItem onClick={handleClose}>
-                                                                <Typography sx={{ fontWeight: 600, color: '#343434', mb: 0 }}>
-                                                                    Men
-                                                                </Typography>
-                                                            </MenuItem>
-                                                            {['Fair Isle Sweaters', 'The Holiday Party Shop', 'Midweight Flannel ', 'New Parkas & Top', 'Source Materials', 'Heritage oz Fleece', 'Beams Plus XJ Crew'].map((ele, index) => (
-                                                                <MenuItem onClick={handleClose} key={index}>{ele}</MenuItem>
-                                                            )
-                                                            )}
-                                                        </Box>
-                                                    </Box>
-                                                </Box>
-                                                <Box sx={{ padding: 1, paddingRight: 3 }}>
-                                                    <MenuItem onClick={handleClose}>
-                                                        <Typography sx={{ fontWeight: 700, color: '#343434', mb: 0 }}>
-                                                            BookMark These
-                                                        </Typography>
-                                                    </MenuItem>
-                                                    <Box sx={{ display: 'flex', gap: 0 }}>
-                                                        <div width="180px" padding="5px">
-                                                            <img src="https://www.jcrew.com/brand_creative/2022/202212-Dec/flyout/2022dec_1108_flyouts_new_img0.jpg" height="200px" width="100%"></img>
-                                                            <p>The Holiday <br></br>Party Shop</p>
-                                                        </div>
-                                                        <div width="180px" padding="5px">
-                                                            <img src="https://www.jcrew.com/brand_creative/2022/202212-Dec/flyout/2022dec_1108_flyouts_new_img1.jpg" height="200px" width="100%"></img>
-                                                            <p>The Sun Shop</p>
-                                                        </div>
-                                                    </Box>
-                                                </Box>
-                                            </Box>
-                                        }
-                                        {hoverMenu === "WOMEN" &&
-                                            <Box sx={{ display: 'flex', width: '80vw', margin: 'auto' }}>
-                                                <Box>
+                                                    <MenuItem onClick={handleClose}><Link to="/women">For Women</Link></MenuItem>
+                                                    <MenuItem onClick={handleClose}><Link to="/men">For Men</Link></MenuItem>
+                                                    <MenuItem onClick={handleClose}><Link to="/girl">For Girls</Link></MenuItem>
+                                                    <MenuItem onClick={handleClose}><Link to="/boy">For Boys</Link></MenuItem>
+                                                    <MenuItem onClick={handleClose}><Link to="/home">For Home</Link></MenuItem>
+                                                </Box>}
+                                            {hoverMenu === "NEW" &&
+                                                <Box sx={{ display: 'flex' }}>
                                                     <Box sx={{ padding: 1 }}>
                                                         <MenuItem onClick={handleClose}>
-                                                            <Typography sx={{ fontWeight: 800, color: 'gray', mb: 1 }}>
-                                                                WOMEN
+                                                            <Typography sx={{ fontWeight: 700, color: '#343434', mb: 1 }}>
+                                                                Shop New Arrivals
                                                             </Typography>
                                                         </MenuItem>
-                                                        <MenuItem onClick={handleClose} sx={{ fontWeight: 550, color: "#36454F" }}>New Arrivals</MenuItem>
-                                                        <MenuItem onClick={handleClose} sx={{ fontWeight: 550, color: "#36454F" }}>Gifts</MenuItem>
-                                                        <MenuItem onClick={handleClose} sx={{ fontWeight: 550, color: "#36454F" }}>Best Sellers</MenuItem>
-                                                        <MenuItem onClick={handleClose} sx={{ fontWeight: 550, color: "#36454F" }}>Top Rated</MenuItem>
-                                                        <MenuItem onClick={handleClose} sx={{ fontWeight: 550, color: "#36454F" }}>Brands We Loves</MenuItem>
-                                                        <MenuItem onClick={handleClose} sx={{ fontWeight: 550, color: "#36454F" }}>Shop All</MenuItem>
-                                                        <MenuItem onClick={handleClose} sx={{ fontWeight: 550, color: "#36454F" }}>Sale</MenuItem>
+                                                        {['For Women', 'For Men', 'For Girls', 'For Boys'].map((ele, index) => (
+                                                            <MenuItem onClick={handleClose} key={index}>{ele}</MenuItem>
+                                                        ))}
+                                                    </Box>
+                                                    <Box sx={{ padding: 1 }}>
+                                                        <MenuItem onClick={handleClose}>
+                                                            <Typography sx={{ fontWeight: 700, color: '#343434', mb: 0 }}>
+                                                                What To Shop Now
+                                                            </Typography>
+                                                        </MenuItem>
+                                                        <Box sx={{ display: 'flex' }}>
+                                                            <Box sx={{ padding: 1 }}>
+                                                                <MenuItem onClick={handleClose}>
+                                                                    <Typography sx={{ fontWeight: 600, color: '#343434', mb: 0 }}>
+                                                                        Women
+                                                                    </Typography>
+                                                                </MenuItem>
+                                                                {['The Holiday Party Shop', 'Tartan Time', 'Olympia Picks', 'The World Remix', 'The Sun Shop', 'The Ski Shop', 'Family Matching Moments'].map((ele, index) => (
+                                                                    <MenuItem onClick={handleClose} key={index}>{ele}</MenuItem>
+                                                                )
+                                                                )}
+                                                            </Box>
+                                                            <Box sx={{ padding: 1 }}>
+                                                                <MenuItem onClick={handleClose}>
+                                                                    <Typography sx={{ fontWeight: 600, color: '#343434', mb: 0 }}>
+                                                                        Men
+                                                                    </Typography>
+                                                                </MenuItem>
+                                                                {['Fair Isle Sweaters', 'The Holiday Party Shop', 'Midweight Flannel ', 'New Parkas & Top', 'Source Materials', 'Heritage oz Fleece', 'Beams Plus XJ Crew'].map((ele, index) => (
+                                                                    <MenuItem onClick={handleClose} key={index}>{ele}</MenuItem>
+                                                                )
+                                                                )}
+                                                            </Box>
+                                                        </Box>
+                                                    </Box>
+                                                    <Box sx={{ padding: 1, paddingRight: 3 }}>
+                                                        <MenuItem onClick={handleClose}>
+                                                            <Typography sx={{ fontWeight: 700, color: '#343434', mb: 0 }}>
+                                                                BookMark These
+                                                            </Typography>
+                                                        </MenuItem>
+                                                        <Box sx={{ display: 'flex', gap: 0 }}>
+                                                            <div width="180px" padding="5px">
+                                                                <img src="https://www.jcrew.com/brand_creative/2022/202212-Dec/flyout/2022dec_1108_flyouts_new_img0.jpg" height="200px" width="100%"></img>
+                                                                <p>The Holiday <br></br>Party Shop</p>
+                                                            </div>
+                                                            <div width="180px" padding="5px">
+                                                                <img src="https://www.jcrew.com/brand_creative/2022/202212-Dec/flyout/2022dec_1108_flyouts_new_img1.jpg" height="200px" width="100%"></img>
+                                                                <p>The Sun Shop</p>
+                                                            </div>
+                                                        </Box>
+                                                    </Box>
+                                                </Box>
+                                            }
+                                            {/* Menu Women For Big Screen */}
+                                            {hoverMenu === "WOMEN" &&
+                                                <Box sx={{ display: 'flex', width: '80vw', margin: 'auto' }}>
+                                                    <Box>
+                                                        <Box sx={{ padding: 1 }}>
+                                                            <MenuItem onClick={handleClose}>
+                                                                <Typography sx={{ fontWeight: 800, color: 'gray', mb: 1 }}>
+                                                                    WOMEN
+                                                                </Typography>
+                                                            </MenuItem>
+                                                            <MenuItem onClick={handleClose} sx={{ fontWeight: 550, color: "#36454F" }}>New Arrivals</MenuItem>
+                                                            <MenuItem onClick={handleClose} sx={{ fontWeight: 550, color: "#36454F" }}>Gifts</MenuItem>
+                                                            <MenuItem onClick={handleClose} sx={{ fontWeight: 550, color: "#36454F" }}>Best Sellers</MenuItem>
+                                                            <MenuItem onClick={handleClose} sx={{ fontWeight: 550, color: "#36454F" }}>Top Rated</MenuItem>
+                                                            <MenuItem onClick={handleClose} sx={{ fontWeight: 550, color: "#36454F" }}>Brands We Loves</MenuItem>
+                                                            <MenuItem onClick={handleClose} sx={{ fontWeight: 550, color: "#36454F" }}>Shop All</MenuItem>
+                                                            <MenuItem onClick={handleClose} sx={{ fontWeight: 550, color: "#36454F" }}>Sale</MenuItem>
+                                                        </Box>
+                                                        <Box sx={{ padding: 1 }}>
+                                                            <MenuItem onClick={handleClose}>
+                                                                <Typography sx={{ fontWeight: 600, color: '#343434', mb: 1 }}>
+                                                                    What To Shop Now
+                                                                </Typography>
+                                                            </MenuItem>
+                                                            <MenuItem onClick={handleClose}>The Holiday Party Shop</MenuItem>
+                                                            <MenuItem onClick={handleClose}>Tartan Time</MenuItem>
+                                                            <MenuItem onClick={handleClose}>Olympia's Picks</MenuItem>
+                                                            <MenuItem onClick={handleClose}>The Work Remix</MenuItem>
+                                                            <MenuItem onClick={handleClose}>The Ski Shop</MenuItem>
+                                                        </Box>
                                                     </Box>
                                                     <Box sx={{ padding: 1 }}>
                                                         <MenuItem onClick={handleClose}>
                                                             <Typography sx={{ fontWeight: 600, color: '#343434', mb: 1 }}>
-                                                                What To Shop Now
+                                                                Clothing
                                                             </Typography>
                                                         </MenuItem>
-                                                        <MenuItem onClick={handleClose}>The Holiday Party Shop</MenuItem>
-                                                        <MenuItem onClick={handleClose}>Tartan Time</MenuItem>
-                                                        <MenuItem onClick={handleClose}>Olympia's Picks</MenuItem>
-                                                        <MenuItem onClick={handleClose}>The Work Remix</MenuItem>
-                                                        <MenuItem onClick={handleClose}>The Ski Shop</MenuItem>
+                                                        <MenuItem onClick={handleClose}><Link to="/women">All Clothing</Link></MenuItem>
+                                                        <MenuItem onClick={handleClose}><Link to="/women">Sweaters</Link></MenuItem>
+                                                        <MenuItem onClick={handleClose}><Link to="/women">Shirts & Tops</Link></MenuItem>
+                                                        <MenuItem onClick={handleClose}><Link to="/women">T-shirts & Tank</Link></MenuItem>
+                                                        <MenuItem onClick={handleClose}><Link to="/women">Dresses & Jumpsuits</Link></MenuItem>
+                                                        <MenuItem onClick={handleClose}><Link to="/women">Blazzers</Link></MenuItem>
+                                                        <MenuItem onClick={handleClose}><Link to="/women">Pants</Link></MenuItem>
+                                                        <MenuItem onClick={handleClose}><Link to="/women">Denims</Link></MenuItem>
+                                                        <MenuItem onClick={handleClose}><Link to="/women">Coats & Jackets</Link></MenuItem>
+                                                        <MenuItem onClick={handleClose}><Link to="/women">Skirts</Link></MenuItem>
+                                                        <MenuItem onClick={handleClose}><Link to="/women">Shorts</Link></MenuItem>
+                                                        <MenuItem onClick={handleClose}><Link to="/women">Swimwear</Link></MenuItem>
+                                                        <MenuItem onClick={handleClose}><Link to="/women">Active</Link></MenuItem>
+                                                        <MenuItem onClick={handleClose}><Link to="/women">Matching Sets</Link></MenuItem>
                                                     </Box>
-                                                </Box>
-                                                <Box sx={{ padding: 1 }}>
-                                                    <MenuItem onClick={handleClose}>
-                                                        <Typography sx={{ fontWeight: 600, color: '#343434', mb: 1 }}>
-                                                            Clothing
-                                                        </Typography>
-                                                    </MenuItem>
-                                                    <MenuItem onClick={handleClose}>All Clothing</MenuItem>
-                                                    <MenuItem onClick={handleClose}>Sweaters</MenuItem>
-                                                    <MenuItem onClick={handleClose}>Shirts & Tops</MenuItem>
-                                                    <MenuItem onClick={handleClose}>T-shirts & Tank</MenuItem>
-                                                    <MenuItem onClick={handleClose}>Dresses & Jumpsuits</MenuItem>
-                                                    <MenuItem onClick={handleClose}>Blazzers</MenuItem>
-                                                    <MenuItem onClick={handleClose}>Pants</MenuItem>
-                                                    <MenuItem onClick={handleClose}>Denims</MenuItem>
-                                                    <MenuItem onClick={handleClose}>Coats & Jackets</MenuItem>
-                                                    <MenuItem onClick={handleClose}>Skirts</MenuItem>
-                                                    <MenuItem onClick={handleClose}>Shorts</MenuItem>
-                                                    <MenuItem onClick={handleClose}>Swimwear</MenuItem>
-                                                    <MenuItem onClick={handleClose}>Active</MenuItem>
-                                                    <MenuItem onClick={handleClose}>Matching Sets</MenuItem>
-                                                </Box>
 
-                                                <Box>
-                                                    <Box sx={{ paddingRight: 2, padding: 1 }}>
+                                                    <Box>
+                                                        <Box sx={{ paddingRight: 2, padding: 1 }}>
+                                                            <MenuItem onClick={handleClose}>
+                                                                <Typography sx={{ fontWeight: 700, color: '#343434', mb: 1 }}>
+                                                                    Shoes & Boots
+                                                                </Typography>
+                                                            </MenuItem>
+                                                            <MenuItem onClick={handleClose}>All Shoes & Boots</MenuItem>
+                                                            <MenuItem onClick={handleClose}>Winter Boots</MenuItem>
+                                                            <MenuItem onClick={handleClose}>Boots</MenuItem>
+                                                            <MenuItem onClick={handleClose}>Slippers</MenuItem>
+                                                            <MenuItem onClick={handleClose}>Flats</MenuItem>
+                                                            <MenuItem onClick={handleClose}>Heels</MenuItem>
+                                                            <MenuItem onClick={handleClose}>Sneakers</MenuItem>
+                                                        </Box>
+                                                        <Box sx={{ paddingRight: 2 }}>
+                                                            <MenuItem onClick={handleClose}>
+                                                                <Typography sx={{ fontWeight: 700, color: '#343434', mb: 1 }}>
+                                                                    Accessories
+                                                                </Typography>
+                                                            </MenuItem>
+                                                            <MenuItem onClick={handleClose}>All Accessories</MenuItem>
+                                                            <MenuItem onClick={handleClose}>Jewelry</MenuItem>
+                                                            <MenuItem onClick={handleClose}>Bags</MenuItem>
+                                                            <MenuItem onClick={handleClose}>Hats Scarves</MenuItem>
+                                                            <MenuItem onClick={handleClose}>Accessories & More</MenuItem>
+                                                            <MenuItem onClick={handleClose}>Hair</MenuItem>
+                                                            <MenuItem onClick={handleClose}>Belts</MenuItem>
+                                                        </Box>
+                                                    </Box>
+                                                    <Box sx={{ padding: 1, paddingRight: 3 }}>
                                                         <MenuItem onClick={handleClose}>
-                                                            <Typography sx={{ fontWeight: 700, color: '#343434', mb: 1 }}>
-                                                                Shoes & Boots
+                                                            <Typography sx={{ fontWeight: 700, color: '#343434', mb: 0 }}>
+                                                                Shop Stories and More
                                                             </Typography>
                                                         </MenuItem>
-                                                        <MenuItem onClick={handleClose}>All Shoes & Boots</MenuItem>
-                                                        <MenuItem onClick={handleClose}>Winter Boots</MenuItem>
-                                                        <MenuItem onClick={handleClose}>Boots</MenuItem>
-                                                        <MenuItem onClick={handleClose}>Slippers</MenuItem>
-                                                        <MenuItem onClick={handleClose}>Flats</MenuItem>
-                                                        <MenuItem onClick={handleClose}>Heels</MenuItem>
-                                                        <MenuItem onClick={handleClose}>Sneakers</MenuItem>
-                                                    </Box>
-                                                    <Box sx={{ paddingRight: 2 }}>
-                                                        <MenuItem onClick={handleClose}>
-                                                            <Typography sx={{ fontWeight: 700, color: '#343434', mb: 1 }}>
-                                                                Accessories
-                                                            </Typography>
-                                                        </MenuItem>
-                                                        <MenuItem onClick={handleClose}>All Accessories</MenuItem>
-                                                        <MenuItem onClick={handleClose}>Jewelry</MenuItem>
-                                                        <MenuItem onClick={handleClose}>Bags</MenuItem>
-                                                        <MenuItem onClick={handleClose}>Hats Scarves</MenuItem>
-                                                        <MenuItem onClick={handleClose}>Accessories & More</MenuItem>
-                                                        <MenuItem onClick={handleClose}>Hair</MenuItem>
-                                                        <MenuItem onClick={handleClose}>Belts</MenuItem>
-                                                    </Box>
-                                                </Box>
-                                                <Box sx={{ padding: 1, paddingRight: 3 }}>
-                                                    <MenuItem onClick={handleClose}>
-                                                        <Typography sx={{ fontWeight: 700, color: '#343434', mb: 0 }}>
-                                                            Shop Stories and More
-                                                        </Typography>
-                                                    </MenuItem>
-                                                    <Box sx={{ display: 'flex', gap: 3 }}>
-                                                        <div width="180px" padding="5px">
-                                                            <img src="https://www.jcrew.com/brand_creative/2022/202212-Dec/flyout/2022dec_1108_flyouts_w_img0.jpg" height="200px" width="100%"></img>
-                                                            <p>New Arrival</p>
-                                                        </div>
-                                                        <div width="180px" padding="5px">
-                                                            <img src="https://www.jcrew.com/brand_creative/2022/202212-Dec/flyout/2022dec_1108_flyouts_w_img1.jpg" height="200px" width="100%"></img>
-                                                            <p>Holiday Party</p>
-                                                        </div>
-                                                    </Box>
-                                                    <Box sx={{ display: 'flex', gap: 3, mt: 3 }}>
-                                                        <div width="100px" >
-                                                            <img src="https://www.jcrew.com/brand_creative/2022/202212-Dec/flyout/2022dec_1108_flyouts_w_img4.jpg" height="130px" width="100px"></img>
-                                                            <p>New Arrival</p>
-                                                        </div>
-                                                        <div width="100px" >
-                                                            <img src="https://www.jcrew.com/brand_creative/2022/202212-Dec/flyout/2022dec_1108_flyouts_w_img3.jpg" height="130px" width="100px"></img>
-                                                            <p>Holiday Party</p>
-                                                        </div>
-                                                        <div width="100px" >
-                                                            <img src="https://www.jcrew.com/brand_creative/2022/202212-Dec/flyout/2022dec_1108_flyouts_w_img2.jpg" height="130px" width="100px"></img>
-                                                            <p>Holiday Party</p>
-                                                        </div>
+                                                        <Box sx={{ display: 'flex', gap: 3 }}>
+                                                            <div width="180px" padding="5px">
+                                                                <img src="https://www.jcrew.com/brand_creative/2022/202212-Dec/flyout/2022dec_1108_flyouts_w_img0.jpg" height="200px" width="100%"></img>
+                                                                <p>New Arrival</p>
+                                                            </div>
+                                                            <div width="180px" padding="5px">
+                                                                <img src="https://www.jcrew.com/brand_creative/2022/202212-Dec/flyout/2022dec_1108_flyouts_w_img1.jpg" height="200px" width="100%"></img>
+                                                                <p>Holiday Party</p>
+                                                            </div>
+                                                        </Box>
+                                                        <Box sx={{ display: 'flex', gap: 3, mt: 3 }}>
+                                                            <div width="100px" >
+                                                                <img src="https://www.jcrew.com/brand_creative/2022/202212-Dec/flyout/2022dec_1108_flyouts_w_img4.jpg" height="130px" width="100px"></img>
+                                                                <p>New Arrival</p>
+                                                            </div>
+                                                            <div width="100px" >
+                                                                <img src="https://www.jcrew.com/brand_creative/2022/202212-Dec/flyout/2022dec_1108_flyouts_w_img3.jpg" height="130px" width="100px"></img>
+                                                                <p>Holiday Party</p>
+                                                            </div>
+                                                            <div width="100px" >
+                                                                <img src="https://www.jcrew.com/brand_creative/2022/202212-Dec/flyout/2022dec_1108_flyouts_w_img2.jpg" height="130px" width="100px"></img>
+                                                                <p>Holiday Party</p>
+                                                            </div>
+                                                        </Box>
                                                     </Box>
                                                 </Box>
-                                            </Box>
-                                        }
+                                            }
 
-                                    </Menu>}
+                                            {/* Menu Men For Big Screen */}
+                                            {hoverMenu === "MEN" &&
+                                                <Box sx={{ display: 'flex', width: '80vw', margin: 'auto' }}>
+                                                    <Box>
+                                                        <Box sx={{ padding: 1 }}>
+                                                            <MenuItem onClick={handleClose}>
+                                                                <Typography sx={{ fontWeight: 800, color: 'gray', mb: 1 }}>
+                                                                    MEN
+                                                                </Typography>
+                                                            </MenuItem>
+                                                            <MenuItem onClick={handleClose} sx={{ fontWeight: 550, color: "#36454F" }}>New Arrivals</MenuItem>
+                                                            <MenuItem onClick={handleClose} sx={{ fontWeight: 550, color: "#36454F" }}>Gifts</MenuItem>
+                                                            <MenuItem onClick={handleClose} sx={{ fontWeight: 550, color: "#36454F" }}>Best Sellers</MenuItem>
+                                                            <MenuItem onClick={handleClose} sx={{ fontWeight: 550, color: "#36454F" }}>Top Rated</MenuItem>
+                                                            <MenuItem onClick={handleClose} sx={{ fontWeight: 550, color: "#36454F" }}>Brands We Loves</MenuItem>
+                                                            <MenuItem onClick={handleClose} sx={{ fontWeight: 550, color: "#36454F" }}>Shop All</MenuItem>
+                                                            <MenuItem onClick={handleClose} sx={{ fontWeight: 550, color: "#36454F" }}>Sale</MenuItem>
+                                                        </Box>
+                                                        <Box sx={{ padding: 1 }}>
+                                                            <MenuItem onClick={handleClose}>
+                                                                <Typography sx={{ fontWeight: 600, color: '#343434', mb: 1 }}>
+                                                                    What To Shop Now
+                                                                </Typography>
+                                                            </MenuItem>
+                                                            <MenuItem onClick={handleClose}>The Holiday Party Shop</MenuItem>
+                                                            <MenuItem onClick={handleClose}>Tartan Time</MenuItem>
+                                                            <MenuItem onClick={handleClose}>Olympia's Picks</MenuItem>
+                                                            <MenuItem onClick={handleClose}>The Work Remix</MenuItem>
+                                                            <MenuItem onClick={handleClose}>The Ski Shop</MenuItem>
+                                                        </Box>
+                                                    </Box>
+                                                    <Box sx={{ padding: 1 }}>
+                                                        <MenuItem onClick={handleClose}>
+                                                            <Typography sx={{ fontWeight: 600, color: '#343434', mb: 1 }}>
+                                                                Clothing
+                                                            </Typography>
+                                                        </MenuItem>
+                                                        <MenuItem onClick={handleClose}><Link to="/men">All Clothing</Link></MenuItem>
+                                                        <MenuItem onClick={handleClose}><Link to="/men">Sweaters</Link></MenuItem>
+                                                        <MenuItem onClick={handleClose}><Link to="/men">Shirts & Tops</Link></MenuItem>
+                                                        <MenuItem onClick={handleClose}><Link to="/men">T-shirts & Tank</Link></MenuItem>
+                                                        <MenuItem onClick={handleClose}><Link to="/men">Dresses & Jumpsuits</Link></MenuItem>
+                                                        <MenuItem onClick={handleClose}><Link to="/men">Blazzers</Link></MenuItem>
+                                                        <MenuItem onClick={handleClose}><Link to="/men">Pants</Link></MenuItem>
+                                                        <MenuItem onClick={handleClose}><Link to="/men">Denims</Link></MenuItem>
+                                                        <MenuItem onClick={handleClose}><Link to="/men">Coats & Jackets</Link></MenuItem>
+                                                        <MenuItem onClick={handleClose}><Link to="/men">Skirts</Link></MenuItem>
+                                                        <MenuItem onClick={handleClose}><Link to="/men">Shorts</Link></MenuItem>
+                                                        <MenuItem onClick={handleClose}><Link to="/men">Swimwear</Link></MenuItem>
+                                                        <MenuItem onClick={handleClose}><Link to="/men">Active</Link></MenuItem>
+                                                        <MenuItem onClick={handleClose}><Link to="/men">Matching Sets</Link></MenuItem>
+                                                    </Box>
+
+                                                    <Box>
+                                                        <Box sx={{ paddingRight: 2, padding: 1 }}>
+                                                            <MenuItem onClick={handleClose}>
+                                                                <Typography sx={{ fontWeight: 700, color: '#343434', mb: 1 }}>
+                                                                    Shoes & Boots
+                                                                </Typography>
+                                                            </MenuItem>
+                                                            <MenuItem onClick={handleClose}>All Shoes & Boots</MenuItem>
+                                                            <MenuItem onClick={handleClose}>Winter Boots</MenuItem>
+                                                            <MenuItem onClick={handleClose}>Boots</MenuItem>
+                                                            <MenuItem onClick={handleClose}>Slippers</MenuItem>
+                                                            <MenuItem onClick={handleClose}>Flats</MenuItem>
+                                                            <MenuItem onClick={handleClose}>Heels</MenuItem>
+                                                            <MenuItem onClick={handleClose}>Sneakers</MenuItem>
+                                                        </Box>
+                                                        <Box sx={{ paddingRight: 2 }}>
+                                                            <MenuItem onClick={handleClose}>
+                                                                <Typography sx={{ fontWeight: 700, color: '#343434', mb: 1 }}>
+                                                                    Accessories
+                                                                </Typography>
+                                                            </MenuItem>
+                                                            <MenuItem onClick={handleClose}>All Accessories</MenuItem>
+                                                            <MenuItem onClick={handleClose}>Jewelry</MenuItem>
+                                                            <MenuItem onClick={handleClose}>Bags</MenuItem>
+                                                            <MenuItem onClick={handleClose}>Hats Scarves</MenuItem>
+                                                            <MenuItem onClick={handleClose}>Accessories & More</MenuItem>
+                                                            <MenuItem onClick={handleClose}>Hair</MenuItem>
+                                                            <MenuItem onClick={handleClose}>Belts</MenuItem>
+                                                        </Box>
+                                                    </Box>
+                                                    <Box sx={{ padding: 1, paddingRight: 3 }}>
+                                                        <MenuItem onClick={handleClose}>
+                                                            <Typography sx={{ fontWeight: 700, color: '#343434', mb: 0 }}>
+                                                                Shop Stories and More
+                                                            </Typography>
+                                                        </MenuItem>
+                                                        <Box sx={{ display: 'flex', gap: 3 }}>
+                                                            <div width="180px" padding="5px">
+                                                                <img src="https://www.jcrew.com/brand_creative/2022/202212-Dec/flyout/2022dec_1108_flyouts_w_img0.jpg" height="200px" width="100%"></img>
+                                                                <p>New Arrival</p>
+                                                            </div>
+                                                            <div width="180px" padding="5px">
+                                                                <img src="https://www.jcrew.com/brand_creative/2022/202212-Dec/flyout/2022dec_1108_flyouts_w_img1.jpg" height="200px" width="100%"></img>
+                                                                <p>Holiday Party</p>
+                                                            </div>
+                                                        </Box>
+                                                        <Box sx={{ display: 'flex', gap: 3, mt: 3 }}>
+                                                            <div width="100px" >
+                                                                <img src="https://www.jcrew.com/brand_creative/2022/202212-Dec/flyout/2022dec_1108_flyouts_w_img4.jpg" height="130px" width="100px"></img>
+                                                                <p>New Arrival</p>
+                                                            </div>
+                                                            <div width="100px" >
+                                                                <img src="https://www.jcrew.com/brand_creative/2022/202212-Dec/flyout/2022dec_1108_flyouts_w_img3.jpg" height="130px" width="100px"></img>
+                                                                <p>Holiday Party</p>
+                                                            </div>
+                                                            <div width="100px" >
+                                                                <img src="https://www.jcrew.com/brand_creative/2022/202212-Dec/flyout/2022dec_1108_flyouts_w_img2.jpg" height="130px" width="100px"></img>
+                                                                <p>Holiday Party</p>
+                                                            </div>
+                                                        </Box>
+                                                    </Box>
+                                                </Box>
+                                            }
+
+
+                                        </Menu>}
                                 </>
                             ))}
                         </Box>
@@ -597,30 +753,68 @@ const Navbar = () => {
                         </Box>
 
                         <Box sx={{ flexGrow: 0, mr: '5px', display: { sm: 'none', md: 'flex', lg: 'flex' } }}>
-                            <Tooltip title="Open settings">
+                            <Tooltip>
                                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                                    {isAuth ? <p className="signIn">SignOut</p> : <>
-                                        <p onClick={handleModalOpen} className="signIn">SignIn</p>
-                                        <Modal
-                                            open={modalOpen}
-                                            onClose={handleModalClose}
-                                            aria-labelledby="modal-modal-title"
-                                            aria-describedby="modal-modal-description"
-                                        >
-                                            <Box sx={style}>
-                                                <Typography id="modal-modal-title" variant="h6" component="h2">
-                                                    Text in a modal
-                                                </Typography>
-                                                <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                                                    Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-                                                </Typography>
-                                            </Box>
-                                        </Modal>
-                                    </>
+                                    {isAuth ?
+                                        <>
+                                            <p onClick={handleSignout} className="signIn">SignOut</p>
+                                        </>
+                                        :
+                                        <>
+                                            <p onClick={handleModalOpen} className="signIn">SignIn</p>
+                                            <div>
+                                                {!isAuth && <>
+                                                    <Modal
+                                                        open={modalOpen}
+                                                        onClose={handleModalClose}
+                                                        aria-labelledby="modal-modal-title"
+                                                        aria-describedby="modal-modal-description"
+                                                    >
+
+                                                        {authComponent === 'Login' && !isAuth ? <Login setauthComponent={setauthComponent} /> : <Signup setauthComponent={setauthComponent} />}
+                                                    </Modal>
+                                                </>}
+                                            </div>
+                                            {/* <p onClick={handleModalOpen} className="signIn">SignIn</p>
+                                            <Modal
+                                                open={modalOpen}
+                                                onClose={handleModalClose}
+                                                aria-labelledby="modal-modal-title"
+                                                aria-describedby="modal-modal-description"
+                                            >
+                                                <Box sx={style}>
+                                                    <ModalContainer>
+                                                        <Typography id="modal-modal-title1" >
+                                                            Sign In
+                                                        </Typography>
+                                                        <Typography id="modal-modal-title" variant="h6" component="h2">
+                                                            <input placeholder='Email Address*' className='address' />
+                                                        </Typography>
+                                                        <Typography id="modal-modal-title" variant="h6" component="h2">
+                                                            <input placeholder='Password*' className='passd' />
+                                                        </Typography>
+                                                        <Typography id="modal-modal-description1" sx={{ mt: 2 }}>
+                                                            <input type={"checkbox"} />
+                                                            <p className='remem'>Remember me</p>
+                                                            <p className='forgot'>Forgot Password?</p>
+                                                        </Typography>
+                                                        <button className='now'>SIGN IN NOW</button>
+                                                        <Typography id="captcha">
+                                                            <p className='google'>This site is protected by reCAPTCHA and the google<br /><u>Privacy Policy</u> and <u>Terms of Service</u> apply.</p>
+                                                        </Typography>
+                                                        <div className='down'></div>
+                                                        <Typography >
+                                                            <p className='dontt'>Don't have an account?<span style={{ color: "blue" }}> Sign up now</span></p>
+                                                        </Typography>
+                                                    </ModalContainer>
+                                                </Box>
+                                            </Modal> */}
+                                            </Modal> */>
+                                        </>
                                     }
                                 </IconButton>
                             </Tooltip>
-                            {isAuth && <Menu
+                            {/* {userAuth && <Menu
                                 sx={{ mt: '50px', mr: '0px' }}
                                 id="menu-appbar"
                                 anchorEl={anchorElUser}
@@ -641,7 +835,7 @@ const Navbar = () => {
                                         <Typography textAlign="center">{setting}</Typography>
                                     </MenuItem>
                                 ))}
-                            </Menu>}
+                            </Menu>} */}
                         </Box>
 
                         <Box sx={{ display: { sm: 'flex', lg: 'flex', md: 'flex' }, mr: 1, }}
@@ -673,7 +867,9 @@ const NavbarContainer = stylesc.div`
                 border:none;
                 pointerEvents:none;
                 outline:none;
+
     }
+
 
                 .menuList{
                     width:80%;
@@ -688,7 +884,6 @@ const NavbarContainer = stylesc.div`
     a{
         text-decoration:none;
     }
-    
                 `;
 
 const MenuContainer = stylesc.div`
@@ -706,3 +901,9 @@ const MenuContainer = stylesc.div`
                 padding:3px 2px;
     }
 `;
+
+const ModalContainer = stylesc.div`
+        //   border:1px solid red;
+          color:black;
+          
+`

@@ -2,8 +2,30 @@ import axios from "axios";
 import * as types from './actionTypes';
 
 const { REACT_APP_API_URL } = process.env;
-
+console.log(REACT_APP_API_URL);
 const userAuthentication = (payload) => (dispatch) => {
+    dispatch({ type: types.USER_LOGIN_REQUEST });
+    return axios.post(`${REACT_APP_API_URL}/login/`, payload).then((res) => {
+        return dispatch({ type: types.USER_LOGIN_SUCCESS, payload: res.data });
+    }).catch((err) => {
+        return dispatch({ type: types.USER_LOGIN_FAILURE, payload: err });
+    })
+}
+
+const userSignup = (payload) => (dispatch) => {
+    dispatch({ type: types.USER_SIGNUP_REQUEST });
+    return axios.post(`${REACT_APP_API_URL}/signup/`, payload).then((res) => {
+        return dispatch({ type: types.USER_SIGNUP_SUCCESS, payload: res.data });
+    }).catch((err) => {
+        return dispatch({ type: types.USER_SIGNUP_FAILURE, payload: err });
+    })
+}
+
+const userSignOut = (payload) => (dispatch) => {
+    dispatch({ type: types.USER_SIGNOUT_SUCCESS });
+}
+
+const adminAuthentication = (payload) => (dispatch) => {
     dispatch({ type: types.USER_LOGIN_REQUEST });
     return axios.post(`${REACT_APP_API_URL}/member/`, payload).then((res) => {
         return dispatch({ type: types.USER_LOGIN_SUCCESS, payload: res.data });
@@ -34,4 +56,4 @@ const dashUserData = (payload) => (dispatch) => {
     })
 }
 
-export { userAuthentication, dashUserDelete, dashUserData }
+export { userAuthentication, dashUserDelete, dashUserData, userSignup, userSignOut, adminAuthentication }
