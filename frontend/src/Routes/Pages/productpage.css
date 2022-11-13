@@ -1,3 +1,43 @@
+/* allProductspage */
+
+/* top section */
+
+.sorting_div{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    /* border: 1px solid red; */
+    margin: 20px;
+    width: 80%;
+    margin-left: 200px;
+}
+
+    .searchText{
+        height:90%;
+    border:none;
+    width: 80%;
+  font-size: 14px;
+  border-right: 1px solid gray;
+
+    outline:none;
+}
+.serchbox{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.serch_btn{
+    /* border: 1px solid red; */
+    width: 20%;
+    padding: 0px;
+    cursor: pointer;
+}
+
+
+
+/* ..........Middle Section of Alldatapage............ */
+
 .productpage_div1{
     display: grid;
     grid-template-columns: repeat(3,1fr) ;
@@ -13,7 +53,6 @@
     width: 20%;
     /* margin: auto; */
 }
-
 .productpage_div12{
     display: grid;
     grid-template-columns: repeat(3,1fr) ;
@@ -28,11 +67,8 @@
 
 
 
+/* Single product page css */
 
-
-
-/* Single product page css 
-*/
 .productinfo_page{
     width: 80%;
     /* border: 1px solid red; */
@@ -42,6 +78,7 @@
     display: flex;
     justify-content: space-between;
 }
+
 .leftbox{
 /* border: 1px solid green; */
 width: 55%;
@@ -53,10 +90,6 @@ width: 55%;
 .main_img_div>*{
     width: 100%;
 }
-
-
-
-
 
 .rightbox{
     /* border: 1px solid rgb(11, 3, 255); */
@@ -111,9 +144,6 @@ border: 1px solid rgb(167, 167, 167);
     width:18% ;
 }
 
-
-
-
 .reimagened{
     display: flex;
     /* justify-content: space-around; */
@@ -150,26 +180,27 @@ hr{
     color: gray;
 }
 
-
-
-
-
-
-
-
-
-
+/* .....other..... */
 .loadingspinner{
     position: absolute;
     top: 500px;
+    left: 200px;
+    
 }
-
+.loadingspinner>*{
+    width: 200px;
+}
 
 /* womens page -- menspage*/ 
 
-
-
 .shop_title{
     font-family: Arial, Helvetica, sans-serif;
-    
+}
+
+
+
+.sortproductform{
+    align-items: center;
+/* border: 1px solid red; */
+    padding: 10px 30px 10px 30px;
 }
