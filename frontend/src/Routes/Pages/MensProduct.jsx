@@ -9,6 +9,8 @@ import HaveAquestion from '../../Components/PoductComponents/HaveAquestion';
 
 const MensProduct = () => {
     const {loading,data}=useSelector((store)=>store.product)
+    const {isAuth,token}=useSelector((store)=>store.AuthReducer)
+    console.log(isAuth,token);
 const dispatch=useDispatch()
     useEffect(() => {
      dispatch( getmensproduct())
