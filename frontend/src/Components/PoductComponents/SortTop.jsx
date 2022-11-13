@@ -1,20 +1,19 @@
 import { FormControl, FormLabel, Select } from '@chakra-ui/react'
-import React from 'react'
+import React, { useState } from 'react'
+import { useSelector } from 'react-redux'
 import "./productcompo.css"
 const SortTop = () => {
+  const [value,setvalue]=useState([])
+console.log(value)
+// const {loading, data} = useSelector((store) => store.product);
+// setvalue(data)
   return (
     <>
-<form > 
-  <select placeholder='Sort Product By' className='sortproductform'>
+  <select value={value}  onChange={(e)=>setvalue(e.target.value)} placeholder='Sort Product By' className='sortproductform'>
     <option>Sort Products By </option>
-    <option>High - Low</option>
-    <option>Low - High</option>
-    <option>A - Z</option>
-    <option>Z - A</option>
+    <option value="high">High - Low</option>
+    <option value="low">Low - High</option>
   </select>
-  </form>
-
-
     </>
   )
 }

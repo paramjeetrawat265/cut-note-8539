@@ -32,7 +32,6 @@ return response.data
 }
 }
 
-
 export const getsingleproduct=(id)=>async(dispatch)=>{
     dispatch({type:GET_PRODUCT_LOADING})
 try{
@@ -43,10 +42,30 @@ return response.data
     dispatch({type:GET_PRODUCT_ERROR})
 }
 }                                                                                                                                                                                                                                       
-export const getSerchedData=(id)=>async(dispatch)=>{
+export const getSerchedData=(input)=>async(dispatch)=>{
     dispatch({type:GET_PRODUCT_LOADING})
 try{
-let response=await axios.get("http://localhost:8000/data/search/:key")
+let response=await axios.get(`http://localhost:8000/data/search/${input}`)
+dispatch({type:GET_PRODUCT_SUCESS,payload:response.data})
+return response.data
+}catch(e){
+    dispatch({type:GET_PRODUCT_ERROR})
+}
+}                                                                                                                                                                                                                                       
+export const getdatabyprice_asc=()=>async(dispatch)=>{
+    dispatch({type:GET_PRODUCT_LOADING})
+try{
+let response=await axios.get("http://localhost:8000/data/price1/asc")
+dispatch({type:GET_PRODUCT_SUCESS,payload:response.data})
+return response.data
+}catch(e){
+    dispatch({type:GET_PRODUCT_ERROR})
+}
+}                                                                                                                                                                                                                                       
+export const getdatabyprice_dsc=()=>async(dispatch)=>{
+    dispatch({type:GET_PRODUCT_LOADING})
+try{
+let response=await axios.get("http://localhost:8000/data/price/dsc")
 dispatch({type:GET_PRODUCT_SUCESS,payload:response.data})
 return response.data
 }catch(e){

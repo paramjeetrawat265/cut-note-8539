@@ -17,6 +17,14 @@ const MensProduct = () => {
   }, []);
   return (
     <>
+    {/* <HaveAquestion/> */}
+    <h1 shop_title>SHOP ALL MEN'S CLOTHING</h1>
+   
+        <div  className='productpage_div12'>
+        {data?.map((pro) =>
+<ProductBox data={pro}/>
+  )}
+        </div>
       <HaveAquestion />
       <h1 shop_title>SHOP ALL MEN'S CLOTHING</h1>
       <div className='productpage'>
