@@ -9,6 +9,10 @@ import HaveAquestion from "../../Components/PoductComponents/HaveAquestion";
 import SortTop from "../../Components/PoductComponents/SortTop";
 import { SearchBox } from "../../Components/PoductComponents/SearchBox";
 import { CiSearch } from "react-icons/ci";
+import {getproduct} from "../../Redux/Products/action.product";
+import SortTop from "../../Components/PoductComponents/SortTop";
+import { SearchBox } from "../../Components/PoductComponents/SearchBox";
+import HaveAquestion from "../../Components/PoductComponents/HaveAquestion";
 const AllProducts = () => {
   const {loading, data} = useSelector((store) => store.product);
   const dispatch = useDispatch();
@@ -65,11 +69,10 @@ dispatch(getdatabyprice_dsc())
                          <CiSearch className="serch_btn" fontSize="25px" onClick={serchdata} />
                         </Box>
     </div>
-
-
 {loading? <div   className="loadingspinner"><CircularProgress/></div>:""}
       <div className="productpage1">
-
+      <HaveAquestion/>
+<SortTop/>
         <div className="productpage_div1">
           {data?.map((pro) => (
             <ProductBox data={pro} />
@@ -79,5 +82,4 @@ dispatch(getdatabyprice_dsc())
     </>
   );
 };
-
 export default AllProducts;

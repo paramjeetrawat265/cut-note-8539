@@ -50,7 +50,6 @@ export default function FooterBottom() {
                 <li>Privacy Policy</li>
                 <li>California Do Not Sell </li>
                 <li>Diversity, Equity & Inlusion </li>
-
                 <li className="california">California Tranparency</li>
                 <li>Investor Relations</li>
                 <li>Terms of Use</li>

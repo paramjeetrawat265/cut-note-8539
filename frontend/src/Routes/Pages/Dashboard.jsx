@@ -138,12 +138,12 @@ const Dashboard = () => {
     }
 
 
-    // useEffect(() => {
-    //     getUserData();
-    // }, []);
+    useEffect(() => {
+        getUserData();
+    }, []);
 
     return (
-        // isAdmin &&
+        isAdmin &&
         <Container users={users}>
             <Box sx={{ display: 'flex', }} >
                 <CssBaseline />

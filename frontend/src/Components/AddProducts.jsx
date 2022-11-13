@@ -16,7 +16,8 @@ const AddProducts = ({ colorScheme }) => {
         discount: '',
         description: '',
         country: '',
-        price: ''
+        price: '',
+        type: ''
     })
 
     const [show, setStatus] = useState({
@@ -40,6 +41,7 @@ const AddProducts = ({ colorScheme }) => {
                 formData.append("discount", data.discount);
                 formData.append("country", data.country);
                 formData.append("image", inputFile.current.files[0]);
+                formData.append("type", data.type);
                 const headers = {
                     headers: {
                         Authorization: `Bearer ${token}`
@@ -60,9 +62,10 @@ const AddProducts = ({ colorScheme }) => {
     }
     return (
         <Container colorScheme={colorScheme}>
+            <AlertMessage show={show} setStatus={setStatus} />
             <div className='dashImageContainer'>
                 <div className='dashImageBox'>
-                    <p style={{ position: "absolute", top: '20px', fontWeight: 'bold' }}>Note: Image is Mandatory</p>
+                    <p style={{ position: "absolute", top: '0px', fontWeight: 'bold' }}>Note: Image is Mandatory</p>
                     <h1>Add Data</h1>
                     <form onSubmit={(e) => handleSubmit(e)}>
                         <div className='imageFileBox'>
@@ -73,16 +76,28 @@ const AddProducts = ({ colorScheme }) => {
                                 <h3>Category:</h3>
                                 <select name="" id="" onChange={(e) => setData({ ...data, category: e.target.value })}>
                                     <option value="">Select a Category</option>
-                                    <option value="Fruit & Vegetables">Fruit & Vegetables</option>
-                                    <option value="Bakery Cake & Dairy">Bakery Cake & Dairy</option>
-                                    <option value="Beverages">Beverages</option>
-                                    <option value="Snacks & Branded Foods">Snacks & Branded Foods</option>
-                                    <option value="Beauty & hygiene">Beauty & hygiene</option>
-                                    <option value="Cleaning & Household">Cleaning & Household</option>
-                                    <option value="Kitchen Garden & Pets">Kitchen Garden & Pets</option>
-                                    <option value="Eggs Meat & Fish">Eggs Meat & Fish</option>
-                                    <option value="Garment & World Food">Garment & World Food</option>
-                                    <option value="Baby Care">Baby Care</option>
+                                    <option value="sweater">Sweater</option>
+                                    <option value="shirt">Shirt</option>
+                                    <option value="pants">Pants</option>
+                                    <option value="t-shirts">T-shirts</option>
+                                    <option value="jeans">Jeans</option>
+                                    <option value="hats">Hats</option>
+                                    <option value="shoes">Shoes</option>
+                                    <option value="tops">Tops</option>
+                                    <option value="belts">Belts</option>
+                                    <option value="suits">Suits</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <h3>Type:</h3>
+                                <select name="" id="" onChange={(e) => setData({ ...data, type: e.target.value })}>
+                                    <option value="">Select a Type</option>
+                                    <option value="men">Mens</option>
+                                    <option value="women">Womens</option>
+                                    <option value="girls">Girls</option>
+                                    <option value="boys">Boys</option>
+                                    <option value="House">House</option>
                                 </select>
                             </div>
 
@@ -123,14 +138,13 @@ const AddProducts = ({ colorScheme }) => {
                             </div>
 
                             <div style={{ marginTop: '20px' }}>
-                            {/* <div> */}
+                                {/* <div> */}
                                 <input type="submit" value={"Upload Data"} className='imageButtonSubmit' />
                             </div>
                         </div>
                     </form>
                 </div>
             </div>
-            <AlertMessage show={show} setStatus={setStatus} />
         </Container>
     )
 }
@@ -139,7 +153,7 @@ const Container = styled.div`
     position: relative;
     width:90%;
     margin:auto;
-    padding:20px;
+    padding:5px;
     .dashImageContainer{
         width:100%;
         margin:auto;

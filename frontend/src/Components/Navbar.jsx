@@ -282,7 +282,14 @@ const Navbar = () => {
         if (isAuth) {
             console.log(isAuth)
         }
+
     }, [userAuth, isAuth])
+
+
+
+    }, [userAuth, isAuth])
+
+
 
     return (
         <NavbarContainer>
@@ -768,6 +775,40 @@ const Navbar = () => {
                                                     </Modal>
                                                 </>}
                                             </div>
+                                            {/* <p onClick={handleModalOpen} className="signIn">SignIn</p>
+                                            <Modal
+                                                open={modalOpen}
+                                                onClose={handleModalClose}
+                                                aria-labelledby="modal-modal-title"
+                                                aria-describedby="modal-modal-description"
+                                            >
+                                                <Box sx={style}>
+                                                    <ModalContainer>
+                                                        <Typography id="modal-modal-title1" >
+                                                            Sign In
+                                                        </Typography>
+                                                        <Typography id="modal-modal-title" variant="h6" component="h2">
+                                                            <input placeholder='Email Address*' className='address' />
+                                                        </Typography>
+                                                        <Typography id="modal-modal-title" variant="h6" component="h2">
+                                                            <input placeholder='Password*' className='passd' />
+                                                        </Typography>
+                                                        <Typography id="modal-modal-description1" sx={{ mt: 2 }}>
+                                                            <input type={"checkbox"} />
+                                                            <p className='remem'>Remember me</p>
+                                                            <p className='forgot'>Forgot Password?</p>
+                                                        </Typography>
+                                                        <button className='now'>SIGN IN NOW</button>
+                                                        <Typography id="captcha">
+                                                            <p className='google'>This site is protected by reCAPTCHA and the google<br /><u>Privacy Policy</u> and <u>Terms of Service</u> apply.</p>
+                                                        </Typography>
+                                                        <div className='down'></div>
+                                                        <Typography >
+                                                            <p className='dontt'>Don't have an account?<span style={{ color: "blue" }}> Sign up now</span></p>
+                                                        </Typography>
+                                                    </ModalContainer>
+                                                </Box>
+                                            </Modal> */>
                                         </>
                                     }
                                 </IconButton>
