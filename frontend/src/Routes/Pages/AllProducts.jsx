@@ -16,7 +16,7 @@ const AllProducts = () => {
   }, []);
   return (
     <>
-      <HaveAquestion />
+      {/* <HaveAquestion /> */}
 <SortTop/>
 
 <SearchBox/>

@@ -58,8 +58,6 @@ DataRouter.get("/price/asc",async(req,res)=>{
         const data=await ProductModel.find().sort({price:1})
         res.send(data)
     }
-
- 
 })
 
 

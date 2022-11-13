@@ -14,23 +14,16 @@ const Womenpage = () => {
       useEffect(() => {
        dispatch( getwomensproduct())
       }, []);;
-
   return (<>
-  <HaveAquestion/>
+  {/* <HaveAquestion/> */}
 <h1 className='shop_title'>SHOP ALL WOMEN'S CLOTHING</h1>
-
-    <div className='productpage'>
-<div>
-    Side block
-</div>
-        <div  className='productpage_div1'>
-
+  
+        <div  className='productpage_div12'>
         {data?.map((pro) =>
 <ProductBox data={pro}/>
   )}
         </div>
    
-    </div>
     </>
   )
 }
