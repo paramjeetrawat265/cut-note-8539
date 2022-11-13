@@ -6,8 +6,14 @@ import ProductBox from '../../Components/PoductComponents/ProductBox';
 import { useDispatch, useSelector } from 'react-redux';
 import { getmensproduct } from '../../Redux/Products/action.product';
 import HaveAquestion from '../../Components/PoductComponents/HaveAquestion';
-
 const MensProduct = () => {
+    const {loading,data}=useSelector((store)=>store.product)
+    const {isAuth,token}=useSelector((store)=>store.AuthReducer)
+    console.log(isAuth,token);
+const dispatch=useDispatch()
+    useEffect(() => {
+     dispatch( getmensproduct())
+    }, []);
   const { loading, data } = useSelector((store) => store.product)
   const { users, isAdmin, token } = useSelector((store) => (store.AuthReducer));
   console.log(users,token);
@@ -40,7 +46,6 @@ const MensProduct = () => {
     </>
   )
 }
-
 export default MensProduct
 
 

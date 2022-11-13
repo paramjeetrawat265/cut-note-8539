@@ -17,6 +17,8 @@ const Allroutes = () => {
         <Route path='/' element={<Homepage />} />
         <Route path='/men' element={<MensProduct />} />
         <Route path='/women' element={<Womenpage />} />
+        <Route path='/boys' element={<MensProduct />} />
+        <Route path='/girls' element={<Womenpage />} />
         <Route path='/cart' element={<Cart />} />
         <Route path='/dashboard' element={<Dashboard />} />
         <Route path='/alldata' element={<AllProducts />} />
@@ -32,5 +34,4 @@ const Allroutes = () => {
     </div>
   )
 }
-
 export default Allroutes
