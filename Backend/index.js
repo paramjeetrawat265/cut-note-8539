@@ -25,11 +25,6 @@ app.use("/login", LoginRoute)
 app.use("/cart", CartRoute)
 app.listen(process.env.PORT, async () => {
     try {
-app.use("/signup",SignupRoute)
-app.use("/login",LoginRoute)
-app.use('/cart',CartRoute)
-app.listen(process.env.PORT, async ()=>{
-    try{
         await connection;
         console.log("Connected To DB");
     } catch (err) {

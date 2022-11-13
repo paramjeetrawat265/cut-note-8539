@@ -1,36 +1,26 @@
 import React, { useEffect, useState } from 'react'
-import axios from "axios"
 import "./productpage.css"
-import { Box, Image, Text } from '@chakra-ui/react';
 import ProductBox from '../../Components/PoductComponents/ProductBox';
 import { useDispatch, useSelector } from 'react-redux';
 import { getmensproduct } from '../../Redux/Products/action.product';
 import HaveAquestion from '../../Components/PoductComponents/HaveAquestion';
 const MensProduct = () => {
-    const {loading,data}=useSelector((store)=>store.product)
-    const {isAuth,token}=useSelector((store)=>store.AuthReducer)
-    console.log(isAuth,token);
-const dispatch=useDispatch()
-    useEffect(() => {
-     dispatch( getmensproduct())
-    }, []);
   const { loading, data } = useSelector((store) => store.product)
   const { users, isAdmin, token } = useSelector((store) => (store.AuthReducer));
-  console.log(users,token);
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(getmensproduct())
   }, []);
   return (
     <>
-    {/* <HaveAquestion/> */}
-    <h1 shop_title>SHOP ALL MEN'S CLOTHING</h1>
-   
-        <div  className='productpage_div12'>
+      {/* <HaveAquestion/> */}
+      <h1 shop_title>SHOP ALL MEN'S CLOTHING</h1>
+
+      <div className='productpage_div12'>
         {data?.map((pro) =>
-<ProductBox data={pro}/>
-  )}
-        </div>
+          <ProductBox data={pro} />
+        )}
+      </div>
       <HaveAquestion />
       <h1 shop_title>SHOP ALL MEN'S CLOTHING</h1>
       <div className='productpage'>
@@ -47,13 +37,3 @@ const dispatch=useDispatch()
   )
 }
 export default MensProduct
-
-
-
-
-
-
-
-
-
-
