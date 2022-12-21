@@ -17,13 +17,13 @@ const Allroutes = () => {
         <Route path='/' element={<Homepage />} />
         <Route path='/men' element={<MensProduct />} />
         <Route path='/women' element={<Womenpage />} />
+        <Route path='/boys' element={<MensProduct />} />
+        <Route path='/girls' element={<Womenpage />} />
         <Route path='/cart' element={<Cart />} />
         <Route path='/dashboard' element={<Dashboard />} />
         <Route path='/alldata' element={<AllProducts />} />
         <Route path='/alldata/:id' element={<Singleproductpage />} />
         <Route path='/admin/dashboard' element={<Dashboard />} />
-        <Route path='/alldata' element={<AllProducts />} />
-        <Route path='/alldata/:id' element={<Singleproductpage />} />
         <Route path="/admin" element={<AdminPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
@@ -32,5 +32,4 @@ const Allroutes = () => {
     </div>
   )
 }
-
 export default Allroutes

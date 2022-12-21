@@ -33,10 +33,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import Login from './Login';
 import Signup from './Signup';
 
-
 const pages = ['Gifts', 'New', 'Women', 'Men', 'Kids', 'Cashmere', 'Home', 'Stories', 'Sale'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
-
 const Navbar = () => {
     const dispatch = useDispatch();
     const [email, setEmail] = useState("");
@@ -61,24 +59,17 @@ const Navbar = () => {
         top: '50%',
         left: '50%',
         transform: 'translate(-50%, -50%)',
-
         width: 300,
         height: 430,
-
         width: 400,
-
         bgcolor: 'background.paper',
         border: '2px solid #000',
         boxShadow: 24,
         p: 4,
     };
-
-
     const [modalOpen, setModalOpen] = useState(false);
     const handleModalOpen = () => setModalOpen(true);
     const handleModalClose = () => setModalOpen(false);
-
-
     const toggleDrawer = (anchor, open) => (event) => {
         if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
             return;
@@ -87,7 +78,6 @@ const Navbar = () => {
     };
     const [menu, setMenu] = useState("list");
     const [hoverMenu, setHoverMenu] = useState("");
-
     const list = (anchor) => (
         <Box
             sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250, mt: '15px' }}
@@ -110,7 +100,6 @@ const Navbar = () => {
         </Box>
     );
     //   Drawer Ends Here
-
     const gift = (
         <MenuContainer>
             <List sx={{ mt: 5, width: '250px' }} >
@@ -119,8 +108,8 @@ const Navbar = () => {
                 <Divider />
                 {[{ title: 'For Men', path: '/men' },
                 { title: 'For Women', path: '/women' },
-                { title: 'For Girls', path: '/girl' },
-                { title: 'For Boys', path: '/boy' },
+                { title: 'For Girls', path: '/girls' },
+                { title: 'For Boys', path: '/boys' },
                 { title: 'For The Home', path: '/home' },
                 ].map((ele, index) => (
                     <Link to={ele.path} key={index}>
@@ -142,10 +131,10 @@ const Navbar = () => {
                 <Typography textAlign="center" sx={{ size: "large" }} padding="10px">{menu}</Typography>
                 <Divider />
                 <Typography textAlign="Center" sx={{ mt: 2, fontWeight: 700 }}>Shop New Arrivals</Typography>
-                {[{ title: 'For Women', path: '/forwomen' },
-                { title: 'For Men', path: '/formen' },
-                { title: 'For Girls', path: '/forgirls' },
-                { title: 'For Boys', path: '/forboys' },
+                {[{ title: 'For Women', path: '/women' },
+                { title: 'For Men', path: '/men' },
+                { title: 'For Girls', path: '/girls' },
+                { title: 'For Boys', path: '/boys' },
                 ].map((ele, index) => (
                     <Link to={"/alldata"} key={index}>
                         <ListItem disablePadding sx={{ mb: -2 }}>
@@ -159,11 +148,11 @@ const Navbar = () => {
                 <Typography textAlign="Center" sx={{ mt: 2, fontWeight: 700 }}>What to Shop Now</Typography>
                 <Typography sx={{ mt: 2, ml: 2, mb: 0, color: 'gray', fontWeight: 700 }}>Women</Typography>
                 {[{ title: 'The Holiday Party Shop', path: '/forwomen' },
-                { title: 'Tartan Time', path: '/formen' },
-                { title: "Olympia's Picks", path: '/forgirls' },
-                { title: 'The Work Remix', path: '/forboys' },
-                { title: 'The Sun Shop', path: '/forboys' },
-                { title: 'The Ski Shop', path: '/forboys' },
+                { title: 'Tartan Time', path: '/alldata' },
+                { title: "Olympia's Picks", path: '/girls' },
+                { title: 'The Work Remix', path: '/boys' },
+                { title: 'The Sun Shop', path: '/boys' },
+                { title: 'The Ski Shop', path: '/boys' },
                 ].map((ele, index) => (
                     <Link to={ele.path} key={index}>
                         <ListItem disablePadding sx={{ mb: -2 }}>
@@ -175,12 +164,12 @@ const Navbar = () => {
                 ))}
                 <Divider sx={{ mt: 3 }} />
                 <Typography sx={{ mt: 2, ml: 2, mb: 0, color: 'gray', fontWeight: 700 }}>Men</Typography>
-                {[{ title: 'Fair Isle Sweaters', path: '/formen' },
-                { title: 'The Holiday Party Shop', path: '/formen' },
-                { title: 'Midweight Flannel Workshirts', path: '/formen' },
-                { title: 'New Parkas & Topcoats', path: '/formen' },
-                { title: 'Source Materials', path: '/formen' },
-                { title: 'Heritage 14 Oz. Fleece', path: '/formen' },
+                {[{ title: 'Fair Isle Sweaters', path: '/alldata' },
+                { title: 'The Holiday Party Shop', path: '/men' },
+                { title: 'Midweight Flannel Workshirts', path: '/men' },
+                { title: 'New Parkas & Topcoats', path: '/men' },
+                { title: 'Source Materials', path: '/men' },
+                { title: 'Heritage 14 Oz. Fleece', path: '/men' },
                 ].map((ele, index) => (
                     <Link to={ele.path} key={index}>
                         <ListItem disablePadding sx={{ mb: -2 }}>
@@ -217,12 +206,12 @@ const Navbar = () => {
                 <Divider sx={{ mt: 2 }} />
                 <Typography sx={{ mt: 2, ml: 2, fontWeight: 700 }}>What to Shop Now</Typography>
                 <Typography sx={{ mt: 2, ml: 2, mb: 0, color: 'gray', fontWeight: 700 }}>Women</Typography>
-                {[{ title: 'The Holiday Party Shop', path: '/forwomen' },
-                { title: 'Tartan Time', path: '/formen' },
-                { title: "Olympia's Picks", path: '/forgirls' },
-                { title: 'The Work Remix', path: '/forboys' },
-                { title: 'The Sun Shop', path: '/forboys' },
-                { title: 'The Ski Shop', path: '/forboys' },
+                {[{ title: 'The Holiday Party Shop', path: '/women' },
+                { title: 'Tartan Time', path: '/men' },
+                { title: "Olympia's Picks", path: '/girls' },
+                { title: 'The Work Remix', path: '/boys' },
+                { title: 'The Sun Shop', path: '/boys' },
+                { title: 'The Ski Shop', path: '/boys' },
                 ].map((ele, index) => (
                     <Link to={ele.path} key={index}>
                         <ListItem disablePadding sx={{ mb: -2 }}>
@@ -282,8 +271,8 @@ const Navbar = () => {
         if (isAuth) {
             console.log(isAuth)
         }
-    }, [userAuth, isAuth])
 
+    }, [userAuth, isAuth])
     return (
         <NavbarContainer>
             <AppBar elevation={0} position="static" sx={{ borderBottom: "1px solid #ddd", backgroundColor: "white", color: "black" }}>
@@ -530,7 +519,7 @@ const Navbar = () => {
                                                                 Clothing
                                                             </Typography>
                                                         </MenuItem>
-                                                        <MenuItem onClick={handleClose}><Link to="/women">All Clothing</Link></MenuItem>
+                                                        <MenuItem onClick={handleClose}><Link to="/alldata">All Clothing</Link></MenuItem>
                                                         <MenuItem onClick={handleClose}><Link to="/women">Sweaters</Link></MenuItem>
                                                         <MenuItem onClick={handleClose}><Link to="/women">Shirts & Tops</Link></MenuItem>
                                                         <MenuItem onClick={handleClose}><Link to="/women">T-shirts & Tank</Link></MenuItem>
@@ -647,7 +636,7 @@ const Navbar = () => {
                                                                 Clothing
                                                             </Typography>
                                                         </MenuItem>
-                                                        <MenuItem onClick={handleClose}><Link to="/men">All Clothing</Link></MenuItem>
+                                                        <MenuItem onClick={handleClose}><Link to="/alldata">All Clothing</Link></MenuItem>
                                                         <MenuItem onClick={handleClose}><Link to="/men">Sweaters</Link></MenuItem>
                                                         <MenuItem onClick={handleClose}><Link to="/men">Shirts & Tops</Link></MenuItem>
                                                         <MenuItem onClick={handleClose}><Link to="/men">T-shirts & Tank</Link></MenuItem>
@@ -732,7 +721,6 @@ const Navbar = () => {
                                 </>
                             ))}
                         </Box>
-
                         <Box sx={{ display: { xs: 'none', lg: 'flex', md: 'flex' }, mr: 2, }}
                             component="div"
                             border="2px solid #ddd"
@@ -744,7 +732,6 @@ const Navbar = () => {
                             <CiSearch fontSize="25px" />
                             <input className="searchText" type="text" placeholder="Search" />
                         </Box>
-
                         <Box sx={{ flexGrow: 0, mr: '5px', display: { sm: 'none', md: 'flex', lg: 'flex' } }}>
                             <Tooltip>
                                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
@@ -825,10 +812,7 @@ const NavbarContainer = stylesc.div`
                 border:none;
                 pointerEvents:none;
                 outline:none;
-
     }
-
-
                 .menuList{
                     width:80%;
                 display:flex;
@@ -837,7 +821,6 @@ const NavbarContainer = stylesc.div`
                 .signIn{
                     font - size:18px;
                 font-weight:500;
-
     }
     a{
         text-decoration:none;

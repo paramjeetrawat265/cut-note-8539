@@ -268,83 +268,71 @@ const Home = () => {
           </Box>
         </Box>
         {/* ............................................YoU MAY ALSO LVE................................................... */}
-        <Box height={"300px"}>
+        <Box height={"300px"} marginBottom={"100px"}>
           <Box height={"58px"}>
             <p className="chotaBox">You'll Also Love</p>
           </Box>
-          <Box height={"240px"} display={"flex"} width={"90%"} margin={"auto"} justifyContent={"space-between"} >
+          <div className="container">
+            <div className="containerChild">
+              <img src="https://www.jcrew.com/s7-img-facade/BK721_GR7805?wid=376" height={"240px"} width={"100%"} display={"block"} />
+              <div className="overlay">
+                <div className="text">
+                  <h1 className="wrap">Wrap Sweater-skirt</h1>
+                  <p className="INR">INR 23,223.00</p>
+                </div>
+              </div>
+            </div>
+            <div className="containerChild">
+              <img src="https://www.jcrew.com/s7-img-facade/AR182_EB7994?wid=376" height={"240px"} width={"100%"} display={"block"} />
+              <div className="overlay">
+                <div className="text">
+                  <h1 className="wrap2">Boston Clogs</h1>
+                  <p className="INR">INR 14,886.00</p>
+                </div>
+              </div>
+            </div>
+            <div className="containerChild">
+              <img src="https://www.jcrew.com/s7-img-facade/BE239_BK0001_m?wid=376" height={"240px"} width={"100%"} display={"block"} />
+              <div className="overlay">
+                <div className="text">
+                  <h1 className="wrap4">Fashinova Tshrt</h1>
+                  <p className="INR">INR 23,223.00</p>
+                </div>
+              </div>
+            </div>
+            <div className="containerChild">
+              <img src="https://www.jcrew.com/s7-img-facade/BA342_SU0919?wid=376" height={"240px"} width={"100%"} display={"block"} />
+              <div className="overlay">
+                <div className="text">
+                  <h1 className="wrap5">Wrap tshirt-shirt</h1>
+                  <p className="INR">INR 23,223.00</p>
+                </div>
+              </div>
+            </div>
+            <div className="containerChild">
+              <img src="https://www.jcrew.com/s7-img-facade/AZ779_EE0512?wid=376" height={"240px"} width={"100%"} display={"block"} />
+              <div className="overlay">
+                <div className="text">
+                  <h1 className="wrap6">Wrap Shoes</h1>
+                  <p className="INR">INR 23,223.00</p>
+                </div>
+              </div>
+            </div>
 
-            <Box className="container" height={"240px"} width={"15%"} position={"relative"} cursor="pointer">
+          </div>
 
-              <Box className="container" height={"240px"} width={"15%"} position={"relative"}>
-
-                <img src="https://www.jcrew.com/s7-img-facade/BK721_GR7805?wid=376" height={"240px"} width={"100%"} display={"block"} />
-                <div className="overlay">
-                  <div className="text">
-                    <h1 className="wrap">Wrap Sweater-skirt</h1>
-                    <p className="INR">INR 23,223.00</p>
-                  </div>
-                </div>
-              </Box>
-              <Box className="container" height={"240px"} width={"15%"} position={"relative"}>
-                <img src="https://www.jcrew.com/s7-img-facade/AR182_EB7994?wid=376" height={"240px"} width={"100%"} display={"block"} />
-                <div className="overlay">
-                  <div className="text">
-                    <h1 className="wrap2">Boston Clogs</h1>
-                    <p className="INR">INR 14,886.00</p>
-                  </div>
-                </div>
-              </Box>
-              <Box className="container" height={"240px"} width={"15%"} position={"relative"}>
-                <img src="https://www.jcrew.com/s7-img-facade/BF793_WO8694?wid=376" height={"240px"} width={"100%"} display={"block"} />
-                <div className="overlay">
-                  <div className="text">
-                    <h1 className="wrap3">Boston Shirt</h1>
-                    <p className="INR">INR 877,88.00</p>
-                  </div>
-                </div>
-              </Box>
-              <Box className="container" height={"240px"} width={"15%"} position={"relative"}>
-                <img src="https://www.jcrew.com/s7-img-facade/BE239_BK0001_m?wid=376" height={"240px"} width={"100%"} display={"block"} />
-                <div className="overlay">
-                  <div className="text">
-                    <h1 className="wrap4">Fashinova Tshrt</h1>
-                    <p className="INR">INR 23,223.00</p>
-                  </div>
-                </div>
-              </Box>
-              <Box className="container" height={"240px"} width={"15%"} position={"relative"}>
-                <img src="https://www.jcrew.com/s7-img-facade/BA342_SU0919?wid=376" height={"240px"} width={"100%"} display={"block"} />
-                <div className="overlay">
-                  <div className="text">
-                    <h1 className="wrap5">Wrap tshirt-shirt</h1>
-                    <p className="INR">INR 23,223.00</p>
-                  </div>
-                </div>
-              </Box>
-              <Box className="container" height={"240px"} width={"15%"} position={"relative"}>
-                <img src="https://www.jcrew.com/s7-img-facade/AZ779_EE0512?wid=376" height={"240px"} width={"100%"} display={"block"} />
-                <div className="overlay">
-                  <div className="text">
-                    <h1 className="wrap6">Wrap Shoes</h1>
-                    <p className="INR">INR 23,223.00</p>
-                  </div>
-                </div>
-              </Box>
-            </Box>
-          </Box>
         </Box>
         {/* .................................................Carousel STart................................. */}
-        <Box border={"1px solid black"} height={"80px"} marginTop={"150px"}>
+        {/* <Box border={"1px solid black"} height={"80px"} marginTop={"150px"}>
           <p className="insta">Shop our Instagram</p>
           <p className="funn">(and join the fun with #C.Aura)</p>
-        </Box>
+        </Box> */}
 
         {/* ......carouselpart ...................*/}
 
 
 
-        <BoxCrouser />
+        {/* <BoxCrouser /> */}
 
 
 
@@ -439,7 +427,7 @@ const Home = () => {
             </div>
           </div>
         </div>
-        </div>
+      </div>
     </div>
   )
 }
