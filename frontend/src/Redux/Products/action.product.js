@@ -4,7 +4,7 @@ import { GET_PRODUCT_LOADING,GET_PRODUCT_ERROR ,GET_PRODUCT_SUCESS} from "./type
 export const getproduct=()=>async(dispatch)=>{
     dispatch({type:GET_PRODUCT_LOADING})
 try{
-let response=await axios.get("http://localhost:8000/data")
+let response=await axios.get("https://clothing-aura-imhl.onrender.com/data")
 dispatch({type:GET_PRODUCT_SUCESS,payload:response.data})
 return response.data
 }catch(e){
@@ -14,7 +14,7 @@ return response.data
 export const getmensproduct=()=>async(dispatch)=>{
     dispatch({type:GET_PRODUCT_LOADING})
 try{
-let response=await axios.get("http://localhost:8000/data/men")
+let response=await axios.get("https://clothing-aura-imhl.onrender.com/data/men")
 dispatch({type:GET_PRODUCT_SUCESS,payload:response.data.mensproducts})
 return response.data
 }catch(e){
@@ -24,7 +24,7 @@ return response.data
 export const getwomensproduct=()=>async(dispatch)=>{
     dispatch({type:GET_PRODUCT_LOADING})
 try{
-let response=await axios.get("http://localhost:8000/data/women")
+let response=await axios.get("https://clothing-aura-imhl.onrender.com/data/women")
 dispatch({type:GET_PRODUCT_SUCESS,payload:response.data.womenproducts})
 return response.data
 }catch(e){
@@ -35,7 +35,7 @@ return response.data
 export const getsingleproduct=(id)=>async(dispatch)=>{
     dispatch({type:GET_PRODUCT_LOADING})
 try{
-let response=await axios.get("http://localhost:8000/data/"+id)
+let response=await axios.get("https://clothing-aura-imhl.onrender.com/data/"+id)
 dispatch({type:GET_PRODUCT_SUCESS,payload:response.data})
 return response.data
 }catch(e){
@@ -45,7 +45,7 @@ return response.data
 export const getSerchedData=(input)=>async(dispatch)=>{
     dispatch({type:GET_PRODUCT_LOADING})
 try{
-let response=await axios.get(`http://localhost:8000/data/search/${input}`)
+let response=await axios.get(`https://clothing-aura-imhl.onrender.com/data/search/${input}`)
 dispatch({type:GET_PRODUCT_SUCESS,payload:response.data})
 return response.data
 }catch(e){
@@ -55,7 +55,7 @@ return response.data
 export const getdatabyprice_asc=()=>async(dispatch)=>{
     dispatch({type:GET_PRODUCT_LOADING})
 try{
-let response=await axios.get("http://localhost:8000/data/price1/asc")
+let response=await axios.get("https://clothing-aura-imhl.onrender.com/data/price1/asc")
 dispatch({type:GET_PRODUCT_SUCESS,payload:response.data})
 return response.data
 }catch(e){
@@ -65,7 +65,7 @@ return response.data
 export const getdatabyprice_dsc=()=>async(dispatch)=>{
     dispatch({type:GET_PRODUCT_LOADING})
 try{
-let response=await axios.get("http://localhost:8000/data/price/dsc")
+let response=await axios.get("https://clothing-aura-imhl.onrender.com/data/price/dsc")
 dispatch({type:GET_PRODUCT_SUCESS,payload:response.data})
 return response.data
 }catch(e){
