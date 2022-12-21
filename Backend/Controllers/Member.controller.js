@@ -3,6 +3,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
+
 const member = () => async (req, res) => {
     const { email } = req.body;
     const user = await UserModel.findOne({ email: email })
