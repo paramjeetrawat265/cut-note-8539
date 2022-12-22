@@ -14,7 +14,7 @@ import HaveAquestion from "../../Components/PoductComponents/HaveAquestion";
 import { CiSearch } from "react-icons/ci";
 import SortTop from "../../Components/PoductComponents/SortTop";
 import {SearchBox} from "../../Components/PoductComponents/SearchBox";
-import {CiSearch} from "react-icons/ci";
+// import {CiSearch} from "react-icons/ci";
 const AllProducts = () => {
   const { loading, data } = useSelector((store) => store.product);
   const dispatch = useDispatch();
