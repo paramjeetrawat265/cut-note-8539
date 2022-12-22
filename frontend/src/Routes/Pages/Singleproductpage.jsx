@@ -23,21 +23,16 @@ const Singleproductpage = () => {
   const sizes = ["X-Small", "Small", "Medium", "Large", "X-Large", "XX-Large"];
   const {loading, data} = useSelector((store) => store.product);
   const dispatch = useDispatch();
+  const [quantity,setqty]=useState(0)
   const {price, type, category, name, item, productdescription, image,_id:product_Id}= data;
-console.log(product_Id)
   const payloadata={
-    price,type,category,name,item,image,product_Id
+    price,type,category,name,item,image,product_Id,quantity
   }
-
-
   useEffect(() => {
     dispatch(getsingleproduct(param.id));
   }, [param.id]);
-
-
   const AddtoBag=()=>{
     dispatch(Additemtocart(payloadata));
-    
   }
   return (
     <>
@@ -83,7 +78,7 @@ console.log(product_Id)
           <div className="qtydiv">
             <p className="mini_title">Quantity : </p>
             <form action="/action_page.php">
-              <select className="qty_form" name="cars" id="cars">
+              <select className="qty_form" onChange={(e)=>setqty(e.target.value)} id="cars">
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
