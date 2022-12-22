@@ -12,7 +12,6 @@ const authorization = (permittedRole) => {
         }
     }
 }
-
 module.exports={
     authorization
 }

@@ -23,10 +23,10 @@ const Singleproductpage = () => {
   const sizes = ["X-Small", "Small", "Medium", "Large", "X-Large", "XX-Large"];
   const {loading, data} = useSelector((store) => store.product);
   const dispatch = useDispatch();
-  const {price, type, category, name, item, productdescription, image} = data;
-
-  const payload={
-    price,type,category,name,item,image
+  const {price, type, category, name, item, productdescription, image,_id:product_Id}= data;
+console.log(product_Id)
+  const payloadata={
+    price,type,category,name,item,image,product_Id
   }
 
 
@@ -36,7 +36,8 @@ const Singleproductpage = () => {
 
 
   const AddtoBag=()=>{
-    dispatch(Additemtocart(payload));
+    dispatch(Additemtocart(payloadata));
+    
   }
   return (
     <>
@@ -49,11 +50,10 @@ const Singleproductpage = () => {
             <img src={image} alt="yes" />
           </div>
         </div>
-
         {/* ................Right............. */}
 
         <div className="rightbox">
-          <h2>{name}</h2>
+          <h2  className="titlename">{name}</h2>
           <p className="mini_title " id="close">
             Item {item}
           </p>
@@ -120,7 +120,7 @@ const Singleproductpage = () => {
 
             {infodata.map((el) => (
               <ul>
-                <li>{el}</li>
+                <li className="noitem">{el}</li>
               </ul>
             ))}
 

@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React, {useEffect, useState} from "react";
 import "./productpage.css";
-import { Box, CircularProgress, Image, Spinner, Text } from "@chakra-ui/react";
+import {Box, CircularProgress, Image, Spinner, Text} from "@chakra-ui/react";
 import ProductBox from "../../Components/PoductComponents/ProductBox";
 import {useDispatch, useSelector} from "react-redux";
 import {
@@ -11,12 +10,9 @@ import {
   getSerchedData,
 } from "../../Redux/Products/action.product";
 import HaveAquestion from "../../Components/PoductComponents/HaveAquestion";
-import { CiSearch } from "react-icons/ci";
-import SortTop from "../../Components/PoductComponents/SortTop";
-import {SearchBox} from "../../Components/PoductComponents/SearchBox";
-// import {CiSearch} from "react-icons/ci";
+import {CiSearch} from "react-icons/ci";
 const AllProducts = () => {
-  const { loading, data } = useSelector((store) => store.product);
+  const {loading, data} = useSelector((store) => store.product);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -82,6 +78,7 @@ const AllProducts = () => {
           <CiSearch className="serch_btn" fontSize="25px" onClick={serchdata} />
         </Box>
       </div>
+
 
       {loading ? (
         <div className="loadingspinner">

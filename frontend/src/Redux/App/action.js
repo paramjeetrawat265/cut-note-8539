@@ -5,7 +5,7 @@ import * as types from "./actionTypes";
 const { REACT_APP_API_URL } = process.env;
 const getVeg = (params) => (dispatch) => {
     dispatch({ type: types.GET_VEG_DATA_REQUEST })
-    return axios.get("http://localhost:8000/products", params).then((r) => {
+    return axios.get(`${REACT_APP_API_URL}`, params).then((r) => {
         dispatch({ type: types.GET_VEG_DATA_SUCCESS, payload: r.data });
     }).catch((err) => {
         dispatch({ type: types.GET_VEG_DATA_FAILURE, payload: err });
