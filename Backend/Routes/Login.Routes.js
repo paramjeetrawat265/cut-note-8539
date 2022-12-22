@@ -6,6 +6,7 @@ const LoginRoute = Router();
 
 LoginRoute.post("/", LoginController());
 
+
 module.exports = {
     LoginRoute
 }

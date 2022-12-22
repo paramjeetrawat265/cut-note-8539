@@ -1,1 +1,0 @@
-export const Baseurl="http://localhost:8400/"
