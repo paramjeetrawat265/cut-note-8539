@@ -1,4 +1,4 @@
-import { GET_CART_LOADING,GET_CART_SUCESS,GET_CART_ERROR} from "./types.cart";
+import { GET_CART_ERROR, GET_CART_LOADING, GET_CART_SUCESS } from "./type.cart"
 
 
 let initialstate={
