@@ -15,7 +15,7 @@ const getVeg = (params) => (dispatch) => {
 
 const addProducts = (payload, headers) => (dispatch) => {
     dispatch({ type: types.POST_DATA_REQUEST });
-    return axios.post(`${REACT_APP_API_URL}/dashboard/product/add`, payload, headers).then((res) => {
+    return axios.post(`${REACT_APP_API_URL}dashboard/product/add`, payload, headers).then((res) => {
         return dispatch({ type: types.POST_DATA_SUCCESS, payload: res.data });
     }).catch((err) => {
         return dispatch({ type: types.POST_DATA_FAILURE, payload: err });
@@ -24,7 +24,7 @@ const addProducts = (payload, headers) => (dispatch) => {
 
 const productData = (payload) => (dispatch) => {
     dispatch({ type: types.GET_DATA_REQUEST });
-    return axios.get(`${REACT_APP_API_URL}/dashboard/products`, payload).then((res) => {
+    return axios.get(`${REACT_APP_API_URL}dashboard/products`, payload).then((res) => {
         return dispatch({ type: types.GET_DATA_SUCCESS, payload: res.data });
     }).catch((err) => {
         return dispatch({ type: types.GET_DATA_FAILURE, payload: err });
@@ -34,7 +34,7 @@ const productData = (payload) => (dispatch) => {
 
 const productDelete = (payload, headers) => (dispatch) => {
     dispatch({ type: types.DELETE_DATA_REQUEST });
-    return axios.delete(`${REACT_APP_API_URL}/dashboard/product/delete/${payload.id}`, headers).then((res) => {
+    return axios.delete(`${REACT_APP_API_URL}dashboard/product/delete/${payload.id}`, headers).then((res) => {
         return dispatch({ type: types.DELETE_DATA_SUCCESS, payload: res.data });
     }).catch((err) => {
         return dispatch({ type: types.DELETE_DATA_FAILURE, payload: err });
@@ -43,7 +43,7 @@ const productDelete = (payload, headers) => (dispatch) => {
 
 const getProducts = () => (dispatch) => {
     dispatch({ type: types.GET_PRODUCTS_REQUEST });
-    return axios.get(`${REACT_APP_API_URL}/data/products`).then((res) => {
+    return axios.get(`${REACT_APP_API_URL}data/products`).then((res) => {
         return dispatch({ type: types.GET_PRODUCTS_SUCCESS, payload: res.data });
     }).catch((err) => {
         return dispatch({ type: types.GET_PRODUCTS_FAILURE, payload: err });

@@ -23,7 +23,7 @@ const Singleproductpage = () => {
   const sizes = ["X-Small", "Small", "Medium", "Large", "X-Large", "XX-Large"];
   const {loading, data} = useSelector((store) => store.product);
   const dispatch = useDispatch();
-  const [quantity,setqty]=useState(0)
+  const [quantity,setqty]=useState(1)
   const {price, type, category, name, item, productdescription, image,_id:product_Id}= data;
   const payloadata={
     price,type,category,name,item,image,product_Id,quantity

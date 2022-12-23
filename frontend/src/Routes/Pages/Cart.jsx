@@ -1,50 +1,38 @@
 import React, {useEffect, useState} from "react";
+import { useDispatch, useSelector } from "react-redux";
 import stylesc from "styled-components";
+import { GetCartData } from "../../Redux/Cart/action.cart";
 
 const Cart = () => {
-  const [cartLength, setCartLength] = useState(1);
-  const [saved, setSaved] = useState([]);
-  const [cart, setCart] = useState([
-    {
-      image:
-        "https://www.jcrew.com/s7-img-facade/BE996_YD2386?fmt=jpeg&qlt=90,0&resMode=sharp&op_usm=.1,0,0,0&wid=408&hei=408",
-      name: "mens jeans",
-      id: 54231,
-      color: "red",
-      size: "XL",
-      price: 8000,
-    },
-    {
-      image:
-        "https://www.jcrew.com/s7-img-facade/BE996_YD2386?fmt=jpeg&qlt=90,0&resMode=sharp&op_usm=.1,0,0,0&wid=408&hei=408",
-      name: "womens top",
-      id: 5421,
-      color: "black",
-      size: "L",
-      price: 9000,
-    },
-  ]);
+  // const [cartLength, setCartLength] = useState(/1);
+  // const [saved, setSaved] = useState([]);//
   const [count, setCount] = useState(1);
-  console.log(cart.length);
+
 
   const handleCount = (num) => {
     setCount((pre) => pre + num);
   };
+  const dispatch = useDispatch();
 
-  const [totalAmt, setTotalAmt] = useState(0);
+  const {data} = useSelector((store) => store.cart);
+console.log(data && data.products)
 
-  useEffect(() => {}, [count]);
+const cartdata =data && data.products
+  useEffect(() => {
+    dispatch(GetCartData())
+
+  }, [count]);
 
   return (
     <CartContainer>
       <div className="container">
         <div className="leftContainer">
           <div className="shopContainer">
-            <div className="shopHeading">Shopping Bag({cartLength})</div>
-            {cart.length === 0 && (
+            <div className="shopHeading">Shopping Bag({cartdata.length})</div>
+            {cartdata.length === 0 && (
               <div className="cartContainer">Your Shopping Bag is Empty</div>
             )}
-            {cart.length !== 0 && (
+            {cartdata.length !== 0 && (
               <div>
                 <table>
                   <tr className="tableRow">
@@ -52,7 +40,7 @@ const Cart = () => {
                     <td className="qty">QTY</td>
                     <td className="price">PRICE</td>
                   </tr>
-                  {cart.map((ele, index) => (
+                  {cartdata.map((ele, index) => (
                     <tr key={index} className="tableRow">
                       <td className="item">
                         <div className="prodDetail">
@@ -99,16 +87,16 @@ const Cart = () => {
               </div>
             )}
           </div>
-          <div className="savedContainer">
-            <div className="savedHeading">Saved For Later({saved.length})</div>
-            {saved.length === 0 && (
+          {/* <div className="savedContainer">
+            <div className="savedHeading">Saved For Later({cartdata.length})</div>
+            {cartdata.length === 0 && (
               <div className="savedForContainer">
                 Your Saved For Later is Empty
               </div>
             )}
-          </div>
+          </div> */}
         </div>
-        {cartLength !== 0 && (
+        {cartdata !== 0 && (
           <div className="rightContainer">
             <div>
               <p>Item Subtotal</p>
