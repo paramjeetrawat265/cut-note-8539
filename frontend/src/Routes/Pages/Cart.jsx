@@ -1,26 +1,26 @@
 import React, {useEffect, useState} from "react";
-import { useDispatch, useSelector } from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import stylesc from "styled-components";
-import { GetCartData } from "../../Redux/Cart/action.cart";
+import {GetCartData} from "../../Redux/Cart/action.cart";
 
 const Cart = () => {
-  // const [cartLength, setCartLength] = useState(/1);
-  // const [saved, setSaved] = useState([]);//
   const [count, setCount] = useState(1);
-
-
-  const handleCount = (num) => {
-    setCount((pre) => pre + num);
+  const [quantity, setqty] = useState(1);
+  const seletctqty = (e) => {
+    setqty(e.target.value);
   };
+const mycartTotal=()=>{
+
+}
   const dispatch = useDispatch();
+  const {data,cartTotal} = useSelector((store) => store.cart);
+  
+  console.log(data && data.products, cartTotal && cartTotal);
 
-  const {data} = useSelector((store) => store.cart);
-console.log(data && data.products)
+  const cartdata = data && data.products;
 
-const cartdata =data && data.products
   useEffect(() => {
-    dispatch(GetCartData())
-
+    dispatch(GetCartData(quantity));
   }, [count]);
 
   return (
@@ -28,10 +28,10 @@ const cartdata =data && data.products
       <div className="container">
         <div className="leftContainer">
           <div className="shopContainer">
-            <div className="shopHeading">Shopping Bag({cartdata.length})</div>
-            {cartdata.length === 0 && (
+            {/* <div className="shopHeading">Shopping Bag({cartdata.length})</div> */}
+            {/* {cartdata && cartdata.length === 0 && (
               <div className="cartContainer">Your Shopping Bag is Empty</div>
-            )}
+            )} */}
             {cartdata.length !== 0 && (
               <div>
                 <table>
@@ -64,18 +64,16 @@ const cartdata =data && data.products
                       </td>
                       <td className="qty">
                         <div className={"counterContainer"}>
-                          <button
-                            disabled={count === 1}
-                            onClick={() => handleCount(-1)}
-                          >
-                            -
-                          </button>
-                          <button>{count}</button>
-                          <button onClick={() => handleCount(1)}>+</button>
+
+                          <select name="" id="" onChange={seletctqty}>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                          </select>
                         </div>
                       </td>
                       <td className="price">
-                        {/* {setTotalAmt(ele.price*count)} */}
                         <p>
                           <strike>INR:{ele.price * 2}</strike>
                         </p>
@@ -87,20 +85,12 @@ const cartdata =data && data.products
               </div>
             )}
           </div>
-          {/* <div className="savedContainer">
-            <div className="savedHeading">Saved For Later({cartdata.length})</div>
-            {cartdata.length === 0 && (
-              <div className="savedForContainer">
-                Your Saved For Later is Empty
-              </div>
-            )}
-          </div> */}
         </div>
         {cartdata !== 0 && (
           <div className="rightContainer">
             <div>
               <p>Item Subtotal</p>
-              <p></p>
+              <p>{}</p>
             </div>
           </div>
         )}
