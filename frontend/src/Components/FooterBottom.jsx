@@ -1,11 +1,11 @@
 import React from "react";
 import "../styles/FooterBottom.css";
-import { FooterBottom_1, FooterBottom_2 } from "./SvgIcons";
-import { Link } from "react-router-dom";
-import { BsInstagram, BsPinterest, BsYoutube } from "react-icons/bs"
-import { BsFacebook } from "react-icons/bs"
-import { BsTwitter } from "react-icons/bs"
-import { BsLinkedin } from "react-icons/bs"
+import {FooterBottom_1, FooterBottom_2} from "./SvgIcons";
+import {Link} from "react-router-dom";
+import {BsInstagram, BsPinterest, BsYoutube} from "react-icons/bs";
+import {BsFacebook} from "react-icons/bs";
+import {BsTwitter} from "react-icons/bs";
+import {BsLinkedin} from "react-icons/bs";
 export default function FooterBottom() {
   return (
     <div className="footer_bottom_parent">
@@ -56,12 +56,11 @@ export default function FooterBottom() {
                 <li>Privacy Policy</li>
                 <li>California Do Not Sell My </li>
                 <li>Diversity, Equity & Inlusion</li>
-
               </ul>
             </div>
           </div>
           <div className="footer_socialIcons">
-            <a href="http://instagram.com/jcrew" >
+            <a href="http://instagram.com/jcrew">
               <i className=" fa-instagram">
                 <BsInstagram />
               </i>
@@ -112,24 +111,32 @@ export default function FooterBottom() {
             {/* <img className="footer_flag" src={xyz} alt="" /> */}
           </div>
 
-          <div className="footerSvgIcons" style={{ display: "flex", gap: 20 }}>
+          <div className="footerSvgIcons" style={{display: "flex", gap: 20}}>
             <FooterBottom_1 />
             <FooterBottom_2 />
 
-            <div className="footerSvgIcon" >
+            <div className="footerSvgIcon">
               {/* <FooterBottom_1/>
             
             <FooterBottom_2 /> */}
               <p className="madewell">Madewell C.Aura</p>
-
-
             </div>
-            <div className="footer_copyRight" style={{ marginLeft: "-770px" }}>© 2022 J.Crew</div>
+            <div className="footer_copyRight" style={{marginLeft: "-770px"}}>
+              © 2022 J.Crew
+            </div>
           </div>
 
           <div className="footer_main_right">
-            <h3 className="footer_main_right_head" style={{ marginLeft: "-270px" }}>Like Being First?</h3>
-            <div className="footer_main_right_des" style={{ marginLeft: "-70px" }}>
+            <h3
+              className="footer_main_right_head"
+              style={{marginLeft: "-270px"}}
+            >
+              Like Being First?
+            </h3>
+            <div
+              className="footer_main_right_des"
+              style={{marginLeft: "-70px"}}
+            >
               Get can't miss style news, before everybody else.
             </div>
             <div>
