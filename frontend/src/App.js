@@ -8,9 +8,7 @@ function App() {
   const location=useLocation();
   return (
     <div className="App">
-      {/* <Navbar /> */}
       {location.pathname === "/admin/dashboard" ? null : <Navbar />}
-      {/* {location.pathname === "/admin/dashboard" ? null : <HaveAquestion />} */}
       
       <Allroutes />
     </div>
