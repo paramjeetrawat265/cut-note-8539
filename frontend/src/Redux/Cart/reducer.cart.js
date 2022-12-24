@@ -19,11 +19,18 @@ error:false
 }
 
 case GET_CART_SUCESS:{
+    let amount = payload.reduce((acc, el) => 
+    acc + (el.quantity*el.price)
+       , 0
+       )
+     console.log(amount)
+
     return {
         ...state,
         loading:false,
         error:false,
-        data:payload
+        data:payload && payload,
+        cartTotal:amount
     }
 }
 case GET_CART_ERROR:{

@@ -3,8 +3,7 @@ const {authentication} = require("../Middleware/Authentication");
 const {CartModel} = require("../Models/Cart.model");
 const CartRoute = express.Router();
 
-CartRoute.get("/", (req, res) => {});
-
+// ........ Add To Cart Functionality ..............
 CartRoute.post("/addtocart", authentication, async (req, res) => {
   const {
     product_Id,
@@ -19,7 +18,7 @@ CartRoute.post("/addtocart", authentication, async (req, res) => {
   } = req.body;
 
   let isavilable = await CartModel.findOne({user_id});
-
+  // ........ check is user exist or not ..............
   if (isavilable) {
     let itemIndex = isavilable.products.findIndex(
       (p) => p.product_Id == product_Id
@@ -44,7 +43,9 @@ CartRoute.post("/addtocart", authentication, async (req, res) => {
     }
     isavilable = await isavilable.save();
     return res.status(201).send(isavilable);
-  } else {
+  }
+  // ........ If user Not exist Create New Cart ..............
+  else {
     const newCart = await CartModel.create({
       user_id,
       products: [
@@ -65,7 +66,9 @@ CartRoute.post("/addtocart", authentication, async (req, res) => {
   }
 });
 
-CartRoute.get('/usercart',authentication,async (req, res) => {
+// ........ Get User Cart Data ..............
+
+CartRoute.get("/usercart", authentication, async (req, res) => {
   const {user_id} = req.body;
   try {
     const UserCart = await CartModel.findOne({user_id});
@@ -77,8 +80,8 @@ CartRoute.get('/usercart',authentication,async (req, res) => {
   } catch (err) {
     res.send({msg: "Something Wents Wrong", err: err});
   }
-}) ;
+});
 
 module.exports = {
-  CartRoute
+  CartRoute,
 };
