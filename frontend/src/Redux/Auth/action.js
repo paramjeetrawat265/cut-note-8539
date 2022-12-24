@@ -2,7 +2,6 @@ import axios from "axios";
 import * as types from "./actionTypes";
 
 const {REACT_APP_API_URL} = process.env;
-console.log(REACT_APP_API_URL);
 const userAuthentication = (payload) => (dispatch) => {
   dispatch({type: types.USER_LOGIN_REQUEST});
   return axios

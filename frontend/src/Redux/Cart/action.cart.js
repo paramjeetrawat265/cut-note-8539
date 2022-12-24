@@ -30,18 +30,19 @@ export const GetCartData = () => async (dispatch) => {
     type: GET_CART_LOADING,
   });
  const token=accesData("token")
+
   try {
     const response = await axios.get(`${REACT_APP_API_URL}cart/usercart`,  {
       headers: {
-        Authorization: `Bearer ${token}`,
+        Authorization:`Bearer ${token}`,
       },
     });
+console.log(response)
     dispatch({
       type: GET_CART_SUCESS,
       payload: response.data,
       
     });
-    console.log(response)
   } catch (err) {
     dispatch({
       type: GET_CART_ERROR,
