@@ -2,10 +2,14 @@ const {Router} = require("express");
 const {ProductModel} = require("../Models/Product.Models");
 const DataRouter = Router();
 
+// .........Get All Products Data.......................
 DataRouter.get("/", async (req, res) => {
   const data = await ProductModel.find();
   res.send(data);
 });
+
+// .........Add Product in Database.......................
+
 DataRouter.post("/add", async (req, res) => {
   const {name, price, discount, category} = req.body;
   const data = new ProductModel({
@@ -18,6 +22,8 @@ DataRouter.post("/add", async (req, res) => {
   res.send(data);
 });
 
+// .........Get Mens Products Data.......................
+
 DataRouter.get("/men", async (req, res) => {
   try {
     const mensdata = await ProductModel.find({type: "men"});
@@ -29,6 +35,8 @@ DataRouter.get("/men", async (req, res) => {
   }
 });
 
+// .........Get Womens Products Data.......................
+
 DataRouter.get("/women", async (req, res) => {
   try {
     const womendata = await ProductModel.find({type: "women"});
@@ -39,6 +47,8 @@ DataRouter.get("/women", async (req, res) => {
     res.send({msg: "data not found"});
   }
 });
+
+// .........Get Products by Search.......................
 
 DataRouter.get("/search/:key", async (req, res) => {
   const data = await ProductModel.find({
@@ -52,22 +62,25 @@ DataRouter.get("/search/:key", async (req, res) => {
   }
 });
 
-
+// .........Get Products By Accending order ......................
 
 DataRouter.get("/price1/:asc", async (req, res) => {
   if ((req.params.asc = "asc")) {
     const data = await ProductModel.find().sort({price: 1});
     res.send(data);
   }
-
 });
+
+// .........Get  Products By dccending order.......................
+
 DataRouter.get("/price/:dsc", async (req, res) => {
   if ((req.params.asc = "dsc")) {
     const data = await ProductModel.find().sort({price: -1});
     res.send(data);
   }
-
 });
+
+// .........Get  Seletcted Product.......................
 
 DataRouter.get("/:id", async (req, res) => {
   try {
@@ -86,4 +99,3 @@ DataRouter.get("/:id", async (req, res) => {
 module.exports = {
   DataRouter,
 };
- 
