@@ -2,7 +2,8 @@
 This was a collaborative project made by 5 members Executed in 5 days.
 <br/>
 
-  Deploy Link -Netlify: 
+  Deploy Link -Netlify: https://nice-kit-boa.cyclic.app/
+  <br/>
   Backend Api Link : https://nice-kit-boa.cyclic.app/
 ---
 ## Tech Stack Used : -
