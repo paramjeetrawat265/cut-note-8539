@@ -30,13 +30,11 @@ const Admin = () => {
     const dispatch = useDispatch();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    console.log(email, password);
     const handleAdminLogin = () => {
         const payload = {
             email, password
         }
         dispatch(adminAuthentication(payload)).then((res) => {
-            console.log(res)
             if (res.payload.msg === 'Admin Login Successfull') {
                 setStatus({ ...show, status: true, msg: res.payload.msg, type: "success" });
                 setTimeout(() => {

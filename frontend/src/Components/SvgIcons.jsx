@@ -74,11 +74,11 @@ function Twitter() {
       xmlns="http://www.w3.org/2000/svg"
       className="module-footer__row--top__icon"
       viewBox="0 0 24 32"
-      style={{ width: 25 }}
+      style={{width: 25}}
     >
       <path d="M21.45 11.125v.6A13.884 13.884 0 017.5 25.675a13.726 13.726 0 01-7.5-2.1c.45 0 .9.15 1.2.15a10.16 10.16 0 006.15-2.1 4.86 4.86 0 01-4.65-3.45 1.903 1.903 0 00.9.15c.45 0 .9-.15 1.35-.15a4.842 4.842 0 01-3.9-4.8v-.15a3.444 3.444 0 002.1.6 4.783 4.783 0 01-2.1-4.05 5.3 5.3 0 01.6-2.55 13.802 13.802 0 0010.2 5.1 2.553 2.553 0 01-.15-1.05 4.898 4.898 0 014.95-4.95 4.791 4.791 0 013.6 1.65 9.841 9.841 0 003.15-1.2 5.637 5.637 0 01-2.25 2.7 9.05 9.05 0 002.85-.9 13.677 13.677 0 01-2.55 2.55z"></path>
     </svg>
   );
 }
 
-export { FooterBottom_1, MainLogo, FooterBottom_2, HeartIcon, Twitter };
+export {FooterBottom_1, MainLogo, FooterBottom_2, HeartIcon, Twitter};
