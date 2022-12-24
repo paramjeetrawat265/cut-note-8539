@@ -1,12 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import "./productpage.css"
 import ProductBox from '../../Components/PoductComponents/ProductBox';
 import { useDispatch, useSelector } from 'react-redux';
 import { getmensproduct } from '../../Redux/Products/action.product';
 import HaveAquestion from '../../Components/PoductComponents/HaveAquestion';
 const MensProduct = () => {
-  const { loading, data } = useSelector((store) => store.product)
-  const { users, isAdmin, token } = useSelector((store) => (store.AuthReducer));
+  const {  data } = useSelector((store) => store.product)
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(getmensproduct())
