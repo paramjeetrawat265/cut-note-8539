@@ -17,8 +17,8 @@ This was a collaborative project made by 5 members Executed in 5 days.
      - `styled component `
 ---
 ### _Following are the Screenshots for the reference_
-- **Admin_page**
-![Screenshot (806)](https://user-images.githubusercontent.com/63177572/208613315-46c001e0-698c-478a-9af9-87dded7b2c62.png)
+- **Home Page**
+![Screenshot (806)] "./frontend/RedmeFileImages/111.png
 - **Home_Page**
 ![Screenshot (805)](https://user-images.githubusercontent.com/63177572/208613068-025c86c3-0a7f-4274-adcd-cc3609fca53c.png)
 - **SignIn_Page**
