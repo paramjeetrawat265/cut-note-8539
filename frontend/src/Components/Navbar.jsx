@@ -320,7 +320,6 @@ const Navbar = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
-    console.log(event.target.innerText);
     setHoverMenu(event.target.innerText);
     setAnchorEl(event.currentTarget);
   };
@@ -345,7 +344,6 @@ const Navbar = () => {
   const [authComponent, setauthComponent] = useState("Login");
   useEffect(() => {
     if (isAuth) {
-      console.log(isAuth);
     }
   }, [userAuth, isAuth]);
   return (

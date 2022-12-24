@@ -2,7 +2,7 @@ import {Box, Checkbox, Divider, Spinner} from "@chakra-ui/react";
 import axios from "axios";
 import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import HaveAquestion from "../../Components/PoductComponents/HaveAquestion";
 import {getsingleproduct} from "../../Redux/Products/action.product";
 import Favorite from "@mui/icons-material/Favorite";
@@ -21,25 +21,26 @@ const Singleproductpage = () => {
   ];
   const label = {inputProps: {"aria-label": "Checkbox demo"}};
   const sizes = ["X-Small", "Small", "Medium", "Large", "X-Large", "XX-Large"];
-  const {loading, data} = useSelector((store) => store.product);
+  const { data} = useSelector((store) => store.product);
   const dispatch = useDispatch();
   const [quantity,setqty]=useState(1)
   const {price, type, category, name, item, productdescription, image,_id:product_Id}= data;
   const payloadata={
     price,type,category,name,item,image,product_Id,quantity
   }
+  const navigate=useNavigate()
   useEffect(() => {
     dispatch(getsingleproduct(param.id));
   }, [param.id]);
   const AddtoBag=()=>{
     dispatch(Additemtocart(payloadata));
+    alert("Item Added To Bag")
+    navigate("/cart")
   }
   return (
     <>
       <HaveAquestion />
       <div className="productinfo_page">
-        {/* {loading?<Spinner size='xl' />:""} */}
-        {/* ..............left............. */}
         <div className="leftbox">
           <div className="main_img_div">
             <img src={image} alt="yes" />

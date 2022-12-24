@@ -1,38 +1,42 @@
+import {Button} from "@mui/material";
+import axios from "axios";
 import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import stylesc from "styled-components";
 import {GetCartData} from "../../Redux/Cart/action.cart";
+import {accesData} from "../../Utils/appLocalStorage";
+const {REACT_APP_API_URL} = process.env;
 
 const Cart = () => {
   const [count, setCount] = useState(1);
   const [quantity, setqty] = useState(1);
+  const [cartdata, setcartdata] = useState([]);
   const seletctqty = (e) => {
     setqty(e.target.value);
   };
-const mycartTotal=()=>{
-
-}
-  const dispatch = useDispatch();
-  const {data,cartTotal} = useSelector((store) => store.cart);
-  
-  console.log(data && data.products, cartTotal && cartTotal);
-
-  const cartdata = data && data.products;
-
+  const GetCartDatamy = async () => {
+    const token = accesData("token");
+    try {
+      const response = await axios.get(`${REACT_APP_API_URL}cart/usercart`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setcartdata(response.data.products);
+    } catch (err) {}
+  };
+  let amount =
+    cartdata && cartdata.reduce((acc, el) => acc + el.quantity * el.price, 0);
   useEffect(() => {
-    dispatch(GetCartData(quantity));
-  }, [count]);
+    GetCartDatamy();
+  }, []);
 
   return (
     <CartContainer>
       <div className="container">
         <div className="leftContainer">
           <div className="shopContainer">
-            {/* <div className="shopHeading">Shopping Bag({cartdata.length})</div> */}
-            {/* {cartdata && cartdata.length === 0 && (
-              <div className="cartContainer">Your Shopping Bag is Empty</div>
-            )} */}
-            {cartdata.length !== 0 && (
+            {cartdata && cartdata.length !== 0 && (
               <div>
                 <table>
                   <tr className="tableRow">
@@ -40,47 +44,47 @@ const mycartTotal=()=>{
                     <td className="qty">QTY</td>
                     <td className="price">PRICE</td>
                   </tr>
-                  {cartdata.map((ele, index) => (
-                    <tr key={index} className="tableRow">
-                      <td className="item">
-                        <div className="prodDetail">
-                          <div className="prodImage">
-                            <img src={ele.image} />
-                          </div>
-                          <div className="details">
-                            <h3>{ele.name}</h3>
-                            <p>Item:{ele.id ? ele.id : "BE996"}</p>
-                            <p>color:{ele.color ? ele.color : "Black"}</p>
-                            <p>size:{ele.size ? ele.size : "Classic"}</p>
-                            <br></br>
-                            <br></br>
-                            <div className="options">
-                              <button>Remove</button>
-                              <button>Save_Later</button>
-                              <button>Edit</button>
+                  {cartdata &&
+                    cartdata.map((ele, index) => (
+                      <tr key={index} className="tableRow">
+                        <td className="item">
+                          <div className="prodDetail">
+                            <div className="prodImage">
+                              <img src={ele.image} />
+                            </div>
+                            <div className="details">
+                              <h3>{ele.name}</h3>
+                              <p>Item:{ele.id ? ele.id : "BE996"}</p>
+                              <p>color:{ele.color ? ele.color : "Black"}</p>
+                              <p>size:{ele.size ? ele.size : "Classic"}</p>
+                              <br></br>
+                              <br></br>
+                              <div className="options">
+                                <button>Remove</button>
+                                <button>Save_Later</button>
+                                <button>Edit</button>
+                              </div>
                             </div>
                           </div>
-                        </div>
-                      </td>
-                      <td className="qty">
-                        <div className={"counterContainer"}>
-
-                          <select name="" id="" onChange={seletctqty}>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                          </select>
-                        </div>
-                      </td>
-                      <td className="price">
-                        <p>
-                          <strike>INR:{ele.price * 2}</strike>
-                        </p>
-                        <p>INR:{ele.price * count}</p>
-                      </td>
-                    </tr>
-                  ))}
+                        </td>
+                        <td className="qty">
+                          <div className={"counterContainer"}>
+                            <select name="" id="" onChange={seletctqty}>
+                              <option value="1">1</option>
+                              <option value="2">2</option>
+                              <option value="3">3</option>
+                              <option value="4">4</option>
+                            </select>
+                          </div>
+                        </td>
+                        <td className="price">
+                          <p>
+                            <strike>INR:{ele.price * 2}</strike>
+                          </p>
+                          <p>INR:{ele.price * count}</p>
+                        </td>
+                      </tr>
+                    ))}
                 </table>
               </div>
             )}
@@ -89,8 +93,9 @@ const mycartTotal=()=>{
         {cartdata !== 0 && (
           <div className="rightContainer">
             <div>
-              <p>Item Subtotal</p>
-              <p>{}</p>
+              <p className="Rightsidep1">Item Subtotal</p>
+              <p className="Rightsidep2">{amount}</p>
+              <Button className="placeordertbtn">Place Order</Button>
             </div>
           </div>
         )}
@@ -101,7 +106,8 @@ const mycartTotal=()=>{
 
 export default Cart;
 const CartContainer = stylesc.div`
-  width:100%;
+  
+width:100%;
   padding:0px;
   margin:0px;
   background-color:
@@ -133,9 +139,12 @@ const CartContainer = stylesc.div`
   .rightContainer{
       width:35%;
       background-color:white;
-      border:2px solid red;
+      border:1px solid black;
   }
-
+.Rightsidep1{
+font-size:20px;
+font-weight:bold;
+}
   .shopContainer,
   .savedContainer{
   }
@@ -225,5 +234,9 @@ const CartContainer = stylesc.div`
   .price p{
     margin-top:-20px;
   }
-
+.placeordertbtn{
+  width:100%;
+  backgraund-color:black;
+ 
+}
 `;
